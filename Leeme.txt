@@ -1,5 +1,5 @@
 Hola Estamos trabajando en un proyecto de Software
 primera entrega seria el dia 31 de julio
 
-
+composer install  (para instalar el proyecto creo)
 php artisan serve (iniciar servidor)
