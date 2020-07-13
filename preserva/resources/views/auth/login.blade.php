@@ -9,18 +9,15 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
+                        {{ csrf_field() }}
                         <div class="form-group row">
                             <label for="rut" class="col-md-4 col-form-label text-md-right">{{ __('Rut') }}</label>
 
                             <div class="col-md-6">
-                                <input class = "form-control"
-                                    required
-                                    name="rut"
-                                    placeholder = "ingresa tu Rut"> 
+                                <input id="rut" type ="number" class = "form-control" name = "rut" value ="{{ old('rut') }}" required autofocus
+                                placeholder = "ingresa tu Rut"> 
                                
-
+                                {!! $errors->first('rut','<span class ="help-block">:message</span>') !!}
                               
                             </div>
                         </div>

@@ -38,11 +38,16 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function rut()
+    {
+        return 'rut';
+    }
     public function login()
     {
         $credentials= $this->validate(request(),[
             'rut'=> 'required',
-            'password' => 'required'
+            'password' => 'required|string'
         ]);
         
         if(Auth::attempt($credentials))
