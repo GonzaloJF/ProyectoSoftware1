@@ -1,4 +1,4 @@
-w
+
 -- phpMyAdmin SQL Dump
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
@@ -72,17 +72,17 @@ CREATE TABLE `solicitud_de_reserva` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE `users` (
   `Rut` int(11) NOT NULL,
   `Nombre` varchar(30) NOT NULL,
   `Apellido` varchar(30) NOT NULL,
-  `Tupo_users` varchar(30) NOT NULL,
+  `Tipo_usuario` varchar(30) NOT NULL,
   `Estado` varchar(30) NOT NULL,
   `Ciudad` varchar(30) NOT NULL,
-  `Contraseña` varchar(30) NOT NULL
+  `password` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
