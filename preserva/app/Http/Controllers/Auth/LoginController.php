@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -36,5 +37,18 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    public function login()
+    {
+        $credentials= $this->validate(request(),[
+            'rut'=> 'required',
+            'password' => 'required'
+        ]);
+        
+        if(Auth::attempt($credentials))
+        {
+            return 'tu sesion ha iniciado correctamente';
+        }
+        return 'Error en la autentificacion';
     }
 }
