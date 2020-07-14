@@ -13,7 +13,7 @@
                         @csrf
 
                         <div class="form-group row ">
-                            <label for="login" class="col-md-4 col-form-label text-md-right">{{ __('rut') }}</label>
+                            <label for="login" class="col-md-4 col-form-label text-md-right">{{ __('Rut') }}</label>
 
                             <div class="col-md-6">
                                 <input id="login" type="text" class="form-control  @error('login') is-invalid @enderror " name="login" value="{{ old('username') }}" required  autofocus>
@@ -46,7 +46,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{ __('Recordarme') }}
                                     </label>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                        {{ __('¿Olvidaste tu contraseña?') }}
                                     </a>
                                 @endif
                             </div>
