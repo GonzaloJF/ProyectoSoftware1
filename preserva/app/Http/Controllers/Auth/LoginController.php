@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -34,26 +33,23 @@ class LoginController extends Controller
      *
      * @return void
      */
+    protected $username;
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        $this->username = $this->findUsername();
     }
 
-    public function rut()
-    {
-        return 'rut';
+
+    public function findUsername(){
+        $login = request()->input( 'login');
+        $fieldtype = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        request()-> merge([$fieldtype => $login]);
+        return $fieldtype;
     }
-    public function login()
+
+    public function username()
     {
-        $credentials= $this->validate(request(),[
-            'rut'=> 'required',
-            'password' => 'required|string'
-        ]);
-        
-        if(Auth::attempt($credentials))
-        {
-            return 'tu sesion ha iniciado correctamente';
-        }
-        return 'Error en la autentificacion';
+        return $this->username; 
     }
 }
