@@ -19,7 +19,15 @@
                         @csrf
 
                         <div class="form-group">
-                            <input id="username" value ="{{ (auth::user()->username) }}" type="text" class="form-control "  readonly=»readonly» name="username"  required autocomplete="usernames" autofocus>
+                            <label for="username">{{ __('RUT') }}</label>
+                            <input id="username" value ="{{ (auth::user()->username) }}" type="text" class="form-control "  readonly=»readonly» name="username"  required autocomplete="username" autofocus>
+
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">{{ __('Nombre') }}</label>
+                            <input id="name" value ="{{ (auth::user()->name) }}{{ (' ') }}{{ (auth::user()->apellido) }}" type="text" class="form-control "  readonly=»readonly» name="name"  required autocomplete="name" autofocus>
 
                             
                         </div>
