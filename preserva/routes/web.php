@@ -28,3 +28,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('login', 'Auth\LoginController@login')->name('login');
 
 Route::get('/reserva/create', 'ReservaController@create');
+Route::post('/reserva', 'ReservaController@store');

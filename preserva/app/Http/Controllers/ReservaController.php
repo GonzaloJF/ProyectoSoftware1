@@ -9,4 +9,8 @@ class ReservaController extends Controller{
     {
         return view('reserva.create');
     }
+    public function store(Request $request)
+    {
+        dd($request->all());
+    }
 }

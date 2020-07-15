@@ -15,16 +15,13 @@
                     @endif
 
                     
-                    <form method="POST">
+                    <form method="POST" action="{{ url('reserva') }}">
                         @csrf
 
                         <div class="form-group">
-                            <label for="username">{{ __('Rut') }}</label>
-                        
-                            <select name="username" readonly=»readonly»  disabled=»disabled»>
-                                    <option value="{{ (auth::user()->username) }}">{{ (Auth::user()->username) }}</option> 
-                                </select>
+                            <input id="username" value ="{{ (auth::user()->username) }}" type="text" class="form-control "  readonly=»readonly» name="username"  required autocomplete="usernames" autofocus>
 
+                            
                         </div>
                         
                         <div class="form-group">
@@ -82,14 +79,9 @@
                             @enderror
 
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Reservar') }}
                                 </button>
-                            </div>
-                        </div>
                     </form>
 
                 </div>
