@@ -49,9 +49,11 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/reserva/create') }}">{{ __('Reserva') }}</a>
-                            </li>
+                            @if(((Auth::user()->tipo_usuario)==3)||((Auth::user()->tipo_usuario)==5))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/reserva/create') }}">{{ __('Reserva') }}</a>
+                                </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ strtoupper(Auth::user()->name) }}{{ __('') }} {{ strtoupper (Auth::user()->apellido) }} <span class="caret"></span>
