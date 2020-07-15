@@ -26,8 +26,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="name">{{ __('Nombre') }}</label>
-                            <input id="name" value ="{{ (auth::user()->name) }}{{ (' ') }}{{ (auth::user()->apellido) }}" type="text" class="form-control "  readonly=»readonly» name="name"  required autocomplete="name" autofocus>
+                            <label for="nombre_completo">{{ __('Nombre') }}</label>
+                            <input id="nombre_completo" value ="{{ (auth::user()->name) }}{{ (' ') }}{{ (auth::user()->apellido) }}" type="text" class="form-control "  readonly=»readonly» name="nombre_completo"  required autocomplete="nombre_completo" autofocus>
 
                             
                         </div>
