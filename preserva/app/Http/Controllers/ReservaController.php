@@ -37,7 +37,7 @@ class ReservaController extends Controller
     {
         //dd($request->all());
         
-        $credentials = $this->validate(Request(),[
+        $validatedData = $request->validate([
             'username' => ['required'],
             'nombre_completo' => ['required'],
             'cod_lab' => ['required'],
@@ -45,9 +45,7 @@ class ReservaController extends Controller
             'bloque' => ['required'],
             'cap_res' => ['required'],
         ]);
-        return $credentials;
-
-        /*$reserva = new reserva();
+        $reserva = new reserva();
         $reserva->username = $validatedData['username'];
         $reserva->nombre_completo =$validatedData['nombre_completo'];
         $reserva->cod_lab =$validatedData['cod_lab'];
@@ -57,7 +55,7 @@ class ReservaController extends Controller
         $reserva->save();
 
         $status = 'Has reservado correctamente';
-        return back()->with(compact('status'));*/
+        return back()->with(compact('status'));
     }
 
     /**
