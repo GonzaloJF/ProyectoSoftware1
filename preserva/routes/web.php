@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'GuestController@index');
 
 Route::get('/quienes_somos', function (){
     return view('quienes_somos');
@@ -29,3 +27,7 @@ Route::post('login', 'Auth\LoginController@login')->name('login');
 
 Route::get('/reserva/create', 'ReservaController@create');
 Route::post('/reserva', 'ReservaController@store');
+
+Route::get('/reserva', function (){
+    return view('reserva');
+});
