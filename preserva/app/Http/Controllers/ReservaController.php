@@ -39,7 +39,7 @@ class ReservaController extends Controller
     public function reservas_anteriores()
     {
                
-        $reservas = reserva::where('username','=',Auth::user()->username)->Paginate(10);
+        $reservas = reserva::where('username','=',Auth::user()->username)->orderByDesc('id')->Paginate(10);
         return view('reserva',compact('reservas'));
     }
 
