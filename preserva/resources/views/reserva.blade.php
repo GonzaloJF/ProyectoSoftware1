@@ -10,14 +10,19 @@
                 <div class="card-body">
                     
                     @foreach($reservas as $reserva)
+                    
                         @if((auth::user()->username)==$reserva->username)
-                            <h4>Rut: {{ $reserva->username }}</h4>
-                            <h4>Nombre: {{ $reserva->nombre_completo }}</h4>
-                            <h4>Fecha: {{ $reserva->fecha }}</h4>
-                            <h4>Bloque: {{ $reserva->bloque }}</h4>
-                            <h4>Capacidad: {{ $reserva->cap_res }}</h4>
-                            <h4>____________________________________ </h4>
+                            <div class="card mt-2">
+                                <div class="card-header">
+                                    <h4>Rut: {{ $reserva->username }}</h4>
+                                    <h4>Nombre: {{ $reserva->nombre_completo }}</h4>
+                                    <h4>Fecha: {{ $reserva->fecha }}</h4>
+                                    <h4>Bloque: {{ $reserva->bloque }}</h4>
+                                    <h4>Capacidad: {{ $reserva->cap_res }}</h4>
+                                </div>
+                            </div>
                         @endif
+                    
                     @endforeach
                     
                 </div>
