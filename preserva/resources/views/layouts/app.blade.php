@@ -51,7 +51,12 @@
                         @else
                             @if(((Auth::user()->tipo_usuario)==3)||((Auth::user()->tipo_usuario)==5))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/reserva/create') }}">{{ __('Reserva') }}</a>
+                                    <a class="nav-link" href="{{ url('/reserva') }}">{{ __('Reservas') }}</a>
+                                </li>
+                            @endif
+                            @if(((Auth::user()->tipo_usuario)==3)||((Auth::user()->tipo_usuario)==5))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/reserva/create') }}">{{ __('Nueva Reserva') }}</a>
                                 </li>
                             @endif
                             <li class="nav-item dropdown">

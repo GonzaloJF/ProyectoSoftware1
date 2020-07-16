@@ -11,12 +11,12 @@
                     
                     @foreach($reservas as $reserva)
                         @if((auth::user()->username)==$reserva->username)
-                            <p>Rut: {{ $reserva->username }}</p>
-                            <p>Nombre: {{ $reserva->nombre_completo }}</p>
-                            <p>Fecha: {{ $reserva->fecha }}</p>
-                            <p>Bloque: {{ $reserva->bloque }}</p>
-                            <p>Capacidad: {{ $reserva->cap_res }}</p>
-                            <p>____________________________________ </p>
+                            <h4>Rut: {{ $reserva->username }}</h4>
+                            <h4>Nombre: {{ $reserva->nombre_completo }}</h4>
+                            <h4>Fecha: {{ $reserva->fecha }}</h4>
+                            <h4>Bloque: {{ $reserva->bloque }}</h4>
+                            <h4>Capacidad: {{ $reserva->cap_res }}</h4>
+                            <h4>____________________________________ </h4>
                         @endif
                     @endforeach
                     
