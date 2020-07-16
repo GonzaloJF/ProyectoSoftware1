@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\reserva;
 use Illuminate\Http\Request;
 
 class GuestController extends Controller

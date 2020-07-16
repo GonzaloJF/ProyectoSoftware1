@@ -8,12 +8,15 @@
                 <div class="card-header">{{ __('Ultimas Reservas') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
+                    
+                    @foreach($reservas as $reserva)
+                        <p>Rut: {{ $reserva->username }}</p>
+                        <p>Nombre: {{ $reserva->nombre_completo }}</p>
+                        <p>Fecha: {{ $reserva->fecha }}</p>
+                        <p>Bloque: {{ $reserva->bloque }}</p>
+                        <p>Capacidad: {{ $reserva->cap_res }}</p>
+                        <p>____________________________________</p>
+                    @endforeach
                     
                 </div>
             </div>

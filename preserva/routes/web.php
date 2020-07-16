@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\reserva;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,6 @@ Route::get('/reserva/create', 'ReservaController@create');
 Route::post('/reserva', 'ReservaController@store');
 
 Route::get('/reserva', function (){
-    return view('reserva');
+    $reservas = reserva::all();
+    return view('reserva',compact('reservas'));
 });
