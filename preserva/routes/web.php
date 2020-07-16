@@ -29,7 +29,4 @@ Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::get('/reserva/create', 'ReservaController@create');
 Route::post('/reserva', 'ReservaController@store');
 
-Route::get('/reserva', function (){
-    $reservas = reserva::all();
-    return view('reserva',compact('reservas'));
-});
+Route::get('/reserva','ReservaController@reservas_anteriores');

@@ -34,6 +34,12 @@ class ReservaController extends Controller
         return view('reserva.create');
     }
 
+    public function reservas_anteriores()
+    {
+        $reservas = reserva::all();
+        return view('reserva',compact('reservas'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
