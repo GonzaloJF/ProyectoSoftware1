@@ -5,15 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Ultimas Reservas') }}</div>
+                <div class="card-header">{{ __('Tus Reservas') }}</div>
 
                 <div class="card-body">
                     
                     @foreach($reservas as $reserva)
-                    
-                        @if((auth::user()->username)==$reserva->username)
+
                             <div class="card mt-2">
                                 <div class="card-header">
+                                    <h2>Id: {{ $reserva->id }}</h2>
                                     <h4>Rut: {{ $reserva->username }}</h4>
                                     <h4>Nombre: {{ $reserva->nombre_completo }}</h4>
                                     <h4>Fecha: {{ $reserva->fecha }}</h4>
@@ -21,9 +21,9 @@
                                     <h4>Capacidad: {{ $reserva->cap_res }}</h4>
                                 </div>
                             </div>
-                        @endif
-                    
+                        
                     @endforeach
+                    {{ $reservas->links() }}
                     
                 </div>
             </div>

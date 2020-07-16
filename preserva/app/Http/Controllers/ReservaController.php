@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Reserva;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+
 
 class ReservaController extends Controller
 {
@@ -36,10 +38,12 @@ class ReservaController extends Controller
 
     public function reservas_anteriores()
     {
-        $reservas = reserva::all();
+               
+        $reservas = reserva::where('username','=',Auth::user()->username)->Paginate(10);
         return view('reserva',compact('reservas'));
     }
 
+ 
     /**
      * Store a newly created resource in storage.
      *
