@@ -10,12 +10,14 @@
                 <div class="card-body">
                     
                     @foreach($reservas as $reserva)
-                        <p>Rut: {{ $reserva->username }}</p>
-                        <p>Nombre: {{ $reserva->nombre_completo }}</p>
-                        <p>Fecha: {{ $reserva->fecha }}</p>
-                        <p>Bloque: {{ $reserva->bloque }}</p>
-                        <p>Capacidad: {{ $reserva->cap_res }}</p>
-                        <p>____________________________________</p>
+                        @if((auth::user()->username)==$reserva->username)
+                            <p>Rut: {{ $reserva->username }}</p>
+                            <p>Nombre: {{ $reserva->nombre_completo }}</p>
+                            <p>Fecha: {{ $reserva->fecha }}</p>
+                            <p>Bloque: {{ $reserva->bloque }}</p>
+                            <p>Capacidad: {{ $reserva->cap_res }}</p>
+                            <p>____________________________________ </p>
+                        @endif
                     @endforeach
                     
                 </div>
