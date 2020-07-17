@@ -39,7 +39,7 @@ class EvaluacionController extends Controller
     public function solicitudes_anteriores()
     {
                
-        $solicitudes = solicitud::Paginate(10);
+        $solicitudes = solicitud::orderByDesc('id')->Paginate(10);
         return view('evaluacion',compact('solicitudes'));
     }
 
@@ -127,8 +127,8 @@ class EvaluacionController extends Controller
         $solicitud->save();
 
         $reserva = new reserva();
-        $reserva->username = $validatedData['username'];
-        $reserva->nombre_completo =$validatedData['nombre_completo'];
+        $reserva->username = (auth::user()->username);
+        $reserva->nombre_completo =(auth::user()->name.' '.auth::user()->apellido);
         $reserva->cod_lab =$validatedData['cod_lab'];
         $reserva->fecha =$validatedData['fecha'];
         $reserva->bloque =$validatedData['bloque'];
@@ -136,7 +136,6 @@ class EvaluacionController extends Controller
         $reserva->save();
 
         $status = 'Has evaluado y reservado correctamente';
-        $status = 'Has evaluado correctamente';
         return back()->with(compact('status'));
     }
 

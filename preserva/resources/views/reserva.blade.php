@@ -16,6 +16,7 @@
                                     <h2>Id: {{ $reserva->id }}</h2>
                                     <h4>Rut: {{ $reserva->username }}</h4>
                                     <h4>Nombre: {{ $reserva->nombre_completo }}</h4>
+                                    <h4>Codigo Laboratorio: {{ $reserva->cod_lab }}</h4>
                                     <h4>Fecha: {{ $reserva->fecha }}</h4>
                                     <h4>Bloque: {{ $reserva->bloque }}</h4>
                                     <h4>Capacidad: {{ $reserva->cap_res }}</h4>

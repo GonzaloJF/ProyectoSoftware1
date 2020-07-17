@@ -16,6 +16,7 @@
                                     <h2>Id: {{ $solicitud->id }}</h2>
                                     <h4>Rut: {{ $solicitud->username }}</h4>
                                     <h4>Nombre: {{ $solicitud->nombre_completo }}</h4>
+                                    <h4>Codigo Laboratorio: {{ $solicitud->cod_lab }}</h4>
                                     <h4>Fecha: {{ $solicitud->fecha }}</h4>
                                     <h4>Bloque: {{ $solicitud->bloque }}</h4>
                                     <h4>Capacidad: {{ $solicitud->cap_sol }}</h4>
