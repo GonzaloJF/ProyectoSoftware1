@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\solicitud;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class SolicitudController extends Controller
-{
+{   
+    public function __construct()
+    {       
+            $this->middleware('solicitud_middleware');
+
+        
+    }
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +31,14 @@ class SolicitudController extends Controller
      */
     public function create()
     {
-        //
+        return view('solicitud.create');
+    }
+
+    public function solicitudes_anteriores()
+    {
+               
+        $solicitudes = solicitud::where('username','=',Auth::user()->username)->orderByDesc('id')->Paginate(10);
+        return view('solicitud',compact('solicitudes'));
     }
 
     /**
@@ -35,7 +49,27 @@ class SolicitudController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        
+        $validatedData = $request->validate([
+            'username' => ['required'],
+            'nombre_completo' => ['required'],
+            'cod_lab' => ['required'],
+            'fecha' => ['required'],
+            'bloque' => ['required'],
+            'cap_sol' => ['required'],
+        ]);
+        $solicitud = new solicitud();
+        $solicitud->username = $validatedData['username'];
+        $solicitud->nombre_completo =$validatedData['nombre_completo'];
+        $solicitud->cod_lab =$validatedData['cod_lab'];
+        $solicitud->fecha =$validatedData['fecha'];
+        $solicitud->bloque =$validatedData['bloque'];
+        $solicitud->cap_sol =$validatedData['cap_sol'];
+        $solicitud->save();
+
+        $status = 'Has solicitado correctamente';
+        return back()->with(compact('status'));
     }
 
     /**

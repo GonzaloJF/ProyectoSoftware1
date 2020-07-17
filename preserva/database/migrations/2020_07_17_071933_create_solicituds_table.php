@@ -15,6 +15,13 @@ class CreateSolicitudsTable extends Migration
     {
         Schema::create('solicituds', function (Blueprint $table) {
             $table->id();
+            $table->string('username');
+            $table->string('nombre_completo');
+            $table->string('cod_lab');
+            $table->date('fecha');
+            $table->integer('bloque');
+            $table->integer('cap_sol');
+            $table->string('estado')->default('En espera');
             $table->timestamps();
         });
     }

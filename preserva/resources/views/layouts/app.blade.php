@@ -49,12 +49,18 @@
                                 </li>
                             @endif
                         @else
+                            @if(((Auth::user()->tipo_usuario)==1)||((Auth::user()->tipo_usuario)==2)||((Auth::user()->tipo_usuario)==4))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/solicitud') }}">{{ __('Mis Solicitudes') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/solicitud/create') }}">{{ __('Nueva solicitud') }}</a>
+                                </li>
+                            @endif
                             @if(((Auth::user()->tipo_usuario)==3)||((Auth::user()->tipo_usuario)==5))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/reserva') }}">{{ __('Reservas') }}</a>
                                 </li>
-                            @endif
-                            @if(((Auth::user()->tipo_usuario)==3)||((Auth::user()->tipo_usuario)==5))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/reserva/create') }}">{{ __('Nueva Reserva') }}</a>
                                 </li>
