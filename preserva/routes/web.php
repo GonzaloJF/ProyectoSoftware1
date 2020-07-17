@@ -33,3 +33,5 @@ Route::get('/reserva','ReservaController@reservas_anteriores');
 Route::get('/solicitud/create', 'SolicitudController@create');
 Route::post('/solicitud', 'SolicitudController@store'); 
 Route::get('/solicitud','SolicitudController@solicitudes_anteriores');
+
+Route::get('/evaluacion','EvaluacionController@solicitudes_anteriores');
