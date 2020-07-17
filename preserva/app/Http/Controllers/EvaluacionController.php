@@ -51,27 +51,7 @@ class EvaluacionController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
-        
-        $validatedData = $request->validate([
-            'username' => ['required'],
-            'nombre_completo' => ['required'],
-            'cod_lab' => ['required'],
-            'fecha' => ['required'],
-            'bloque' => ['required'],
-            'cap_sol' => ['required'],
-        ]);
-        $solicitud = new solicitud();
-        $solicitud->username = $validatedData['username'];
-        $solicitud->nombre_completo =$validatedData['nombre_completo'];
-        $solicitud->cod_lab =$validatedData['cod_lab'];
-        $solicitud->fecha =$validatedData['fecha'];
-        $solicitud->bloque =$validatedData['bloque'];
-        $solicitud->cap_sol =$validatedData['cap_sol'];
-        $solicitud->save();
-
-        $status = 'Has solicitado correctamente';
-        return back()->with(compact('status'));
+        //
     }
 
     /**
