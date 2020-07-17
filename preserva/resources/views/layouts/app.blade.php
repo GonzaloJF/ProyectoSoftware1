@@ -57,6 +57,11 @@
                                     <a class="nav-link" href="{{ url('/solicitud/create') }}">{{ __('Nueva solicitud') }}</a>
                                 </li>
                             @endif
+                            @if((Auth::user()->tipo_usuario)==3)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/evaluacion') }}">{{ __('Evaluar Solicitudes') }}</a>
+                                </li>
+                            @endif
                             @if(((Auth::user()->tipo_usuario)==3)||((Auth::user()->tipo_usuario)==5))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/reserva') }}">{{ __('Reservas') }}</a>

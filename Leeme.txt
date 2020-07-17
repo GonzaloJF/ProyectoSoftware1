@@ -5,3 +5,6 @@ composer install  (para instalar el proyecto creo)
 php artisan serve (iniciar servidor)
 
 php artisan migrate (para crear las tablas en la base de datos)
+
+
+php artisan cache:clear (para liberar cache)

@@ -12,7 +12,7 @@
                     @foreach($solicitudes as $solicitud)
 
                             <div class="card mt-2">
-                                <div class="card-header">
+                                <div class="card-body">
                                     <h2>Id: {{ $solicitud->id }}</h2>
                                     <h4>Rut: {{ $solicitud->username }}</h4>
                                     <h4>Nombre: {{ $solicitud->nombre_completo }}</h4>
@@ -20,9 +20,17 @@
                                     <h4>Bloque: {{ $solicitud->bloque }}</h4>
                                     <h4>Capacidad: {{ $solicitud->cap_sol }}</h4>
                                     <h4>Estado: {{ $solicitud->estado }}</h4>
+                                    @if($solicitud->estado == 'En espera')
+                                    <hr>
+                                    <a href="{{ url('/evaluacion/'.$solicitud->id.'/edit') }}" class="btn btn-primary">
+                                        Evaluar
+                                    </a>
+                                    @endif
                                 </div>
+                                
                             </div>
-                        
+                            
+                            
                     @endforeach
                     {{ $solicitudes->links() }}
                     
