@@ -41,7 +41,7 @@
     <main class="container-fluid">
       <div class="row" style="height: 680px ; background-color:#008080">
         <div class="col12 text-center text-justify">        
-          <h2>creamos un proyecto de ingenieria en Software 1</h2>
+          <h2>Creamos un proyecto de ingenieria en Software 1</h2>
           <h4>El presente proyecto tiene como fin crear una forma más simple de poder reservar los distintos tipos de laboratorios que hay dentro de la universidad, para poder darle menos trabajo a los funcionarios, tener una forma más ordenada y controlado los horarios de uso de cada uno de estos laboratorios.</h4>
         </div>
        </div>     
