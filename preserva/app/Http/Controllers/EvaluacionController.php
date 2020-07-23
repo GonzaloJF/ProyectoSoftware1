@@ -97,12 +97,12 @@ class EvaluacionController extends Controller
             'estado' => ['required'],
         ]);
         
-        $solicitud->username = $validatedData['username'];
+        /*$solicitud->username = $validatedData['username'];
         $solicitud->nombre_completo =$validatedData['nombre_completo'];
         $solicitud->cod_lab =$validatedData['cod_lab'];
         $solicitud->fecha =$validatedData['fecha'];
         $solicitud->bloque =$validatedData['bloque'];
-        $solicitud->cap_sol =$validatedData['cap_sol'];
+        $solicitud->cap_sol =$validatedData['cap_sol'];*/
         $solicitud->estado =$validatedData['estado'];
         $solicitud->save();
 

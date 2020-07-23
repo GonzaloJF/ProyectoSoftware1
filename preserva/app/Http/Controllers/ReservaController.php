@@ -94,7 +94,7 @@ class ReservaController extends Controller
      */
     public function edit(Reserva $reserva)
     {
-        //
+        return view('reserva.edit',compact('reserva'));
     }
 
     /**
@@ -106,7 +106,25 @@ class ReservaController extends Controller
      */
     public function update(Request $request, Reserva $reserva)
     {
-        //
+        
+        $validatedData = $request->validate([
+            'username' => ['required'],
+            'nombre_completo' => ['required'],
+            'cod_lab' => ['required'],
+            'fecha' => ['required'],
+            'bloque' => ['required'],
+            'cap_res' => ['required'],
+        ]);
+
+
+        $reserva->cod_lab =$validatedData['cod_lab'];
+        $reserva->fecha =$validatedData['fecha'];
+        $reserva->bloque =$validatedData['bloque'];
+        $reserva->cap_res =$validatedData['cap_res'];
+        $reserva->save();
+
+        $status = 'Has editado correctamente';
+        return back()->with(compact('status'));
     }
 
     /**

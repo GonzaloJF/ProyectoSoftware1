@@ -20,6 +20,9 @@
                                     <h4>Fecha: {{ $reserva->fecha }}</h4>
                                     <h4>Bloque: {{ $reserva->bloque }}</h4>
                                     <h4>Capacidad: {{ $reserva->cap_res }}</h4>
+                                    <a href="{{ url('/reserva/'.$reserva->id.'/edit') }}" class="btn btn-primary">
+                                        Editar reserva
+                                    </a>
                                 </div>
                             </div>
                         

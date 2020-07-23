@@ -29,6 +29,10 @@ Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::get('/reserva/create', 'ReservaController@create');
 Route::post('/reserva', 'ReservaController@store');
 Route::get('/reserva','ReservaController@reservas_anteriores');
+Route::get('/reserva/{reserva}/edit','ReservaController@edit');
+Route::patch('/reserva/{reserva}','ReservaController@update');
+
+
 
 Route::get('/solicitud/create', 'SolicitudController@create');
 Route::post('/solicitud', 'SolicitudController@store'); 
