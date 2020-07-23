@@ -38,9 +38,14 @@ class ReservaController extends Controller
 
     public function reservas_anteriores()
     {
-               
-        $reservas = reserva::where('username','=',Auth::user()->username)->orderByDesc('id')->Paginate(10);
-        return view('reserva',compact('reservas'));
+        if((Auth::user()->tipo_usuario)==5):
+            $reservas = reserva::where('username','=',Auth::user()->username)->orderByDesc('id')->Paginate(10);
+            return view('reserva',compact('reservas'));
+        else:
+            $reservas = reserva::orderByDesc('id')->Paginate(10);
+            return view('reserva',compact('reservas'));
+        endif;       
+        
     }
 
  
@@ -133,8 +138,13 @@ class ReservaController extends Controller
      * @param  \App\Reserva  $reserva
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reserva $reserva)
-    {
-        //
+    public function destroy($id)
+    {   
+        if((Auth::user()->tipo_usuario)==5):
+            return redirect('reserva');
+        else:
+            Reserva::destroy($id);
+            return redirect('reserva');
+        endif;
     }
 }

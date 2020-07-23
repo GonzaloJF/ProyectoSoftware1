@@ -5,9 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+            
                 <div class="card-header">{{ __('Tus Reservas') }}</div>
-
+                
                 <div class="card-body">
+                
                     
                     @foreach($reservas as $reserva)
 
@@ -20,9 +22,25 @@
                                     <h4>Fecha: {{ $reserva->fecha }}</h4>
                                     <h4>Bloque: {{ $reserva->bloque }}</h4>
                                     <h4>Capacidad: {{ $reserva->cap_res }}</h4>
-                                    <a href="{{ url('/reserva/'.$reserva->id.'/edit') }}" class="btn btn-primary">
-                                        Editar reserva
-                                    </a>
+                                    
+                                    <form action = "{{ url('/reserva/'.$reserva->id.'/edit') }}">
+                                        <button class="button button2" type = "submit" >Editar reserva </button>
+                                    </form>
+                                    @if((auth::user()->tipo_usuario)==3)
+                                        <form method ='POST' action = "{{ url('/reserva/'.$reserva->id) }}">
+                                        @method('DELETE')
+                                        @csrf
+                                        
+                                            <button class="button button3" type = "submit" onclick="return confirmar()">Borrar reserva </button>
+
+                                            <script>
+                                            function confirmar() {
+                                            confirm("Confirmar borrado");
+                                            }
+                                            </script>
+                                        </form>
+                                    @endif
+
                                 </div>
                             </div>
                         

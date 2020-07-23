@@ -31,8 +31,8 @@ Route::post('/reserva', 'ReservaController@store');
 Route::get('/reserva','ReservaController@reservas_anteriores');
 Route::get('/reserva/{reserva}/edit','ReservaController@edit');
 Route::patch('/reserva/{reserva}','ReservaController@update');
-
-
+Route::delete('/reserva/{reserva}','ReservaController@destroy');
+ 
 
 Route::get('/solicitud/create', 'SolicitudController@create');
 Route::post('/solicitud', 'SolicitudController@store'); 
