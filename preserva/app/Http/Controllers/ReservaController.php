@@ -36,7 +36,7 @@ class ReservaController extends Controller
         return view('reserva.create');
     }
 
-    public function reservas_anteriores()
+    public function reservas_anteriores()//Busca las reservas hechas anteriormente
     {
         if((Auth::user()->tipo_usuario)==5):
             $reservas = reserva::where('username','=',Auth::user()->username)->orderByDesc('id')->Paginate(10);
