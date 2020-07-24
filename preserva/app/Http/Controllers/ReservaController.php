@@ -55,6 +55,8 @@ class ReservaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     //Toma los datos de la nueva reserva y los agrega a la base de datos
     public function store(Request $request)
     {
         //dd($request->all());
@@ -138,6 +140,8 @@ class ReservaController extends Controller
      * @param  \App\Reserva  $reserva
      * @return \Illuminate\Http\Response
      */
+
+     //
     public function destroy($id)
     {   
         if((Auth::user()->tipo_usuario)==5):
