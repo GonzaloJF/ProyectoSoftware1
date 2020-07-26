@@ -12,7 +12,7 @@ class ReservaController extends Controller
 
     public function __construct()
     {       
-            $this->middleware('reserva_middleware');
+            $this->middleware('auth');
 
         
     }
