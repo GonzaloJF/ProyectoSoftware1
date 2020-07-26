@@ -22,6 +22,7 @@
     .button1 {background-color: #4CAF50;} /* Green */
     .button2 {background-color: #008CBA;} /* Blue */
     .button3 {background-color: #8B0000;} /* RED */
+    .button4 {background-color: #5A5A5A;} /*gris*/
     
     </style>
 

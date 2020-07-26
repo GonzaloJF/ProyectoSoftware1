@@ -29,6 +29,9 @@ Route::get('/home/cambiopass','CambiopassController@cambiopass');
 Route::post('/home/cambiopass','CambiopassController@cambiopass_actualizar');
 
 Route::get('/usuarios','AdminController@usuarios');
+Route::get('/usuarios/{usuario}/edit','AdminController@edit');
+Route::patch('/usuarios/{usuario}','AdminController@update');
+Route::delete('/usuarios/{usuario}','AdminController@destroy');
 
 Route::get('/reserva/create', 'ReservaController@create');
 Route::post('/reserva', 'ReservaController@store');

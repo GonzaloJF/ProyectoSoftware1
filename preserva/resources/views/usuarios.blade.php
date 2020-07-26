@@ -44,8 +44,21 @@
                                         <h4>Estado: Inactivo</h4>
                                     @endif
                                     
+                                    <form action = "{{ url('/usuarios/'.$usuario->id.'/edit') }}">
+                                        <button class="button button2" type = "submit" >Editar usuario </button>
+                                    </form>
+                                    <form method ='POST' action = "{{ url('/usuarios/'.$usuario->id) }}">
+                                        @method('DELETE')
+                                        @csrf
                                     
-                                    
+                                        <button class="button button3" type = "submit" onclick="return confirmar()">Borrar usuario </button>
+
+                                        <script>
+                                        function confirmar() {
+                                        confirm("Confirmar borrado");
+                                        }
+                                        </script>
+                                    </form>
                             
                                 </div>
                             </div>
