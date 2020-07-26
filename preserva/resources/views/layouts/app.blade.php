@@ -53,7 +53,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                    @guest   
+                    
+                    @else
+                        @if((Auth::user()->tipo_usuario)==10)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/register') }}">{{ __('Registrar usuarios') }}</a>
+                                </li>
+                        @endif
+                    @endguest
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -69,6 +77,7 @@
                                 </li>
                             @endif
                         @else
+                            
                             @if(((Auth::user()->tipo_usuario)==1)||((Auth::user()->tipo_usuario)==2)||((Auth::user()->tipo_usuario)==4))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/solicitud') }}">{{ __('Mis Solicitudes') }}</a>
