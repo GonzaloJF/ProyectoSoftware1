@@ -19,9 +19,31 @@
                                     <h4>Nombre: {{ $usuario->name }}</h4>
                                     <h4>Apellido: {{ $usuario->apellido }}</h4>
                                     <h4>Correo: {{ $usuario->email }}</h4>
-                                    <h4>Tipo: {{ $usuario->tipo_usuario }}</h4>
-                                    <h4>Estado: {{ $usuario->estado }}</h4>
-                                    <h4>Ciudad: {{ $usuario->ciudad }}</h4>
+                                    @if($usuario->tipo_usuario==1)
+                                        <h4>Tipo: Alumno/a</h4>
+                                    @endif
+                                    @if($usuario->tipo_usuario==2)
+                                        <h4>Tipo: Ayudante</h4>
+                                    @endif
+                                    @if($usuario->tipo_usuario==3)
+                                        <h4>Tipo: Encargado/a de laboratorio</h4>
+                                    @endif
+                                    @if($usuario->tipo_usuario==4)
+                                        <h4>Tipo: Profesor/a</h4>
+                                    @endif
+                                    @if($usuario->tipo_usuario==5)
+                                        <h4>Tipo: Secretario/a</h4>
+                                    @endif
+                                    @if($usuario->estado==1)
+                                        <h4>Estado: Activo</h4>
+                                    @endif
+                                    @if($usuario->tipo_usuario==10)
+                                        <h4>Tipo: ADMIN</h4>
+                                    @endif
+                                    @if($usuario->estado==2)
+                                        <h4>Estado: Inactivo</h4>
+                                    @endif
+                                    
                                     
                                     
                             
