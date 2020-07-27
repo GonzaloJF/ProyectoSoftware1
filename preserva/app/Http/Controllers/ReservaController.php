@@ -64,6 +64,7 @@ class ReservaController extends Controller
         $validatedData = $request->validate([
             'username' => ['required'],
             'nombre_completo' => ['required'],
+            'nombre_reservante' => ['required'],
             'cod_lab' => ['required'],
             'fecha' => ['required'],
             'bloque' => ['required'],
@@ -72,6 +73,7 @@ class ReservaController extends Controller
         $reserva = new reserva();
         $reserva->username = $validatedData['username'];
         $reserva->nombre_completo =$validatedData['nombre_completo'];
+        $reserva->nombre_reservante =$validatedData['nombre_reservante'];
         $reserva->cod_lab =$validatedData['cod_lab'];
         $reserva->fecha =$validatedData['fecha'];
         $reserva->bloque =$validatedData['bloque'];

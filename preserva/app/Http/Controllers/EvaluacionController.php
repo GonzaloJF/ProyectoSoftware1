@@ -109,6 +109,7 @@ class EvaluacionController extends Controller
         $reserva = new reserva();
         $reserva->username = (auth::user()->username);
         $reserva->nombre_completo =(auth::user()->name.' '.auth::user()->apellido);
+        $reserva->nombre_reservante =$validatedData['nombre_completo'];
         $reserva->cod_lab =$validatedData['cod_lab'];
         $reserva->fecha =$validatedData['fecha'];
         $reserva->bloque =$validatedData['bloque'];
