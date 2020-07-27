@@ -105,7 +105,11 @@ class EvaluacionController extends Controller
         $solicitud->cap_sol =$validatedData['cap_sol'];*/
         $solicitud->estado =$validatedData['estado'];
         $solicitud->save();
+        if(($validatedData['estado'])=='Rechazada'){
+            $status = 'Has rechazado correctamente';
+            return back()->with(compact('status'));
 
+        }
         $reserva = new reserva();
         $reserva->username = (auth::user()->username);
         $reserva->nombre_completo =(auth::user()->name.' '.auth::user()->apellido);
@@ -116,8 +120,9 @@ class EvaluacionController extends Controller
         $reserva->cap_res =$validatedData['cap_sol'];
         $reserva->save();
 
-        $status = 'Has evaluado y reservado correctamente';
+        $status = 'Has aceptado y reservado correctamente';
         return back()->with(compact('status'));
+        
     }
 
     /**
