@@ -17,6 +17,7 @@ class CreateReservasTable extends Migration
             $table->id();
             $table->string('username');
             $table->string('nombre_completo');
+            $table->string('nombre_reservante');
             $table->string('cod_lab');
             $table->date('fecha');
             $table->integer('bloque');
