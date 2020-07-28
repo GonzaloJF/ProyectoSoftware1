@@ -51,15 +51,7 @@
                                         @method('DELETE')
                                         @csrf
                                     
-                                        <button class="button button3" type = "submit" onclick="return confirmar()">Borrar usuario </button>
-
-                                        <script>
-                                        function confirmar() {
-                                        confirm("Confirmar borrado");
-                                        }
-                                        </script>
-                                    </form>
-                            
+                                        <button class="button button3" type = "submit" onclick="return confirm('Confirmar borrado')">Borrar usuario </button>
                                 </div>
                             </div>
                         

@@ -31,14 +31,8 @@
                                         <form method ='POST' action = "{{ url('/reserva/'.$reserva->id) }}">
                                         @method('DELETE')
                                         @csrf
-                                        
-                                            <button class="button button3" type = "submit" onclick="return confirmar()">Borrar reserva </button>
-
-                                            <script>
-                                            function confirmar() {
-                                            confirm("Confirmar borrado");
-                                            }
-                                            </script>
+                                        <form method ='POST' action = "{{ url('/reserva/'.$reserva->id) }}">
+                                            <button class="button button3" type = "submit" onclick="return confirm('Confirmar borrado')">Borrar reserva </button>
                                         </form>
                                     @endif
 
