@@ -19,10 +19,10 @@
                         @csrf
                         
                         <div class="form-group">
-                            <label for="codigo_de_laboratorio">{{ __('Codigo Laboratorio') }}</label>
-                            <input id="codigo_de_laboratorio" type="text" class="form-control @error('codigo_de_laboratorio') is-invalid @enderror" name="codigo_de_laboratorio" value="{{ old('codigo_de_laboratorio') }}" required autocomplete="codigo_de_laboratorio" autofocus>
+                            <label for="Codigo_de_laboratorio">{{ __('Codigo Laboratorio') }}</label>
+                            <input id="Codigo_de_laboratorio" type="text" class="form-control @error('Codigo_de_laboratorio') is-invalid @enderror" name="Codigo_de_laboratorio" value="{{ old('Codigo_de_laboratorio') }}" required autocomplete="Codigo_de_laboratorio" autofocus>
 
-                            @error('codigo_de_laboratorio')
+                            @error('Codigo_de_laboratorio')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -31,10 +31,10 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="capacidad">{{ __('Capacidad del Laboratorio') }}</label>
-                            <input id="capacidad" type="integer" class="form-control @error('capacidad') is-invalid @enderror" name="capacidad" value="{{ old('capacidad') }}" required autocomplete="capacidad" autofocus>
+                            <label for="Capacidad">{{ __('Capacidad del Laboratorio') }}</label>
+                            <input id="Capacidad" type="integer" class="form-control @error('Capacidad') is-invalid @enderror" name="Capacidad" value="{{ old('Capacidad') }}" required autocomplete="Capacidad" autofocus>
 
-                            @error('capacidad')
+                            @error('Capacidad')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -42,9 +42,9 @@
 
                         </div>
                         <div class="form-group">
-                            <label for="facultad">{{ __('Facultad') }}</label>
+                            <label for="Facultad">{{ __('Facultad') }}</label>
                         
-                            <select name="facultad" >
+                            <select name="Facultad" >
                                     <option value="medicina">medicina</option>
                                     <option value="ciencias basicas">ciencias basicas</option> 
                                     <option value="ingenieria">ingenieria</option> 

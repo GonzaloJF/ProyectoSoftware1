@@ -53,7 +53,21 @@ class LaboratorioController extends Controller
      */
     public function show(laboratorio $laboratorio)
     {
-        //
+        $validatedData = $request->validate([
+            'Codigo_de_laboratorio' => ['required'],
+            'Capacidad' => ['required'],
+            'Facultad' => ['required'],
+            'Tipo_laboratorio' => ['required'],
+        ]);
+        $laboratorio = new laboratorio();
+        $laboratorio->Codigo_de_laboratorio = $validatedData['Codigo_de_laboratorio'];
+        $laboratorio->Capacidad =$validatedData['Capacidad'];
+        $laboratorio->Faciltad =$validatedData['Facultad'];
+        $laboratorio->Tipo_laboratorio =$validatedData['Tipo_laboratorio'];
+        $laboratorio->save();
+
+        $status = 'Has creado correctamente';
+        return back()->with(compact('status'));
     }
 
     /**
