@@ -48,3 +48,6 @@ Route::get('/solicitud','SolicitudController@solicitudes_anteriores');
 Route::get('/evaluacion','EvaluacionController@solicitudes_anteriores');
 Route::get('/evaluacion/{solicitud}/edit','EvaluacionController@edit');
 Route::patch('/evaluacion/{solicitud}','EvaluacionController@update');
+
+Route::get('/laboratorio/create','LaboratorioController@create');
+
