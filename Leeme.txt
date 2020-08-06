@@ -7,6 +7,9 @@ php artisan serve (iniciar servidor)
 php artisan migrate (para crear las tablas en la base de datos)
 
 
+COPIAR CARPETA VENDOR DENTRO DE LA OTRA Y REEMPLAZAR REGISTERUSERS.PHP
+
+
 php artisan cache:clear (para liberar cache)
 
 
