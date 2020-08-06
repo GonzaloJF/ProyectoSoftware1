@@ -64,6 +64,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/usuarios') }}">{{ __('Lista de usuarios') }}</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/laboratorio/create') }}">{{ __('Crear Laboratorio') }}</a>
+                                </li>
                         @endif
                     @endguest
                     </ul>
