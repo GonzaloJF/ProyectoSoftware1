@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (session()->get('message'))
+            <div class="row justify-content-center alert alert-success" role="alert">
+                <strong>{{ (session()->get('message')) }}</strong>
+            </div>
+    @endif
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -100,7 +105,7 @@
                                 </select>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group ">
                             <label for="estado" class="col-md-4 col-form-label text-md-right">{{ __('Estado') }}</label>
 
                             <select name="estado">

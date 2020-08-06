@@ -7,10 +7,31 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <style>
+    .button {
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    }
+    .button1 {background-color: #4CAF50;} /* Green */
+    .button2 {background-color: #008CBA;} /* Blue */
+    .button3 {background-color: #8B0000;} /* RED */
+    .button4 {background-color: #5A5A5A;} /*gris*/
+    
+    </style>
+
+    
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -33,7 +54,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                    @guest   
+                    
+                    @else
+                        @if((Auth::user()->tipo_usuario)==10)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/register') }}">{{ __('Registrar usuarios') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/usuarios') }}">{{ __('Lista de usuarios') }}</a>
+                                </li>
+                        @endif
+                    @endguest
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -49,17 +81,43 @@
                                 </li>
                             @endif
                         @else
+                            
+                            @if(((Auth::user()->tipo_usuario)==1)||((Auth::user()->tipo_usuario)==2)||((Auth::user()->tipo_usuario)==4))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/solicitud') }}">{{ __('Mis Solicitudes') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/solicitud/create') }}">{{ __('Nueva solicitud') }}</a>
+                                </li>
+                            @endif
+                            @if((Auth::user()->tipo_usuario)==3)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/evaluacion') }}">{{ __('Evaluar Solicitudes') }}</a>
+                                </li>
+                            @endif
+                            @if(((Auth::user()->tipo_usuario)==3)||((Auth::user()->tipo_usuario)==5))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/reserva') }}">{{ __('Reservas') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/reserva/create') }}">{{ __('Nueva Reserva') }}</a>
+                                </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ strtoupper(Auth::user()->name) }}{{ __('') }} {{ strtoupper (Auth::user()->apellido) }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ url('home/cambiopass') }}">
+                                        {{ __('Cambiar contraseña') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf

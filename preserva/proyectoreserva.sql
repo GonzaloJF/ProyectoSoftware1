@@ -1,3 +1,4 @@
+
 -- phpMyAdmin SQL Dump
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
@@ -74,14 +75,14 @@ CREATE TABLE `solicitud_de_reserva` (
 -- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE `usuario` (
+CREATE TABLE `users` (
   `Rut` int(11) NOT NULL,
   `Nombre` varchar(30) NOT NULL,
   `Apellido` varchar(30) NOT NULL,
-  `Tupo_usuario` varchar(30) NOT NULL,
+  `Tipo_usuario` varchar(30) NOT NULL,
   `Estado` varchar(30) NOT NULL,
   `Ciudad` varchar(30) NOT NULL,
-  `Contraseña` varchar(30) NOT NULL
+  `password` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -112,9 +113,9 @@ ALTER TABLE `solicitud_de_reserva`
   ADD KEY `Rut` (`Rut`);
 
 --
--- Indices de la tabla `usuario`
+-- Indices de la tabla `users`
 --
-ALTER TABLE `usuario`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`Rut`);
 
 --
@@ -148,14 +149,14 @@ ALTER TABLE `solicitud_de_reserva`
 --
 ALTER TABLE `reservas`
   ADD CONSTRAINT `reservas_ibfk_1` FOREIGN KEY (`Codigo_Laboratorio`) REFERENCES `laboratorio` (`Codigo_laboratorio`) ON DELETE CASCADE,
-  ADD CONSTRAINT `reservas_ibfk_2` FOREIGN KEY (`Rut`) REFERENCES `usuario` (`Rut`) ON DELETE CASCADE,
-  ADD CONSTRAINT `reservas_ibfk_3` FOREIGN KEY (`Rut_Encargado`) REFERENCES `usuario` (`Rut`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `reservas_ibfk_2` FOREIGN KEY (`Rut`) REFERENCES `users` (`Rut`) ON DELETE CASCADE,
+  ADD CONSTRAINT `reservas_ibfk_3` FOREIGN KEY (`Rut_Encargado`) REFERENCES `users` (`Rut`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `solicitud_de_reserva`
 --
 ALTER TABLE `solicitud_de_reserva`
-  ADD CONSTRAINT `solicitud_de_reserva_ibfk_1` FOREIGN KEY (`Rut`) REFERENCES `usuario` (`Rut`) ON DELETE CASCADE;
+  ADD CONSTRAINT `solicitud_de_reserva_ibfk_1` FOREIGN KEY (`Rut`) REFERENCES `users` (`Rut`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

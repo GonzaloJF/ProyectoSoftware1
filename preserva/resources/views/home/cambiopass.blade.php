@@ -1,25 +1,38 @@
 @extends('layouts.app')
 
+
 @section('content')
+    @if (session('error'))
+        <div class="row justify-content-center alert alert-danger" role="alert">
+        <strong>{{ session('error') }}</strong>
+        </div>
+    @endif
+    @if (session()->get('message'))
+        <div class="row justify-content-center alert alert-success" role="alert">
+            <strong>{{ (session()->get('message')) }}</strong>
+        </div>
+    @endif
+    
 <div class="container">
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Cambiar contraseña') }}</div>
-
+                
                 <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
+                    <form method="POST" action="{{ url('home/cambiopass') }}">
                         @csrf
-
-                        <input type="hidden" name="token" value="{{ $token }}">
+                        
+                        
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña actual') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
 
-                                @error('email')
+                                @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -28,12 +41,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Nueva contraseña') }}</label>
+                            <label for="new-password" class="col-md-4 col-form-label text-md-right">{{ __('Nueva contraseña') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="new-password" type="password" class="form-control @error('new-password') is-invalid @enderror" name="new-password" required autocomplete="new-password">
 
-                                @error('password')
+                                @error('new-password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
