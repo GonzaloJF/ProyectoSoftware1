@@ -50,4 +50,4 @@ Route::get('/evaluacion/{solicitud}/edit','EvaluacionController@edit');
 Route::patch('/evaluacion/{solicitud}','EvaluacionController@update');
 
 Route::get('/laboratorio/create','LaboratorioController@create');
-Route::post('/laboratorio','LaboratorioController@store');
+Route::post('/laboratorio/create','LaboratorioController@store');

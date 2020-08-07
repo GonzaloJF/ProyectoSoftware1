@@ -15,7 +15,7 @@
                     @endif
 
                     
-                    <form method="POST" action="{{ url('reserva') }}">
+                    <form method="POST" action="{{ url('laboratorio/create') }}">
                         @csrf
                         
                         <div class="form-group">
