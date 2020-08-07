@@ -14,6 +14,8 @@ use App\reserva;
 |
 */
 
+/*aca se encuentran las rutas de donde obtienen y envian los datos*/
+
 Route::get('/', 'GuestController@index');
 
 Route::get('/quienes_somos', function (){

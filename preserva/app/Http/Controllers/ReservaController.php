@@ -99,7 +99,7 @@ class ReservaController extends Controller
      * @param  \App\Reserva  $reserva
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reserva $reserva)
+    public function edit(Reserva $reserva) 
     {
         return view('reserva.edit',compact('reserva'));
     }
@@ -111,7 +111,9 @@ class ReservaController extends Controller
      * @param  \App\Reserva  $reserva
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reserva $reserva)
+    /* */
+
+    public function update(Request $request, Reserva $reserva) //Funcion que actualiza los datos de la reserva
     {
         
         $validatedData = $request->validate([
@@ -142,7 +144,7 @@ class ReservaController extends Controller
      */
 
      //
-    public function destroy($id)
+    public function destroy($id) //Funcion que elimina los datos de la reserva
     {   
         if((Auth::user()->tipo_usuario)==5):
             return redirect('reserva');
