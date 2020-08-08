@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="Tipo_laboratorio">{{ __('Facultad') }}</label>
+                            <label for="Tipo_laboratorio">{{ __('Tipo de laboratorio') }}</label>
                         
                             <select name="Tipo_laboratorio" >
                                     <option value="Computacion">Computacion</option>
