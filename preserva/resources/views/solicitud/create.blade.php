@@ -39,10 +39,8 @@
                                 @foreach($laboratorios as $laboratorio)
                                     <option value="{{ $laboratorio->Codigo_de_laboratorio  }}">{{ $laboratorio->Codigo_de_laboratorio  }}: Capacidad: {{ $laboratorio->Capacidad }}, Facultad: {{ $laboratorio->Facultad }}, Tipo: {{ $laboratorio->Tipo_laboratorio }}</option>
                                 @endforeach
-                                {{ $laboratorios->links() }}
-                                </select>
                                 
-
+                                </select>
                         </div>
                         
                         <div class="form-group">

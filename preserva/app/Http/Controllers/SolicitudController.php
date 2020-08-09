@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\solicitud;
+use App\laboratorio;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,8 @@ class SolicitudController extends Controller
      */
     public function create()
     {
-        return view('solicitud.create');
+        $laboratorios = laboratorio::orderBy('id')->Paginate();
+        return view('solicitud.create',compact('laboratorios'));
     }
 
     public function solicitudes_anteriores()
