@@ -57,7 +57,7 @@ class SolicitudController extends Controller
             'username' => ['required'],
             'nombre_completo' => ['required'],
             'cod_lab' => ['required'],
-            'fecha' => ['required','after:today'],
+            'fecha' => ['required','after:yesterday'],
             'bloque' => ['required'],
             'cap_sol' => ['required'],
         ]);
