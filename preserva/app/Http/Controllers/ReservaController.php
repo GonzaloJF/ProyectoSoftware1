@@ -34,7 +34,7 @@ class ReservaController extends Controller
      */
     public function create()
     {
-        $laboratorios = laboratorio::orderBy('id')->Paginate(10);
+        $laboratorios = laboratorio::orderBy('id')->Paginate();
         return view('reserva.create',compact('laboratorios'));
     }
 

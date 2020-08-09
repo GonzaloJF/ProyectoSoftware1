@@ -34,13 +34,14 @@
                         
                         <div class="form-group">
                             <label for="cod_lab">{{ __('Codigo Laboratorio') }}</label>
-                            <input id="cod_lab" type="text" class="form-control @error('cod_lab') is-invalid @enderror" name="cod_lab" value="{{ old('cod_lab') }}" required autocomplete="cod_lab" autofocus>
-
-                            @error('cod_lab')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        
+                            <select name="cod_lab" >
+                                @foreach($laboratorios as $laboratorio)
+                                    <option value="{{ $laboratorio->Codigo_de_laboratorio  }}">{{ $laboratorio->Codigo_de_laboratorio  }}: Capacidad: {{ $laboratorio->Capacidad }}, Facultad: {{ $laboratorio->Facultad }}, Tipo: {{ $laboratorio->Tipo_laboratorio }}</option>
+                                @endforeach
+                                {{ $laboratorios->links() }}
+                                </select>
+                                
 
                         </div>
                         
