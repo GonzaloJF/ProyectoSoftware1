@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Reserva;
+use App\laboratorio;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,8 @@ class ReservaController extends Controller
      */
     public function create()
     {
-        return view('reserva.create');
+        $laboratorios = laboratorio::orderBy('id')->Paginate(10);
+        return view('reserva.create',compact('laboratorios'));
     }
 
     public function reservas_anteriores()//Busca las reservas hechas anteriormente
