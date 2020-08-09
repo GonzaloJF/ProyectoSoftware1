@@ -13,6 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if (session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
                     
                     <form method="POST" action="{{ url('solicitud') }}">
@@ -44,7 +49,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="fecha">{{ __('fecha') }}</label>
+                            <label for="fecha">{{ __('Fecha') }}</label>
                             <input id="fecha" type="date" class="form-control @error('fecha') is-invalid @enderror" name="fecha" value="{{ old('fecha') }}" required autocomplete="fecha" autofocus>
 
                             @error('fecha')

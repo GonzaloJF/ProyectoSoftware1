@@ -44,7 +44,7 @@ class LaboratorioController extends Controller
     {
         //dd($request->all());
          $validatedData = $request->validate([
-             'Codigo_de_laboratorio' => ['required'],
+             'Codigo_de_laboratorio' => ['required', 'unique:laboratorios'],
              'Capacidad' => ['required'],
              'Facultad' => ['required'],
              'Tipo_laboratorio' => ['required'],
