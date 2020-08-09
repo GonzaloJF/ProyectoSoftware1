@@ -68,7 +68,7 @@ class ReservaController extends Controller
             'nombre_completo' => ['required'],
             'nombre_reservante' => ['required'],
             'cod_lab' => ['required'],
-            'fecha' => ['required'],
+            'fecha' => ['required','after:today'],
             'bloque' => ['required'],
             'cap_res' => ['required'],
         ]);

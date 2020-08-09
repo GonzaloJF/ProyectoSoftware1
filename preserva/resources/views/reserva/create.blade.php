@@ -67,8 +67,6 @@
 
                         </div>
 
-                        {{  now()->toDateTimeString() }}
-
                         <div class="form-group">
                             <label for="bloque">{{ __('Bloque') }}</label>
                         
