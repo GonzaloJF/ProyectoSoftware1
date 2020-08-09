@@ -119,6 +119,13 @@ class EvaluacionController extends Controller
             return back()->with(compact('error'));
 
         }
+        if((reserva::where('cod_lab','=',$validatedData['cod_lab'])->where('fecha','=',$validatedData['fecha'])->where('bloque','=',$validatedData['bloque'])->count())>0){
+            $solicitud->estado ='Rechazada';
+            $solicitud->save();
+            $error="El laboratorio ya fue reservado ese dia y en ese bloque, se ha rechazado la solicitud";
+            return back()->with(compact('error'));
+            
+        }
         $solicitud->estado =$validatedData['estado'];
         $solicitud->save();
 
