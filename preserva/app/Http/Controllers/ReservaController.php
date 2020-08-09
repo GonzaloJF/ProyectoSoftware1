@@ -72,6 +72,18 @@ class ReservaController extends Controller
             'bloque' => ['required'],
             'cap_res' => ['required'],
         ]);
+
+        if((reserva::where('cod_lab','=',$validatedData['cod_lab'])->where('fecha','=',$validatedData['fecha'])->where('bloque','=',$validatedData['bloque'])->count())>0){
+            $error="El laboratorio ya esta reservado ese dia y en ese bloque";
+            return back()->with(compact('error'));
+            
+        }
+        
+        if((laboratorio::where('Codigo_de_laboratorio','=',$validatedData['cod_lab'])->where('capacidad','<',$validatedData['cap_res'])->count())>0){
+            $error="La capacidad ingresada es superior a la del laboratorio";
+            return back()->with(compact('error'));
+        };
+
         $reserva = new reserva();
         $reserva->username = $validatedData['username'];
         $reserva->nombre_completo =$validatedData['nombre_completo'];
