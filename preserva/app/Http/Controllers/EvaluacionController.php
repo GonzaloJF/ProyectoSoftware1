@@ -103,13 +103,25 @@ class EvaluacionController extends Controller
         $solicitud->fecha =$validatedData['fecha'];
         $solicitud->bloque =$validatedData['bloque'];
         $solicitud->cap_sol =$validatedData['cap_sol'];*/
-        $solicitud->estado =$validatedData['estado'];
-        $solicitud->save();
+        
+        
         if(($validatedData['estado'])=='Rechazada'){
+            $solicitud->estado =$validatedData['estado'];
+            $solicitud->save();
             $status = 'Has rechazado correctamente';
             return back()->with(compact('status'));
+        }
+
+        if(($validatedData['fecha'])<today()){
+            $solicitud->estado ='Rechazada';
+            $solicitud->save();
+            $error = 'Fecha pasada, se ha rechazado la solicitud';
+            return back()->with(compact('error'));
 
         }
+        $solicitud->estado =$validatedData['estado'];
+        $solicitud->save();
+
         $reserva = new reserva();
         $reserva->username = (auth::user()->username);
         $reserva->nombre_completo =(auth::user()->name.' '.auth::user()->apellido);
