@@ -82,7 +82,7 @@
 
             <div class="content">            
                 <div class="Links">
-                    <a href="">Laboratorios</a>
+                    <a href="{{ url('/laboratorio') }}">Laboratorios</a>
                     <a href="">Horarios</a>
                 </div>               
                     <div class="title m-b-md">

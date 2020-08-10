@@ -10,8 +10,8 @@ class LaboratorioController extends Controller
 
     public function __construct()
     {       
-            $this->middleware('admin');
-
+    
+        $this->middleware('admin');
         
     }
     /**
@@ -31,6 +31,7 @@ class LaboratorioController extends Controller
      */
     public function create()
     {
+
         return view('laboratorio.create');
     }
 
