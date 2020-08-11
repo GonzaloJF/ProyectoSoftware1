@@ -80,7 +80,7 @@ class LaboratorioController extends Controller
      */
     public function edit(laboratorio $laboratorio)
     {
-        //
+        return view('laboratorio.edit',compact('laboratorio'));
     }
 
     /**
@@ -92,8 +92,20 @@ class LaboratorioController extends Controller
      */
     public function update(Request $request, laboratorio $laboratorio)
     {
-        //
-    }
+        //dd($request->all());
+        $validatedData = $request->validate([
+            'Capacidad' => ['required'],
+            'Facultad' => ['required'],
+            'Tipo_laboratorio' => ['required'],
+        ]);
+        $laboratorio->Capacidad =$validatedData['Capacidad'];
+        $laboratorio->Facultad =$validatedData['Facultad'];
+        $laboratorio->Tipo_laboratorio =$validatedData['Tipo_laboratorio'];
+        $laboratorio->save();
+
+        $status = 'Has editado correctamente';
+        return back()->with(compact('status'));
+        }
 
     /**
      * Remove the specified resource from storage.

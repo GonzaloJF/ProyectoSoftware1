@@ -52,3 +52,5 @@ Route::patch('/evaluacion/{solicitud}','EvaluacionController@update');
 Route::get('/laboratorio/create','LaboratorioController@create');
 Route::post('/laboratorio/create','LaboratorioController@store');
 Route::get('/laboratorio','GuestController@show');
+Route::get('/laboratorio/{laboratorio}/edit','LaboratorioController@edit');
+Route::patch('/laboratorio/{laboratorio}','LaboratorioController@update');

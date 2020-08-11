@@ -21,6 +21,13 @@
                                     <h4>Tipo laboratorio: {{ $laboratorio->Tipo_laboratorio }}</h4>
                                    
                                     
+                            </div>
+                                </div>
+                                @if((auth::user()->tipo_usuario)==10)
+                                    <form action = "{{ url('/laboratorio/'.$laboratorio->id.'/edit') }}">
+                                        <button class="button button2" type = "submit" >Editar Laboratorio </button>
+                                    </form>                                
+                                    @endif
                                 </div>
                             </div>
                         

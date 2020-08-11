@@ -15,13 +15,13 @@
                     @endif
 
                     
-                    <form method="POST" action="{{ url('reserva/'.$reserva->id) }}">
+                    <form method="POST" action="{{ url('laboratorio/'.$laboratorio->id) }}">
                         @method('PATCH')
                         @csrf
 
                         <div class="form-group">
                             <label for="Capacidad">{{ __('Capacidad del Laboratorio') }}</label>
-                            <input id="Capacidad" type="integer" class="form-control @error('Capacidad') is-invalid @enderror" name="Capacidad" value="{{ old('Capacidad') }}" required autocomplete="Capacidad" autofocus>
+                            <input id="Capacidad" type="integer" class="form-control @error('Capacidad') is-invalid @enderror" name="Capacidad" value="{{ ($laboratorio->Capacidad) }}" required autocomplete="Capacidad" autofocus>
 
                             @error('Capacidad')
                                 <span class="invalid-feedback" role="alert">
@@ -50,7 +50,10 @@
                                     <option value="Fisica">Fisica</option> 
                                 </select>
                         </div>
-
+                        <button type="submit" class="btn btn-primary">
+                                    {{ __('Guardar') }}
+                                </button>
+                    </form>
                 </div>
             </div>
         </div>
