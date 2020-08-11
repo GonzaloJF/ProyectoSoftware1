@@ -83,7 +83,7 @@
             <div class="content">            
                 <div class="Links">
                     <a href="{{ url('/laboratorio') }}">Laboratorios</a>
-                    <a href="">Horarios</a>
+                    <a href="{{ url('/horarios') }}">Horarios</a>
                 </div>               
                     <div class="title m-b-md">
                         Bienvenidos A Reservas UCM.

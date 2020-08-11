@@ -20,6 +20,10 @@ Route::get('/quienes_somos', function (){
     return view('quienes_somos');
 });
 
+Route::get('/horarios', function (){
+    return view('horarios');
+});
+
 Auth::routes();
 
 
