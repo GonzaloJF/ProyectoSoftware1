@@ -59,16 +59,19 @@
                     @else
                         @if((Auth::user()->tipo_usuario)==10)
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/register') }}">{{ __('Registrar usuarios') }}</a>
+                                    <a class="btn btn-outline-info" href="{{ url('/register') }}">{{ __('Registrar usuarios') }}</a>
                                 </li>
+                                <p>  &nbsp  </p> 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/usuarios') }}">{{ __('Lista de usuarios') }}</a>
+                                    <a class="btn btn-outline-info" href="{{ url('/usuarios') }}">{{ __('Lista de usuarios') }}</a>
                                 </li>
+                                <p>  &nbsp  </p> 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/laboratorio/create') }}">{{ __('Crear Laboratorio') }}</a>
+                                    <a class="btn btn-outline-info" href="{{ url('/laboratorio/create') }}">{{ __('Crear Laboratorio') }}</a>
                                 </li>
+                                <p>  &nbsp  </p> 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/laboratorio') }}">{{ __('Laboratorios') }}</a>
+                                    <a class="btn btn-outline-info" href="{{ url('/laboratorio') }}">{{ __('Laboratorios') }}</a>
                                 </li>
                         @endif
                     @endguest
@@ -79,34 +82,38 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="btn btn-outline-info" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
+                            <p>  &nbsp  </p> 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="btn btn-outline-info" href="{{ route('register') }}">{{ __('Registrar') }}</a>
                                 </li>
                             @endif
                         @else
                             
                             @if(((Auth::user()->tipo_usuario)==1)||((Auth::user()->tipo_usuario)==2)||((Auth::user()->tipo_usuario)==4))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/solicitud') }}">{{ __('Mis Solicitudes') }}</a>
+                                    <a class="btn btn-outline-info" href="{{ url('/solicitud') }}">{{ __('Mis Solicitudes') }}</a>
                                 </li>
+                                <p>  &nbsp  </p> 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/solicitud/create') }}">{{ __('Nueva solicitud') }}</a>
+                                    <a class="btn btn-outline-info" href="{{ url('/solicitud/create') }}">{{ __('Nueva solicitud') }}</a>
                                 </li>
                             @endif
                             @if((Auth::user()->tipo_usuario)==3)
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/evaluacion') }}">{{ __('Evaluar Solicitudes') }}</a>
+                                    <a class="btn btn-outline-info" href="{{ url('/evaluacion') }}">{{ __('Evaluar Solicitudes') }}</a>
                                 </li>
+                                <p>  &nbsp  </p> 
                             @endif
                             @if(((Auth::user()->tipo_usuario)==3)||((Auth::user()->tipo_usuario)==5))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/reserva') }}">{{ __('Reservas') }}</a>
+                                    <a class="btn btn-outline-info" href="{{ url('/reserva') }}">{{ __('Reservas') }}</a>
                                 </li>
+                                <p>  &nbsp  </p> 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/reserva/create') }}">{{ __('Nueva Reserva') }}</a>
+                                    <a class="btn btn-outline-info" href="{{ url('/reserva/create') }}">{{ __('Nueva Reserva') }}</a>
                                 </li>
                             @endif
                             <li class="nav-item dropdown">

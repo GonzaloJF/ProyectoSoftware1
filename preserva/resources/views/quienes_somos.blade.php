@@ -36,7 +36,7 @@
       </div>
     </nav>
     <header class="container-fluid">
-      <div class="row" style="height: 500px; background-color:#326c96">
+      <div class="row" style="height: 500px; background-color:#45ABC6">
         <div class="col12 mx-auto d-block align-self-center text-center text-white">
           <img src="{{asset('imagenes/grupo_de_trabajo.png')}}" class="img-fluid" width="600px" alt="">
           <h1>Somos Un Grupo de Estudiantes de la Universidad Catolica Del Maule</h1>
@@ -44,7 +44,7 @@
       </div>
     </header>
     <main class="container-fluid">
-      <div class="row" style="height: 680px ; background-color:#326c96; ">
+      <div class="row" style="height: 500px ; background-color:#45ABC6; ">
         <div class="col12 text-center text-justify text-white">        
           <h2>Creamos un proyecto de ingenieria en Software 1</h2>
           <h4>El presente proyecto tiene como fin crear una forma más simple de poder reservar los distintos tipos de laboratorios que hay dentro de la universidad, para poder darle menos trabajo a los funcionarios, tener una forma más ordenada y controlado los horarios de uso de cada uno de estos laboratorios.</h4>
