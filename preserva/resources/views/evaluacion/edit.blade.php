@@ -13,6 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if (session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
                     
                     <form method="POST" action="{{ url('evaluacion/'.$solicitud->id) }}">
@@ -56,21 +61,31 @@
                             <input id="cap_sol" value ="{{ $solicitud->cap_sol }}" type="text" class="form-control "  readonly=»readonly» name="cap_sol"  required autocomplete="cap_sol" autofocus>
    
                         </div>
-
-                        <div class="form-group">
-                            <label for="estado">{{ __('Estado') }}</label>
+                        @if(( $solicitud->estado )=="En espera")
+                            <div class="form-group">
+                                <label for="estado">{{ __('Estado') }}</label>
+                            
+                                <select name="estado" >
+                                        <option value="Rechazada">Rechazada</option>
+                                        <option value="Aceptada">Aceptada</option>  
+                                    </select>
+                            </div>
                         
-                            <select name="estado" >
-                                    <option value="Rechazada">Rechazada</option>
-                                    <option value="Aceptada">Aceptada</option>  
-                                </select>
-
-                        </div>
 
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Guardar') }}
                                 </button>
-                    </form>
+                        
+                            </form>
+                        </form>
+                        @else
+                        </form>
+                                <form action = "{{ url('/evaluacion') }}">
+                                        <button class="button button4" type = "submit" >Volver </button>
+                                </form>
+                        @endif
+
+                    
 
                 </div>
             </div>

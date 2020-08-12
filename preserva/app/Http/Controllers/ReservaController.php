@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Reserva;
+use App\laboratorio;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class ReservaController extends Controller
 
     public function __construct()
     {       
-            $this->middleware('reserva_middleware');
+            $this->middleware('auth');
 
         
     }
@@ -33,7 +34,8 @@ class ReservaController extends Controller
      */
     public function create()
     {
-        return view('reserva.create');
+        $laboratorios = laboratorio::orderBy('id')->Paginate();
+        return view('reserva.create',compact('laboratorios'));
     }
 
     public function reservas_anteriores()//Busca las reservas hechas anteriormente
@@ -64,14 +66,28 @@ class ReservaController extends Controller
         $validatedData = $request->validate([
             'username' => ['required'],
             'nombre_completo' => ['required'],
+            'nombre_reservante' => ['required'],
             'cod_lab' => ['required'],
-            'fecha' => ['required'],
+            'fecha' => ['required','after:yesterday'],
             'bloque' => ['required'],
             'cap_res' => ['required'],
         ]);
+
+        if((reserva::where('cod_lab','=',$validatedData['cod_lab'])->where('fecha','=',$validatedData['fecha'])->where('bloque','=',$validatedData['bloque'])->count())>0){
+            $error="El laboratorio ya esta reservado ese dia y en ese bloque";
+            return back()->with(compact('error'));
+            
+        }
+        
+        if((laboratorio::where('Codigo_de_laboratorio','=',$validatedData['cod_lab'])->where('capacidad','<',$validatedData['cap_res'])->count())>0){
+            $error="La capacidad ingresada es superior a la del laboratorio";
+            return back()->with(compact('error'));
+        };
+
         $reserva = new reserva();
         $reserva->username = $validatedData['username'];
         $reserva->nombre_completo =$validatedData['nombre_completo'];
+        $reserva->nombre_reservante =$validatedData['nombre_reservante'];
         $reserva->cod_lab =$validatedData['cod_lab'];
         $reserva->fecha =$validatedData['fecha'];
         $reserva->bloque =$validatedData['bloque'];

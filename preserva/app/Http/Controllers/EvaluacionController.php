@@ -103,20 +103,45 @@ class EvaluacionController extends Controller
         $solicitud->fecha =$validatedData['fecha'];
         $solicitud->bloque =$validatedData['bloque'];
         $solicitud->cap_sol =$validatedData['cap_sol'];*/
+        
+        
+        if(($validatedData['estado'])=='Rechazada'){
+            $solicitud->estado =$validatedData['estado'];
+            $solicitud->save();
+            $status = 'Has rechazado correctamente';
+            return back()->with(compact('status'));
+        }
+
+        if(($validatedData['fecha'])<today()){
+            $solicitud->estado ='Rechazada';
+            $solicitud->save();
+            $error = 'Fecha pasada, se ha rechazado la solicitud';
+            return back()->with(compact('error'));
+
+        }
+        if((reserva::where('cod_lab','=',$validatedData['cod_lab'])->where('fecha','=',$validatedData['fecha'])->where('bloque','=',$validatedData['bloque'])->count())>0){
+            $solicitud->estado ='Rechazada';
+            $solicitud->save();
+            $error="El laboratorio ya fue reservado ese dia y en ese bloque, se ha rechazado la solicitud";
+            return back()->with(compact('error'));
+            
+        }
         $solicitud->estado =$validatedData['estado'];
         $solicitud->save();
 
         $reserva = new reserva();
         $reserva->username = (auth::user()->username);
         $reserva->nombre_completo =(auth::user()->name.' '.auth::user()->apellido);
+        $reserva->nombre_reservante =$validatedData['nombre_completo'];
         $reserva->cod_lab =$validatedData['cod_lab'];
         $reserva->fecha =$validatedData['fecha'];
         $reserva->bloque =$validatedData['bloque'];
         $reserva->cap_res =$validatedData['cap_sol'];
         $reserva->save();
 
-        $status = 'Has evaluado y reservado correctamente';
+        $status = 'Has aceptado y reservado correctamente';
         return back()->with(compact('status'));
+        
     }
 
     /**

@@ -1,0 +1,9 @@
+Responsabilidades:
+-Pia Aravena: Modelo,vista y controlador de Reservas.
+-Francisca Bravo: Modelo, vista y controlador de solicitudes.
+-Tomás Espinoza: Modelo, vista y controlador de usuarios y registro.
+-Gonzalo Jaques: Modelo, Vista y controlador de laboratorios y login.
+
+
+link:
+https://github.com/Gonza17/ProyectoSoftware1

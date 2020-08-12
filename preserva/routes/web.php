@@ -22,11 +22,22 @@ Route::get('/quienes_somos', function (){
     return view('quienes_somos');
 });
 
+Route::get('/horarios', function (){
+    return view('horarios');
+});
+
 Auth::routes();
 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::get('/home/cambiopass','CambiopassController@cambiopass');
+Route::post('/home/cambiopass','CambiopassController@cambiopass_actualizar');
+
+Route::get('/usuarios','AdminController@usuarios');
+Route::get('/usuarios/{usuario}/edit','AdminController@edit');
+Route::patch('/usuarios/{usuario}','AdminController@update');
+Route::delete('/usuarios/{usuario}','AdminController@destroy');
 
 Route::get('/reserva/create', 'ReservaController@create');
 Route::post('/reserva', 'ReservaController@store');
@@ -43,3 +54,9 @@ Route::get('/solicitud','SolicitudController@solicitudes_anteriores');
 Route::get('/evaluacion','EvaluacionController@solicitudes_anteriores');
 Route::get('/evaluacion/{solicitud}/edit','EvaluacionController@edit');
 Route::patch('/evaluacion/{solicitud}','EvaluacionController@update');
+
+Route::get('/laboratorio/create','LaboratorioController@create');
+Route::post('/laboratorio/create','LaboratorioController@store');
+Route::get('/laboratorio','GuestController@show');
+Route::get('/laboratorio/{laboratorio}/edit','LaboratorioController@edit');
+Route::patch('/laboratorio/{laboratorio}','LaboratorioController@update');

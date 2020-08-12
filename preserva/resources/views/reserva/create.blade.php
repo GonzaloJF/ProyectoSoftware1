@@ -13,6 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if (session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
                     
                     <form method="POST" action="{{ url('reserva') }}">
@@ -31,17 +36,26 @@
 
                             
                         </div>
-                        
                         <div class="form-group">
-                            <label for="cod_lab">{{ __('Codigo Laboratorio') }}</label>
-                            <input id="cod_lab" type="text" class="form-control @error('cod_lab') is-invalid @enderror" name="cod_lab" value="{{ old('cod_lab') }}" required autocomplete="cod_lab" autofocus>
-
-                            @error('cod_lab')
+                            <label for="nombre_reservante">{{ __('Nombre Reservante') }}</label>
+                            <input id="nombre_reservante" class="form-control @error('nombre_reservante') is-invalid @enderror" value ="{{ old('cod_lab') }}" type="text"  name="nombre_reservante"  required autocomplete="nombre_reservante" autofocus>
+                            @error('nombre_reservante')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-
+                            
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cod_lab">{{ __('Codigo Laboratorio') }}</label>
+                        
+                            <select name="cod_lab" >
+                                @foreach($laboratorios as $laboratorio)
+                                    <option value="{{ $laboratorio->Codigo_de_laboratorio  }}">{{ $laboratorio->Codigo_de_laboratorio  }}: Capacidad: {{ $laboratorio->Capacidad }}, Facultad: {{ $laboratorio->Facultad }}, Tipo: {{ $laboratorio->Tipo_laboratorio }}</option>
+                                @endforeach
+                                
+                                </select>
                         </div>
                         
                         <div class="form-group">
