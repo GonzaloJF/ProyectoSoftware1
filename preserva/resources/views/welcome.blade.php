@@ -54,7 +54,27 @@
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
+                letter-spacing: 3px;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .barra > a {
+                color: #45ABC6;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 900;
                 letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .barralab > a {
+                color: #5DBBF9;
+                padding: 0 25px;
+                font-size: 20px;
+                font-weight: 900;
+                letter-spacing: 8px;
                 text-decoration: none;
                 text-transform: uppercase;
             }
@@ -67,7 +87,7 @@
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
-                <div class="top-right links">
+                <div class="top-right barra ">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
@@ -81,7 +101,7 @@
             @endif
 
             <div class="content">            
-                <div class="Links">
+                <div class="barralab">
                     <a href="{{ url('/laboratorio') }}">Laboratorios</a>
                     <a href="{{ url('/horarios') }}">Horarios</a>
                 </div>               
@@ -89,7 +109,7 @@
                         Bienvenidos A Reservas UCM.
                     </div>
                 <div class="links">
-                    <a href="quienes_somos">Quienes somos?</a>
+                    <a href="quienes_somos">¿Quienes somos?</a>
                     <a href="">Contactenos</a> 
                 </div>
             </div>
