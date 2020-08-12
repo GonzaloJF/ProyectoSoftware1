@@ -111,7 +111,7 @@
                     </div>
                 <div class="links">
                     <a href="quienes_somos">¿Quienes somos?</a>
-                    <a href="">Contactenos</a> 
+                    <a href="https://portal.ucm.cl/">Contactenos</a> 
                 </div>
             </div>
         </div>
