@@ -9,22 +9,27 @@
       <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     </head>
+
+
     
 </div>
     <body>
     <nav id="navbar-example2" class="navbar navbar-light bg-light">
     <div class="container">
     <div class="row">      
-      <a class="navbar-brand" href="#">¿Quienes somos?</a>
+      <a class="btn btn-outline-secondary" href="quienes_somos">¿Quienes somos?</a>
           <ul class="nav nav-pills">
+            <p>  &nbsp  </p> 
             <li class="nav-item">
-              <a class="nav-link" href="/">Inicio</a>
+              <a class="btn btn-outline-info" href="/">Inicio</a>
             </li>
+            <p>  &nbsp  </p> 
             <li class="nav-item">
-              <a class="nav-link" href="login">Login</a>
+              <a class="btn btn-outline-info" href="login">Login</a>
             </li>
+            <p>  &nbsp  </p>            
             <li class="nav-iten">
-              <a class="nav-link" href="register">registrarse</a>
+              <a class="btn btn-outline-info" href="register">registrarse</a>
             </li>
           </ul>
         </div>
