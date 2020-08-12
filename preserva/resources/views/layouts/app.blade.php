@@ -116,11 +116,11 @@
                                     <a class="btn btn-outline-info" href="{{ url('/reserva/create') }}">{{ __('Nueva Reserva') }}</a>
                                 </li>
                             @endif
+                            <p>  &nbsp  </p> 
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="btn btn-outline-secondary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ strtoupper(Auth::user()->name) }}{{ __('') }} {{ strtoupper (Auth::user()->apellido) }} <span class="caret"></span>
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('home/cambiopass') }}">
                                         {{ __('Cambiar contraseña') }}
