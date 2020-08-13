@@ -40,7 +40,7 @@
                         <div class="form-group">
                             <label for="cod_lab">{{ __('Codigo Laboratorio') }}</label>
                         
-                            <select name="cod_lab" >
+                            <select name="cod_lab" class="form-control">
                                 @foreach($laboratorios as $laboratorio)
                                     <option value="{{ $laboratorio->Codigo_de_laboratorio  }}">{{ $laboratorio->Codigo_de_laboratorio  }}: Capacidad: {{ $laboratorio->Capacidad }}, Facultad: {{ $laboratorio->Facultad }}, Tipo: {{ $laboratorio->Tipo_laboratorio }}</option>
                                 @endforeach
@@ -63,7 +63,7 @@
                         <div class="form-group">
                             <label for="bloque">{{ __('Bloque') }}</label>
                         
-                            <select name="bloque" >
+                            <select name="bloque" class="form-control" >
                                      <option value="1">1- 08:30 - 09:30</option>
                                     <option value="2">2- 09:35 - 10:35</option> 
                                     <option value="3">3- 10:50 - 11:50</option> 

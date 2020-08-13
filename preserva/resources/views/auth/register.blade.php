@@ -93,10 +93,10 @@
                             </div>
                         </div>
                         
-                        <div class="form-group row">
+                        <div class="form-group row col">
                             <label for="tipo_usuario" class="col-md-4 col-form-label text-md-right">{{ __('Tipo de usuario') }}</label>
 
-                            <select name="tipo_usuario">
+                            <select name="tipo_usuario"class="form-control col">
                                     <option value="1">Alumno/a</option> 
                                     <option value="2">Ayudante</option>
                                     <option value="3">Encargado/a de laboratorio</option> 
@@ -105,19 +105,19 @@
                                 </select>
                         </div>
 
-                        <div class="form-group ">
+                        <div class="form-group row col ">
                             <label for="estado" class="col-md-4 col-form-label text-md-right">{{ __('Estado') }}</label>
 
-                            <select name="estado">
+                            <select name="estado" class="form-control col">
                                     <option value="1">Activo</option> 
                                     <option value="2">Inactivo</option> 
                                 </select>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row col">
                             <label for="ciudad" class="col-md-4 col-form-label text-md-right">{{ __('Ciudad') }}</label>
 
-                            <select name="ciudad">
+                            <select name="ciudad" class="form-control col">
                                     <option value="1">Talca</option> 
                                     <option value="2">Constitucion</option>
                                     <option value="3">Curico</option>

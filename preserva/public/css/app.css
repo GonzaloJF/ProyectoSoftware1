@@ -5800,7 +5800,13 @@ a.badge-dark.focus {
   z-index: 2;
   color: rgb(0, 72, 180);
   background-color: #ffffff;
-  border-color: #000000;
+  border-color: #45ABC6;
+}
+.list-group-item.fondo_reserva {
+  z-index: 2;
+  color: rgb(0, 72, 180);
+  background-color: #45ABC6;
+  border-color: #45ABC6;
 }
 
 .list-group-item + .list-group-item {
