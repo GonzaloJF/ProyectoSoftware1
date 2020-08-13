@@ -38,14 +38,47 @@ class ReservaController extends Controller
         return view('reserva.create',compact('laboratorios'));
     }
 
-    public function reservas_anteriores()//Busca las reservas hechas anteriormente
+    public function reservas_anteriores(Request $request)//Busca las reservas hechas anteriormente
     {
+        //dd($request->all());
+        $laboratorios = laboratorio::orderBy('id')->Paginate();
+        $lab_buscar= $request->get('buscar_lab');
+        $fecha_buscar=$request->get('fecha_buscar');
+        
         if((Auth::user()->tipo_usuario)==5):
-            $reservas = reserva::where('username','=',Auth::user()->username)->orderByDesc('id')->Paginate(10);
-            return view('reserva',compact('reservas'));
+            if(($request->buscar_lab!='Todos')&&($fecha_buscar==NULL)){
+                $reservas = reserva::where('username','=',Auth::user()->username)->where('cod_lab','like',"%$lab_buscar%")->orderByDesc('id')->Paginate(10);
+                return view('reserva',compact('reservas','laboratorios'));
+            }
+            if(($request->buscar_lab=='Todos')&&($fecha_buscar!=NULL)){
+                $reservas = reserva::where('username','=',Auth::user()->username)->where('fecha','like',"%$fecha_buscar%")->orderByDesc('id')->Paginate(10);
+                return view('reserva',compact('reservas','laboratorios'));
+            }
+            if(($request->buscar_lab!='Todos')&&($fecha_buscar!=NULL)){
+                $reservas = reserva::where('username','=',Auth::user()->username)->where('cod_lab','like',"%$lab_buscar%")->where('fecha','=',"%$fecha_buscar%")->orderByDesc('id')->Paginate(10);
+                return view('reserva',compact('reservas','laboratorios'));
+            }
+            if(($request->buscar_lab=='Todos')&&($fecha_buscar==NULL)){
+                $reservas = reserva::where('username','=',Auth::user()->username)->orderByDesc('id')->Paginate(10);
+                return view('reserva',compact('reservas','laboratorios'));
+            };
         else:
-            $reservas = reserva::orderByDesc('id')->Paginate(10);
-            return view('reserva',compact('reservas'));
+            if(($request->buscar_lab!='Todos')&&($fecha_buscar==NULL)){
+                $reservas = reserva::where('cod_lab','like',"%$lab_buscar%")->orderByDesc('id')->Paginate(10);
+                return view('reserva',compact('reservas','laboratorios'));
+            }
+            if(($request->buscar_lab=='Todos')&&($fecha_buscar!=NULL)){
+                $reservas = reserva::where('fecha','like',"%$fecha_buscar%")->orderByDesc('id')->Paginate(10);
+                return view('reserva',compact('reservas','laboratorios'));
+            }
+            if(($request->buscar_lab!='Todos')&&($fecha_buscar!=NULL)){
+                $reservas = reserva::where('cod_lab','like',"%$lab_buscar%")->where('fecha','=',"%$fecha_buscar%")->orderByDesc('id')->Paginate(10);
+                return view('reserva',compact('reservas','laboratorios'));
+            };
+            if(($request->buscar_lab=='Todos')&&($fecha_buscar==NULL)){
+                $reservas = reserva::orderByDesc('id')->Paginate(10);
+                return view('reserva',compact('reservas','laboratorios'));
+            };
         endif;       
         
     }

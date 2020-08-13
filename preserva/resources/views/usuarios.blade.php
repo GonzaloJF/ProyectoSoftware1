@@ -34,11 +34,11 @@
                                     @if($usuario->tipo_usuario==5)
                                         <h4>Tipo: Secretario/a</h4>
                                     @endif
-                                    @if($usuario->estado==1)
-                                        <h4>Estado: Activo</h4>
-                                    @endif
                                     @if($usuario->tipo_usuario==10)
                                         <h4>Tipo: ADMIN</h4>
+                                    @endif
+                                    @if($usuario->estado==1)
+                                        <h4>Estado: Activo</h4>
                                     @endif
                                     @if($usuario->estado==2)
                                         <h4>Estado: Inactivo</h4>

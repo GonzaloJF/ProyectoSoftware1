@@ -57,6 +57,9 @@
                     @guest   
                     
                     @else
+                        <li class="nav-item">
+                            <a class="btn btn-outline-info" href="{{ url('/home') }}">{{ __('Reservas') }}</a>
+                        </li>
                         @if((Auth::user()->tipo_usuario)==10)
                                 <li class="nav-item">
                                     <a class="btn btn-outline-info" href="{{ url('/register') }}">{{ __('Registrar usuarios') }}</a>
@@ -109,7 +112,7 @@
                             @endif
                             @if(((Auth::user()->tipo_usuario)==3)||((Auth::user()->tipo_usuario)==5))
                                 <li class="nav-item">
-                                    <a class="btn btn-outline-info" href="{{ url('/reserva') }}">{{ __('Reservas') }}</a>
+                                    <a class="btn btn-outline-info" href="{{ url('/reserva') }}">{{ __('Reservas Creadas') }}</a>
                                 </li>
                                 <p>  &nbsp  </p> 
                                 <li class="nav-item">
