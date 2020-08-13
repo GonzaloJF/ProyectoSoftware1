@@ -5,7 +5,6 @@
     <div class="row justify-content-center">
         <div    >
             <div class="card">
-                <div class="card-header">{{ __('HOLA ') }}{{ strtoupper(Auth::user()->name) }}{{ __('') }} {{ strtoupper (Auth::user()->apellido) }}</div>
 
                 <div class="card-body"><form class="justify-content-around form-inline">
                          <label class="form">{{ __('Codigo Laboratorio:') }}</label>
