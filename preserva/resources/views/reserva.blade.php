@@ -69,7 +69,7 @@
                             </div>
                         
                     @endforeach
-                    {{ $reservas->links() }}
+                    {{ $reservas->appends(['buscar_lab'=>request('buscar_lab'),'fecha_buscar'=>request('fecha_buscar')])->links() }}
                     
                 </div>
             </div>
