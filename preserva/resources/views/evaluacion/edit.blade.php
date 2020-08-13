@@ -65,7 +65,7 @@
                             <div class="form-group">
                                 <label for="estado">{{ __('Estado') }}</label>
                             
-                                <select name="estado" >
+                                <select name="estado" class="form-control" >
                                         <option value="Rechazada">Rechazada</option>
                                         <option value="Aceptada">Aceptada</option>  
                                     </select>

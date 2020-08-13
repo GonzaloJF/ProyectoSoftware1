@@ -60,23 +60,7 @@
                         <li class="nav-item">
                             <a class="btn btn-outline-info" href="{{ url('/home') }}">{{ __('Reservas') }}</a>
                         </li>
-                        @if((Auth::user()->tipo_usuario)==10)
-                                <li class="nav-item">
-                                    <a class="btn btn-outline-info" href="{{ url('/register') }}">{{ __('Registrar usuarios') }}</a>
-                                </li>
-                                <p>  &nbsp  </p> 
-                                <li class="nav-item">
-                                    <a class="btn btn-outline-info" href="{{ url('/usuarios') }}">{{ __('Lista de usuarios') }}</a>
-                                </li>
-                                <p>  &nbsp  </p> 
-                                <li class="nav-item">
-                                    <a class="btn btn-outline-info" href="{{ url('/laboratorio/create') }}">{{ __('Crear Laboratorio') }}</a>
-                                </li>
-                                <p>  &nbsp  </p> 
-                                <li class="nav-item">
-                                    <a class="btn btn-outline-info" href="{{ url('/laboratorio') }}">{{ __('Laboratorios') }}</a>
-                                </li>
-                        @endif
+                        
                     @endguest
                     </ul>
 
@@ -94,7 +78,23 @@
                                 </li>
                             @endif
                         @else
-                            
+                            @if((Auth::user()->tipo_usuario)==10)
+                                    <li class="nav-item">
+                                        <a class="btn btn-outline-info" href="{{ url('/register') }}">{{ __('Registrar usuarios') }}</a>
+                                    </li>
+                                    <p>  &nbsp  </p> 
+                                    <li class="nav-item">
+                                        <a class="btn btn-outline-info" href="{{ url('/usuarios') }}">{{ __('Lista de usuarios') }}</a>
+                                    </li>
+                                    <p>  &nbsp  </p> 
+                                    <li class="nav-item">
+                                        <a class="btn btn-outline-info" href="{{ url('/laboratorio/create') }}">{{ __('Crear Laboratorio') }}</a>
+                                    </li>
+                                    <p>  &nbsp  </p> 
+                                    <li class="nav-item">
+                                        <a class="btn btn-outline-info" href="{{ url('/laboratorio') }}">{{ __('Laboratorios') }}</a>
+                                    </li>
+                            @endif
                             @if(((Auth::user()->tipo_usuario)==1)||((Auth::user()->tipo_usuario)==2)||((Auth::user()->tipo_usuario)==4))
                                 <li class="nav-item">
                                     <a class="btn btn-outline-info" href="{{ url('/solicitud') }}">{{ __('Mis Solicitudes') }}</a>

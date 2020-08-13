@@ -33,7 +33,6 @@
                     @endif
                     
 
-                    {{ __('Estas Conectado/a!') }}
                 </div>
                     
                         <div class="list-group">
