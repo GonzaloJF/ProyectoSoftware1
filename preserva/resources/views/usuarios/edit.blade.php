@@ -36,7 +36,7 @@
                         <div class="form-group">
                             <label for="tipo_usuario">{{ __('Tipo de usuario') }}</label>
                         
-                            <select name="tipo_usuario" >
+                            <select name="tipo_usuario" class="form-control" >
                                     <option value="1">Alumno/a</option>
                                     <option value="2">Ayudante</option> 
                                     <option value="3">Encargado/a de laboratorio</option> 
@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <label for="estado">{{ __('Estado') }}</label>
                         
-                            <select name="estado" >
+                            <select name="estado" class="form-control" >
                                     <option value="1">Activo</option>
                                     <option value="2">Inactivo</option> 
                                 </select>
@@ -57,7 +57,7 @@
                         <div class="form-group">
                             <label for="ciudad" >{{ __('Ciudad') }}</label>
 
-                            <select name="ciudad">
+                            <select name="ciudad" class="form-control">
                                     <option value="1">Talca</option> 
                                     <option value="2">Constitucion</option>
                                     <option value="3">Curico</option>

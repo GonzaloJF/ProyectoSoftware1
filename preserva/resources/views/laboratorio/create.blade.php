@@ -44,7 +44,7 @@
                         <div class="form-group">
                             <label for="Facultad">{{ __('Facultad') }}</label>
                         
-                            <select name="Facultad" >
+                            <select name="Facultad" class="form-control">
                                     <option value="medicina">medicina</option>
                                     <option value="ciencias basicas">ciencias basicas</option> 
                                     <option value="ingenieria">ingenieria</option> 
@@ -54,7 +54,7 @@
                         <div class="form-group">
                             <label for="Tipo_laboratorio">{{ __('Tipo de laboratorio') }}</label>
                         
-                            <select name="Tipo_laboratorio" >
+                            <select name="Tipo_laboratorio" class="form-control" >
                                     <option value="Computacion">Computacion</option>
                                     <option value="Quimica">Quimica</option> 
                                     <option value="Anatomia">Anatomia</option> 
