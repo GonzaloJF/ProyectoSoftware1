@@ -45,9 +45,13 @@
                             <label for="Facultad">{{ __('Facultad') }}</label>
                         
                             <select name="Facultad" class="form-control">
-                                    <option value="medicina">medicina</option>
-                                    <option value="ciencias basicas">ciencias basicas</option> 
-                                    <option value="ingenieria">ingenieria</option> 
+                                    <option value="Medicina">Medicina</option>
+                                    <option value="Ciencias basicas">Ciencias basicas</option> 
+                                    <option value="Ingenieria">Ingenieria</option>
+                                    <option value="Psicologia">Psicologia</option> 
+                                    <option value="Derecho">Derecho</option>
+                                    <option value="Ciencias de la salud">Ciencias de la salud</option>
+                                    <option value="Ciencias agrarias">Ciencias agrarias</option>
                                 </select>
                         </div>
 
@@ -58,7 +62,10 @@
                                     <option value="Computacion">Computacion</option>
                                     <option value="Quimica">Quimica</option> 
                                     <option value="Anatomia">Anatomia</option> 
-                                    <option value="Fisica">Fisica</option> 
+                                    <option value="Fisica">Fisica</option>
+                                    <option value="Suelos">Suelos</option>
+                                    <option value="Clinico">Clinico</option>
+                                    <option value="Biologia">Biologia</option>
                                 </select>
                         </div>
 
