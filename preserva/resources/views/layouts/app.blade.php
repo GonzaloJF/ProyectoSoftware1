@@ -71,12 +71,8 @@
                             <li class="nav-item">
                                 <a class="btn btn-outline-info" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            <p>  &nbsp  </p> 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="btn btn-outline-info" href="{{ route('register') }}">{{ __('Registrar') }}</a>
-                                </li>
-                            @endif
+                            
+                            
                         @else
                             @if((Auth::user()->tipo_usuario)==10)
                                     <li class="nav-item">
