@@ -59,18 +59,19 @@
                         <div class="form-group">
                             <label for="bloque">{{ __('Bloque') }}</label>
                         
-                            <select name="bloque" >
-                                    <option value="1">1</option>
-                                    <option value="2">2</option> 
-                                    <option value="3">3</option> 
-                                    <option value="4">4</option> 
-                                    <option value="5">5</option> 
-                                    <option value="6">6</option> 
-                                    <option value="7">8</option> 
-                                    <option value="9">9</option>
-                                    <option value="10">10</option> 
-                                    <option value="11">11</option> 
-                                    <option value="12">12</option>  
+                            <select name="bloque" class="form-control" >
+                                    <option value="1">1- 08:30 - 09:30</option>
+                                    <option value="2">2- 09:35 - 10:35</option> 
+                                    <option value="3">3- 10:50 - 11:50</option> 
+                                    <option value="4">4- 11:55 - 12:55</option> 
+                                    <option value="5">5- 13:10 - 14:10</option> 
+                                    <option value="6">6- 14:30 - 15:30</option> 
+                                    <option value="7">7- 15:35 - 16:35</option> 
+                                    <option value="8">8- 16:50 - 17:50</option>
+                                    <option value="9">9- 17:55 - 18:55</option> 
+                                    <option value="10">10- 19:10 - 20:10</option> 
+                                    <option value="11">11- 20:15 - 21:15</option>  
+                                    <option value="12">12- 21:30 - 22:30</option>      
                                 </select>
 
                         </div>
