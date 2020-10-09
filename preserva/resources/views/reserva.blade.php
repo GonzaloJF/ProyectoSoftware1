@@ -44,7 +44,12 @@
                                     <h4>Solicitado por: {{ $reserva->nombre_reservante }}</h4>
                                     <h4>Codigo Laboratorio: {{ $reserva->cod_lab }}</h4>
                                     <h4>Fecha: {{ $reserva->fecha }}</h4>
-                                    <h4>Bloque: {{ $reserva->bloque }}</h4>
+                                    <h4>Bloques: </h4>
+                                    <ul>
+                                        @foreach ($reserva->bloques as $bloque_ind)
+                                            <li>{{ $bloque_ind }} </li>
+                                        @endforeach
+                                    </ul>
                                     <h4>Capacidad: {{ $reserva->cap_res }}</h4>
                                     
                                     <form action = "{{ url('/reserva/'.$reserva->id.'/edit') }}">

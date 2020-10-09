@@ -20,7 +20,7 @@ class CreateReservasTable extends Migration
             $table->string('nombre_reservante');
             $table->string('cod_lab');
             $table->date('fecha');
-            $table->integer('bloque');
+            $table->json('bloques');
             $table->integer('cap_res');
             $table->timestamps();
         });

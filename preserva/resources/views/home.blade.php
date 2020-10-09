@@ -37,15 +37,21 @@
                     
                         <div class="list-group">
                        
-                        <div class="row">    
+                            
                         @foreach($reservas as $reserva)
-                            <div class="col-sm-5 col-md-6">
+                            
                                 <li class="list-group-item active">
                                     <li class="list-group-item reserva text-center ">
                                         <h4 class="red"><strong>Laboratorio: {{ $reserva->cod_lab }}</strong></h4>
-                                        <h4><strong>Solicitado por: {{ $reserva->nombre_reservante }}</ls></h4>
-                                        <h4><stron>Fecha: {{ $reserva->fecha }}</strong></h4>
-                                        <h4><strong>Solicitado por: Bloque: {{ $reserva->bloque }}</strong></h4>
+                                        <h4><strong>Solicitado por: {{ $reserva->nombre_reservante }}</h4>
+                                        <h4><strong>Fecha: {{ $reserva->fecha }}</strong></h4>
+                                        <h4><strong>Bloques:</strong></h4>
+                                        
+                                        <h4 class=" justify-content-center">
+                                            @foreach ($reserva->bloques as $bloque_ind)
+                                               {{ $bloque_ind }},
+                                            @endforeach
+                                        </h4>
                                     </li>
                                 </li>
                             </div>

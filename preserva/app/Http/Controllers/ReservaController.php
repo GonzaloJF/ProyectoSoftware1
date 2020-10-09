@@ -102,10 +102,10 @@ class ReservaController extends Controller
             'nombre_reservante' => ['required'],
             'cod_lab' => ['required'],
             'fecha' => ['required','after:yesterday'],
-            'bloque' => ['required'],
+            'bloques' => ['required'],
             'cap_res' => ['required'],
         ]);
-
+        /*
         if((reserva::where('cod_lab','=',$validatedData['cod_lab'])->where('fecha','=',$validatedData['fecha'])->where('bloque','=',$validatedData['bloque'])->count())>0){
             $error="El laboratorio ya esta reservado ese dia y en ese bloque";
             return back()->with(compact('error'));
@@ -115,7 +115,7 @@ class ReservaController extends Controller
         if((laboratorio::where('Codigo_de_laboratorio','=',$validatedData['cod_lab'])->where('capacidad','<',$validatedData['cap_res'])->count())>0){
             $error="La capacidad ingresada es superior a la del laboratorio";
             return back()->with(compact('error'));
-        };
+        };*/
 
         $reserva = new reserva();
         $reserva->username = $validatedData['username'];
@@ -123,8 +123,9 @@ class ReservaController extends Controller
         $reserva->nombre_reservante =$validatedData['nombre_reservante'];
         $reserva->cod_lab =$validatedData['cod_lab'];
         $reserva->fecha =$validatedData['fecha'];
-        $reserva->bloque =$validatedData['bloque'];
+        $reserva->bloques = $validatedData['bloques'];
         $reserva->cap_res =$validatedData['cap_res'];
+        
         $reserva->save();
 
         $status = 'Has reservado correctamente';

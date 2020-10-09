@@ -30,19 +30,19 @@ class HomeController extends Controller
         $lab_buscar= $request->get('buscar_lab');
         $fecha_buscar=$request->get('fecha_buscar');
             if(($request->buscar_lab!='Todos')&&($fecha_buscar==NULL)){
-                $reservas = reserva::where('cod_lab','like',"%$lab_buscar%")->where('fecha','>=',today())->orderBy('fecha')->orderBy('bloque')->Paginate(10);
+                $reservas = reserva::where('cod_lab','like',"%$lab_buscar%")->where('fecha','>=',today())->orderBy('fecha')->Paginate(10);
                 return view('home',compact('reservas','laboratorios'));
             }
             if(($request->buscar_lab=='Todos')&&($fecha_buscar!=NULL)){
-                $reservas = reserva::where('fecha','like',"%$fecha_buscar%")->where('fecha','>=',today())->orderBy('fecha')->orderBy('bloque')->Paginate(10);
+                $reservas = reserva::where('fecha','like',"%$fecha_buscar%")->where('fecha','>=',today())->orderBy('fecha')->Paginate(10);
                 return view('home',compact('reservas','laboratorios'));
             }
             if(($request->buscar_lab!='Todos')&&($fecha_buscar!=NULL)){
-                $reservas = reserva::where('cod_lab','like',"%$lab_buscar%")->where('fecha','=',"%$fecha_buscar%")->where('fecha','>=',today())->orderBy('fecha')->orderBy('bloque')->Paginate(10);
+                $reservas = reserva::where('cod_lab','like',"%$lab_buscar%")->where('fecha','=',"%$fecha_buscar%")->where('fecha','>=',today())->orderBy('fecha')->Paginate(10);
                 return view('home',compact('reservas','laboratorios'));
             };
             if(($request->buscar_lab=='Todos')&&($fecha_buscar==NULL)){
-                $reservas = reserva::orderBy('fecha')->orderBy('bloque')->where('fecha','>=',today())->Paginate(10);
+                $reservas = reserva::orderBy('fecha')->where('fecha','>=',today())->Paginate(10);
                 return view('home',compact('reservas','laboratorios'));
             };    
         
