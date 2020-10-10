@@ -43,7 +43,8 @@
                                     <h4>Reservado por: {{ $reserva->nombre_completo }}</h4>
                                     <h4>Solicitado por: {{ $reserva->nombre_reservante }}</h4>
                                     <h4>Codigo Laboratorio: {{ $reserva->cod_lab }}</h4>
-                                    <h4>Fecha: {{ $reserva->fecha }}</h4>
+                                    <h4>Fecha_inicial: {{ $reserva->Fecha_inicial }}</h4>
+                                    <h4>Dias: </h4>
                                     <h4>Bloques: </h4>
                                     <ul>
                                         @foreach ($reserva->bloques as $bloque_ind)

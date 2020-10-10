@@ -51,7 +51,7 @@ class ReservaController extends Controller
                 return view('reserva',compact('reservas','laboratorios'));
             }
             if(($request->buscar_lab=='Todos')&&($fecha_buscar!=NULL)){
-                $reservas = reserva::where('username','=',Auth::user()->username)->where('fecha','like',"%$fecha_buscar%")->orderByDesc('id')->Paginate(10);
+                $reservas = reserva::where('username','=',Auth::user()->username)->where('fecha_inicial','like',"%$fecha_buscar%")->orderByDesc('id')->Paginate(10);
                 return view('reserva',compact('reservas','laboratorios'));
             }
             if(($request->buscar_lab!='Todos')&&($fecha_buscar!=NULL)){
@@ -68,11 +68,11 @@ class ReservaController extends Controller
                 return view('reserva',compact('reservas','laboratorios'));
             }
             if(($request->buscar_lab=='Todos')&&($fecha_buscar!=NULL)){
-                $reservas = reserva::where('fecha','like',"%$fecha_buscar%")->orderByDesc('id')->Paginate(10);
+                $reservas = reserva::where('fecha_inicial','like',"%$fecha_buscar%")->orderByDesc('id')->Paginate(10);
                 return view('reserva',compact('reservas','laboratorios'));
             }
             if(($request->buscar_lab!='Todos')&&($fecha_buscar!=NULL)){
-                $reservas = reserva::where('cod_lab','like',"%$lab_buscar%")->where('fecha','=',"%$fecha_buscar%")->orderByDesc('id')->Paginate(10);
+                $reservas = reserva::where('cod_lab','like',"%$lab_buscar%")->where('fecha_inicial','=',"%$fecha_buscar%")->orderByDesc('id')->Paginate(10);
                 return view('reserva',compact('reservas','laboratorios'));
             };
             if(($request->buscar_lab=='Todos')&&($fecha_buscar==NULL)){
@@ -101,7 +101,8 @@ class ReservaController extends Controller
             'nombre_completo' => ['required'],
             'nombre_reservante' => ['required'],
             'cod_lab' => ['required'],
-            'fecha' => ['required','after:yesterday'],
+            'fecha_inicial' => ['required','after:yesterday'],
+            'fecha_final' => ['required'],
             'bloques' => ['required'],
             'cap_res' => ['required'],
         ]);
@@ -122,7 +123,8 @@ class ReservaController extends Controller
         $reserva->nombre_completo =$validatedData['nombre_completo'];
         $reserva->nombre_reservante =$validatedData['nombre_reservante'];
         $reserva->cod_lab =$validatedData['cod_lab'];
-        $reserva->fecha =$validatedData['fecha'];
+        $reserva->fecha_inicial =$validatedData['fecha_inicial'];
+        $reserva->fecha_final =$validatedData['fecha_final'];
         $reserva->bloques = $validatedData['bloques'];
         $reserva->cap_res =$validatedData['cap_res'];
         
@@ -170,14 +172,14 @@ class ReservaController extends Controller
             'username' => ['required'],
             'nombre_completo' => ['required'],
             'cod_lab' => ['required'],
-            'fecha' => ['required'],
+            'fecha_inicial' => ['required'],
             'bloque' => ['required'],
             'cap_res' => ['required'],
         ]);
 
 
         $reserva->cod_lab =$validatedData['cod_lab'];
-        $reserva->fecha =$validatedData['fecha'];
+        $reserva->fecha_inicial =$validatedData['fecha_inicial'];
         $reserva->bloque =$validatedData['bloque'];
         $reserva->cap_res =$validatedData['cap_res'];
         $reserva->save();
