@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index(Request $request)//Busca las reservas hechas anteriormente
     {
         //dd($request->all());
-        $laboratorios = laboratorio::orderBy('id')->Paginate();
+        /*$laboratorios = laboratorio::orderBy('id')->Paginate();
         $lab_buscar= $request->get('buscar_lab');
         $fecha_buscar=$request->get('fecha_buscar');
             if(($request->buscar_lab!='Todos')&&($fecha_buscar==NULL)){
@@ -44,7 +44,8 @@ class HomeController extends Controller
             if(($request->buscar_lab=='Todos')&&($fecha_buscar==NULL)){
                 $reservas = reserva::orderBy('fecha')->where('fecha','>=',today())->Paginate(10);
                 return view('home',compact('reservas','laboratorios'));
-            };    
+            };*/
+            return view('home');
         
     }
 }
