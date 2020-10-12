@@ -17,10 +17,7 @@ class CreateEventosTable extends Migration
             $table->id();
             $table->string('cod_lab');
             $table->string('title');
-            $table->string('color');
-            $table->string('textcolor');
-            $table->date('start');
-            $table->date('end');
+            $table->string('rrule');
             $table->timestamps();
         });
     }
