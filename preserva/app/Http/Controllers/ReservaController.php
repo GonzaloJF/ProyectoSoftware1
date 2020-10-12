@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Reserva;
 use App\laboratorio;
+use App\evento;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -128,6 +129,14 @@ class ReservaController extends Controller
         $reserva->bloques = $validatedData['bloques'];
         $reserva->cap_res =$validatedData['cap_res'];
         
+        $fechaini =$validatedData['fecha_inicial'];
+        $fechafin =$validatedData['fecha_final'];
+
+        $evento= new evento();
+        $evento->cod_lab =$validatedData['cod_lab'];
+        $evento->title = 'reserva';
+        $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=WE";
+        $evento->save();
         $reserva->save();
 
         $status = 'Has reservado correctamente';

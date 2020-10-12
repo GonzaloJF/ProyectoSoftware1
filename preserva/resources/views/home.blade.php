@@ -19,14 +19,13 @@
 
           events: "{{ url('/home/show') }}"
           /*events: [
-            {title: 'rrule event',
-        /*rrule: {
-          byweekday: [ 'mo' ],
-          dtstart: '2020-10-01T13:00:00',
-          until: '2020-11-09T13:00:00',
-          freq: 'weekly'
-        }
-        rrule: 'DTSTART:2020-10-01T13:00:00\nRRULE:FREQ=WEEKLY;UNTIL=2020-11-09T13:00:00;BYWEEKDAY=MO'
+            {id : 10,
+              cod_lab: 'dci_2',
+              title: 'rrule event',
+        //rrule: {byweekday: [ 'mo' ],dtstart: '2020-10-01T13:00:00',until: '2020-11-09T13:00:00',freq: 'weekly'}
+        rrule: 'DTSTART:2020-10-01\nRRULE:FREQ=WEEKLY;UNTIL=2020-11-09;BYWEEKDAY=FR'
+            // 'DTSTART:2020-10-15\nRRULE:FREQ=WEEKLY;UNTIL=2020-11-21;BYWEEKDAY=FR'
+                
       },
 
       ]*/
