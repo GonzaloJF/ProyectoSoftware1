@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Reserva;
 use App\laboratorio;
+use App\evento;
 
 class HomeController extends Controller
 {
@@ -46,6 +47,11 @@ class HomeController extends Controller
                 return view('home',compact('reservas','laboratorios'));
             };*/
             return view('home');
-        
+    }
+
+    public function show()
+    {   
+        $data['eventos']=evento::all();
+            return response() ->json($data['eventos']);
     }
 }

@@ -148,18 +148,18 @@
                                     <fieldset>
                                         <label>BLOQUES: </label>
                                         <br>
-                                        <input type="checkbox" name="bloques[]" value ="miercolesjueves1"> 1- 08:30 - 09:30<br />
-                                        <input type="checkbox" name="bloques[]" value ="miercolesjueves2"> 2- 09:35 - 10:35<br />
-                                        <input type="checkbox" name="bloques[]" value ="miercolesjueves3"> 3- 10:50 - 11:50<br />
-                                        <input type="checkbox" name="bloques[]" value ="miercolesjueves4"> 4- 11:55 - 12:55<br />
-                                        <input type="checkbox" name="bloques[]" value ="miercolesjueves5"> 5- 13:10 - 14:10<br />
-                                        <input type="checkbox" name="bloques[]" value ="miercolesjueves6"> 6- 14:30 - 15:30<br />
-                                        <input type="checkbox" name="bloques[]" value ="miercolesjueves7"> 7- 15:35 - 16:35<br />
-                                        <input type="checkbox" name="bloques[]" value ="miercolesjueves8"> 8- 16:50 - 17:50<br />
-                                        <input type="checkbox" name="bloques[]" value ="miercolesjueves9"> 9- 17:55 - 18:55<br />
-                                        <input type="checkbox" name="bloques[]" value ="miercolesjueves10"> 10- 19:10 - 20:10<br />
-                                        <input type="checkbox" name="bloques[]" value ="miercolesjueves11"> 11- 20:15 - 21:15<br />
-                                        <input type="checkbox" name="bloques[]" value ="miercolesjueves12"> 12- 21:30 - 22:30<br />
+                                        <input type="checkbox" name="bloques[]" value ="miercoles1"> 1- 08:30 - 09:30<br />
+                                        <input type="checkbox" name="bloques[]" value ="miercoles2"> 2- 09:35 - 10:35<br />
+                                        <input type="checkbox" name="bloques[]" value ="miercoles3"> 3- 10:50 - 11:50<br />
+                                        <input type="checkbox" name="bloques[]" value ="miercoles4"> 4- 11:55 - 12:55<br />
+                                        <input type="checkbox" name="bloques[]" value ="miercoles5"> 5- 13:10 - 14:10<br />
+                                        <input type="checkbox" name="bloques[]" value ="miercoles6"> 6- 14:30 - 15:30<br />
+                                        <input type="checkbox" name="bloques[]" value ="miercoles7"> 7- 15:35 - 16:35<br />
+                                        <input type="checkbox" name="bloques[]" value ="miercoles8"> 8- 16:50 - 17:50<br />
+                                        <input type="checkbox" name="bloques[]" value ="miercoles9"> 9- 17:55 - 18:55<br />
+                                        <input type="checkbox" name="bloques[]" value ="miercoles10"> 10- 19:10 - 20:10<br />
+                                        <input type="checkbox" name="bloques[]" value ="miercoles11"> 11- 20:15 - 21:15<br />
+                                        <input type="checkbox" name="bloques[]" value ="miercoles12"> 12- 21:30 - 22:30<br />
                                     </fieldset>  
                                 </div>
                             </div>

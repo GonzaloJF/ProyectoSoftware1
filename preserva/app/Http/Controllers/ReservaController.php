@@ -183,9 +183,10 @@ class ReservaController extends Controller
         $reserva->bloque =$validatedData['bloque'];
         $reserva->cap_res =$validatedData['cap_res'];
         $reserva->save();
-
+        
+        $fecha = $validatedData['fecha_inicial'];
         $status = 'Has editado correctamente';
-        return back()->with(compact('status'));
+        return back()->with(compact('status','fecha'));
     }
 
     /**

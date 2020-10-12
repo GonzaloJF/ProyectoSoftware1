@@ -38,6 +38,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Fullcalendar -->
+    <link href='{{ asset('assets/lib/main.css') }}' rel='stylesheet' />
+    <script src='{{ asset('assets/lib/main.js') }}'></script>
+    <script src={{ asset('assets/lib/locales/es.js') }}></script>
     
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

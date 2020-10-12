@@ -11,15 +11,17 @@
     
         var calendar = new FullCalendar.Calendar(calendarEl, {
           locale: 'es',
-          editable: true,
-          selectable: true,
           businessHours: true,
-          dayMaxEvents: true, // allow "more" link when too many events
-          events: [
-        
-          ]
-        });
-    
+
+          events: "{{ url('/home/show') }}"
+          /*events: [
+        {
+          title: 'All Day Event',
+          start: '2020-10-01'
+        },
+
+      ]*/
+    });
         calendar.render();
       });
           
