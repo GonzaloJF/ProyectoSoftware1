@@ -95,8 +95,9 @@ class ReservaController extends Controller
      //Toma los datos de la nueva reserva y los agrega a la base de datos
     public function store(Request $request)
     {
-        //dd($request->all());
         
+        //dd($request->all());
+       
         $validatedData = $request->validate([
             'username' => ['required'],
             'nombre_completo' => ['required'],
@@ -107,6 +108,7 @@ class ReservaController extends Controller
             'bloques' => ['required'],
             'cap_res' => ['required'],
         ]);
+
         /*
         if((reserva::where('cod_lab','=',$validatedData['cod_lab'])->where('fecha','=',$validatedData['fecha'])->where('bloque','=',$validatedData['bloque'])->count())>0){
             $error="El laboratorio ya esta reservado ese dia y en ese bloque";
@@ -118,7 +120,7 @@ class ReservaController extends Controller
             $error="La capacidad ingresada es superior a la del laboratorio";
             return back()->with(compact('error'));
         };*/
-
+        
         $reserva = new reserva();
         $reserva->username = $validatedData['username'];
         $reserva->nombre_completo =$validatedData['nombre_completo'];
@@ -131,12 +133,122 @@ class ReservaController extends Controller
         
         $fechaini =$validatedData['fecha_inicial'];
         $fechafin =$validatedData['fecha_final'];
+        
+        $total_bloque = $validatedData['bloques'];;
+        foreach ($total_bloque as &$bloque_ind) {
+//---------------------------   LUNES--------------------
+            if($bloque_ind == 'lunes1'){
+                /*if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('fecha','=',$validatedData['fecha'])->where('bloque','=',$validatedData['bloque'])->count())>0){
+                    $error="El laboratorio ya esta reservado ese dia y en ese bloque";
+                    return back()->with(compact('error'));
+                    
+                }*/
+                $evento= new evento();
+                $evento->cod_lab =$validatedData['cod_lab'];
+                $evento->title = 'Bloque 1';
+                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
+                $evento->save();
+            }
+            
+            if($bloque_ind == 'lunes2'){
+                $evento= new evento();
+                $evento->cod_lab =$validatedData['cod_lab'];
+                $evento->title = 'Bloque 2';
+                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
+                $evento->save();
+            }
 
-        $evento= new evento();
-        $evento->cod_lab =$validatedData['cod_lab'];
-        $evento->title = 'reserva';
-        $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=WE";
-        $evento->save();
+            if($bloque_ind == 'lunes3'){
+                $evento= new evento();
+                $evento->cod_lab =$validatedData['cod_lab'];
+                $evento->title = 'Bloque 3';
+                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
+                $evento->save();
+            }
+
+            if($bloque_ind == 'lunes4'){
+                $evento= new evento();
+                $evento->cod_lab =$validatedData['cod_lab'];
+                $evento->title = 'Bloque 4';
+                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
+                $evento->save();
+            }
+
+            if($bloque_ind == 'lunes4'){
+                $evento= new evento();
+                $evento->cod_lab =$validatedData['cod_lab'];
+                $evento->title = 'Bloque 4';
+                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
+                $evento->save();
+            }
+
+            if($bloque_ind == 'lunes5'){
+                $evento= new evento();
+                $evento->cod_lab =$validatedData['cod_lab'];
+                $evento->title = 'Bloque 5';
+                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
+                $evento->save();
+            }
+
+            if($bloque_ind == 'lunes6'){
+                $evento= new evento();
+                $evento->cod_lab =$validatedData['cod_lab'];
+                $evento->title = 'Bloque 6';
+                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
+                $evento->save();
+            }
+
+            if($bloque_ind == 'lunes7'){
+                $evento= new evento();
+                $evento->cod_lab =$validatedData['cod_lab'];
+                $evento->title = 'Bloque 7';
+                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
+                $evento->save();
+            }
+
+            if($bloque_ind == 'lunes8'){
+                $evento= new evento();
+                $evento->cod_lab =$validatedData['cod_lab'];
+                $evento->title = 'Bloque 8';
+                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
+                $evento->save();
+            }
+
+            if($bloque_ind == 'lunes9'){
+                $evento= new evento();
+                $evento->cod_lab =$validatedData['cod_lab'];
+                $evento->title = 'Bloque 9';
+                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
+                $evento->save();
+            }
+
+            if($bloque_ind == 'lunes10'){
+                $evento= new evento();
+                $evento->cod_lab =$validatedData['cod_lab'];
+                $evento->title = 'Bloque 10';
+                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
+                $evento->save();
+            }
+
+            if($bloque_ind == 'lunes11'){
+                $evento= new evento();
+                $evento->cod_lab =$validatedData['cod_lab'];
+                $evento->title = 'Bloque 11';
+                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
+                $evento->save();
+            }
+
+            if($bloque_ind == 'lunes12'){
+                $evento= new evento();
+                $evento->cod_lab =$validatedData['cod_lab'];
+                $evento->title = 'Bloque 12';
+                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
+                $evento->save();
+            }
+//-------------------------- MARTES -------------------        
+        }
+
+        
         $reserva->save();
 
         $status = 'Has reservado correctamente';
