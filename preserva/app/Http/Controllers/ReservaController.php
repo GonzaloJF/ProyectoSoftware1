@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
 use App\Reserva;
 use App\laboratorio;
 use App\evento;
@@ -134,125 +134,986 @@ class ReservaController extends Controller
         $fechaini =$validatedData['fecha_inicial'];
         $fechafin =$validatedData['fecha_final'];
         
-        $total_bloque = $validatedData['bloques'];;
-        foreach ($total_bloque as &$bloque_ind) {
-//---------------------------   LUNES--------------------
-            if($bloque_ind == 'lunes1'){
-                /*if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('fecha','=',$validatedData['fecha'])->where('bloque','=',$validatedData['bloque'])->count())>0){
-                    $error="El laboratorio ya esta reservado ese dia y en ese bloque";
-                    return back()->with(compact('error'));
+        $total_bloque = $validatedData['bloques'];
+        Carbon::tomorrow()->format('l Y m d');
+        $dia=$fechaini;
+        while($dia <= $fechafin){
+                        
+            foreach ($total_bloque as &$bloque_ind) {
+    //---------------------------   LUNES--------------------
+                if((carbon::parse($dia)->dayOfWeek )=='1'){
+                    //print_r($dia);
+                
+                    if($bloque_ind == 'lunes1'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 1';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'lunes2'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 2';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'lunes3'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 3';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'lunes4'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 4';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'lunes5'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 5';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'lunes6'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 6';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'lunes7'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 7';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'lunes8'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 8';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'lunes9'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 9';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'lunes10'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 10';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
                     
-                }*/
-                $evento= new evento();
-                $evento->cod_lab =$validatedData['cod_lab'];
-                $evento->title = 'Bloque 1';
-                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
-                $evento->save();
-            }
-            
-            if($bloque_ind == 'lunes2'){
-                $evento= new evento();
-                $evento->cod_lab =$validatedData['cod_lab'];
-                $evento->title = 'Bloque 2';
-                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
-                $evento->save();
-            }
+                    if($bloque_ind == 'lunes11'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 11';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
 
-            if($bloque_ind == 'lunes3'){
-                $evento= new evento();
-                $evento->cod_lab =$validatedData['cod_lab'];
-                $evento->title = 'Bloque 3';
-                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
-                $evento->save();
-            }
+                    if($bloque_ind == 'lunes11'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 11';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
 
-            if($bloque_ind == 'lunes4'){
-                $evento= new evento();
-                $evento->cod_lab =$validatedData['cod_lab'];
-                $evento->title = 'Bloque 4';
-                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
-                $evento->save();
-            }
+                    if($bloque_ind == 'lunes12'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 12';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+                    
+                }
+    //-------------------------- MARTES ------------------- 
+                if((carbon::parse($dia)->dayOfWeek )=='2'){
+                                    
+                    if($bloque_ind == 'martes1'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 1';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
 
-            if($bloque_ind == 'lunes4'){
-                $evento= new evento();
-                $evento->cod_lab =$validatedData['cod_lab'];
-                $evento->title = 'Bloque 4';
-                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
-                $evento->save();
-            }
+                    if($bloque_ind == 'martes2'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 2';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
 
-            if($bloque_ind == 'lunes5'){
-                $evento= new evento();
-                $evento->cod_lab =$validatedData['cod_lab'];
-                $evento->title = 'Bloque 5';
-                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
-                $evento->save();
-            }
+                    if($bloque_ind == 'martes3'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 3';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
 
-            if($bloque_ind == 'lunes6'){
-                $evento= new evento();
-                $evento->cod_lab =$validatedData['cod_lab'];
-                $evento->title = 'Bloque 6';
-                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
-                $evento->save();
-            }
+                    if($bloque_ind == 'martes4'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 4';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
 
-            if($bloque_ind == 'lunes7'){
-                $evento= new evento();
-                $evento->cod_lab =$validatedData['cod_lab'];
-                $evento->title = 'Bloque 7';
-                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
-                $evento->save();
-            }
+                    if($bloque_ind == 'martes5'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 5';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
 
-            if($bloque_ind == 'lunes8'){
-                $evento= new evento();
-                $evento->cod_lab =$validatedData['cod_lab'];
-                $evento->title = 'Bloque 8';
-                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
-                $evento->save();
-            }
+                    if($bloque_ind == 'martes6'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 6';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
 
-            if($bloque_ind == 'lunes9'){
-                $evento= new evento();
-                $evento->cod_lab =$validatedData['cod_lab'];
-                $evento->title = 'Bloque 9';
-                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
-                $evento->save();
-            }
+                    if($bloque_ind == 'martes7'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 7';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
 
-            if($bloque_ind == 'lunes10'){
-                $evento= new evento();
-                $evento->cod_lab =$validatedData['cod_lab'];
-                $evento->title = 'Bloque 10';
-                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
-                $evento->save();
-            }
+                    if($bloque_ind == 'martes8'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 8';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
 
-            if($bloque_ind == 'lunes11'){
-                $evento= new evento();
-                $evento->cod_lab =$validatedData['cod_lab'];
-                $evento->title = 'Bloque 11';
-                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
-                $evento->save();
-            }
+                    if($bloque_ind == 'martes9'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 9';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
 
-            if($bloque_ind == 'lunes12'){
-                $evento= new evento();
-                $evento->cod_lab =$validatedData['cod_lab'];
-                $evento->title = 'Bloque 12';
-                $evento->rrule = "DTSTART:$fechaini\nRRULE:FREQ=WEEKLY;UNTIL=$fechafin;BYWEEKDAY=MO";
-                $evento->save();
+                    if($bloque_ind == 'martes10'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 10';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+                    
+                    if($bloque_ind == 'martes11'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 11';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'martes11'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 11';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'martes12'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 12';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+                    
+                }
+//-------------------- MIERCOLES -----------               
+                if((carbon::parse($dia)->dayOfWeek )=='3'){
+                    if($bloque_ind == 'miercoles1'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 1';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'miercoles2'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 2';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'miercoles3'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 3';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'miercoles4'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 4';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'miercoles5'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 5';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'miercoles6'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 6';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'miercoles7'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 7';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'miercoles8'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 8';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'miercoles9'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 9';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'miercoles10'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 10';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+                    
+                    if($bloque_ind == 'miercoles11'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 11';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'miercoles11'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 11';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'miercoles12'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 12';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }                               
+                    
+                    
+                }
+
+//-------------------- JUEVES----------------
+                if((carbon::parse($dia)->dayOfWeek )=='4'){
+                  
+                    if($bloque_ind == 'jueves1'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 1';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'jueves2'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 2';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'jueves3'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 3';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'jueves4'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 4';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'jueves5'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 5';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'jueves6'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 6';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'jueves7'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 7';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'jueves8'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 8';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'jueves9'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 9';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'jueves10'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 10';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+                    
+                    if($bloque_ind == 'jueves11'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 11';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'jueves11'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 11';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'jueves12'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 12';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+                                    
+                                    
+                }
+
+//-------------------- Viernes----------------
+                if((carbon::parse($dia)->dayOfWeek )=='5'){
+                                                                                    
+                    if($bloque_ind == 'viernes1'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 1';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'viernes2'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 2';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'viernes3'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 3';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'viernes4'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 4';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'viernes5'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 5';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'viernes6'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 6';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'viernes7'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 7';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'viernes8'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 8';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'viernes9'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 9';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'viernes10'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 10';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+                    
+                    if($bloque_ind == 'viernes11'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 11';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'viernes11'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 11';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'viernes12'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 12';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }                             
+                                                    
+                }
+
+//-------------------- Sabado----------------
+                if((carbon::parse($dia)->dayOfWeek )=='6'){
+                                                                                    
+                    if($bloque_ind == 'sabado1'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 1';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'sabado2'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 2';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'sabado3'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 3';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'sabado4'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 4';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'sabado5'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 5';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'sabado6'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 6';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'sabado7'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 7';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'sabado8'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 8';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'sabado9'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 9';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'sabado10'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 10';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+                    
+                    if($bloque_ind == 'sabado11'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 11';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'sabado11'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 11';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }
+
+                    if($bloque_ind == 'sabado12'){
+                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia)->count())==0){
+                            $evento= new evento();
+                            $evento->cod_lab =$validatedData['cod_lab'];
+                            $evento->title = 'Bloque 12';
+                            $evento->start = $dia;
+                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->save();
+                            
+                        }
+                    }                               
+                                                    
+                }
+
             }
-//-------------------------- MARTES -------------------        
+            $dia=Carbon::parse($dia)->addDays(1);
         }
-
         
         $reserva->save();
 
         $status = 'Has reservado correctamente';
-        return back()->with(compact('status'));
+    return back()->with(compact('status'));
     }
 
     /**

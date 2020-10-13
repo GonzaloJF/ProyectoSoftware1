@@ -17,7 +17,8 @@ class CreateEventosTable extends Migration
             $table->id();
             $table->string('cod_lab');
             $table->string('title');
-            $table->string('rrule');
+            $table->date('start');
+            $table->string('nombre_reservante');
             $table->timestamps();
         });
     }
