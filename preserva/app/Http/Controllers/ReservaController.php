@@ -107,6 +107,7 @@ class ReservaController extends Controller
             'fecha_final' => ['required'],
             'bloques' => ['required'],
             'cap_res' => ['required'],
+            'atomica' => ['required'],
         ]);
 
         /*
@@ -135,9 +136,605 @@ class ReservaController extends Controller
         $fechafin =$validatedData['fecha_final'];
         
         $total_bloque = $validatedData['bloques'];
-        Carbon::tomorrow()->format('l Y m d');
+        $dia1=$fechaini;
+
+        //VERIFICAR SI ESTA TODO DISPONIBLE CUANDO ES ATOMICA
+        if($validatedData['atomica'] == 'si'){
+            //dd($validatedData['atomica']);
+            while($dia1 <= $fechafin){
+                foreach ($total_bloque as &$bloque_ind) {
+                    //---------------------------   LUNES--------------------
+                    if((carbon::parse($dia1)->dayOfWeek )=='1'){
+                        //print_r($dia1);
+                    
+                        if($bloque_ind == 'lunes1'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'lunes2'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'lunes3'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'lunes4'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'lunes5'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'lunes6'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'lunes7'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'lunes8'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'lunes9'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia1)->count())>0){
+
+                            }
+                        }
+
+                        if($bloque_ind == 'lunes10'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+                        
+                        if($bloque_ind == 'lunes11'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
+
+                            }
+                        }
+
+                        if($bloque_ind == 'lunes11'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'lunes12'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+                        
+                    }
+        //-------------------------- MARTES ------------------- 
+                    if((carbon::parse($dia1)->dayOfWeek )=='2'){
+                                        
+                        if($bloque_ind == 'martes1'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'martes2'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'martes3'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'martes4'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'martes5'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'martes6'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'martes7'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'martes8'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'martes9'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'martes10'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+                        
+                        if($bloque_ind == 'martes11'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'martes11'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'martes12'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+                        
+                    }
+    //-------------------- MIERCOLES -----------               
+                    if((carbon::parse($dia1)->dayOfWeek )=='3'){
+                        if($bloque_ind == 'miercoles1'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'miercoles2'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'miercoles3'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'miercoles4'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'miercoles5'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'miercoles6'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'miercoles7'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'miercoles8'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'miercoles9'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'miercoles10'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+                        
+                        if($bloque_ind == 'miercoles11'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'miercoles11'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'miercoles12'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }                               
+                        
+                        
+                    }
+
+    //-------------------- JUEVES----------------
+                    if((carbon::parse($dia1)->dayOfWeek )=='4'){
+                    
+                        if($bloque_ind == 'jueves1'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'jueves2'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'jueves3'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'jueves4'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'jueves5'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'jueves6'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'jueves7'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'jueves8'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'jueves9'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'jueves10'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+                        
+                        if($bloque_ind == 'jueves11'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'jueves11'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'jueves12'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+                                        
+                                        
+                    }
+
+    //-------------------- Viernes----------------
+                    if((carbon::parse($dia1)->dayOfWeek )=='5'){
+                                                                                        
+                        if($bloque_ind == 'viernes1'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'viernes2'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'viernes3'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'viernes4'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'viernes5'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'viernes6'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'viernes7'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'viernes8'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'viernes9'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'viernes10'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+                        
+                        if($bloque_ind == 'viernes11'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'viernes11'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
+                                $evento= new evento();
+                                $evento->cod_lab =$validatedData['cod_lab'];
+                                $evento->title = 'Bloque 11';
+                                $evento->start = $dia1;
+                                $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                                $evento->save();
+                                
+                            }
+                        }
+
+                        if($bloque_ind == 'viernes12'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }                             
+                                                        
+                    }
+
+    //-------------------- Sabado----------------
+                    if((carbon::parse($dia1)->dayOfWeek )=='6'){
+                                                                                        
+                        if($bloque_ind == 'sabado1'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'sabado2'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'sabado3'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'sabado4'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'sabado5'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'sabado6'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'sabado7'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'sabado8'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'sabado9'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'sabado10'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+                        
+                        if($bloque_ind == 'sabado11'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'sabado11'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }
+
+                        if($bloque_ind == 'sabado12'){
+                            if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia1)->count())>0){
+                                $error="Hay un bloque con el mismo dia ocupado en este laboratorio";
+                                return back()->with(compact('error')); 
+                            }
+                        }                               
+                                                        
+                    }   
+
+                }
+            
+                $dia1=Carbon::parse($dia1)->addDays(1);
+            }
+        }
+
+//--------------------------------------------- INGRESO DE EVENTOS -------------------------------------------
+
         $dia=$fechaini;
-        while($dia <= $fechafin){
+        $diafinal=Carbon::parse($fechafin)->addDays(1);
+
+
+        while($dia < $diafinal ){
                         
             foreach ($total_bloque as &$bloque_ind) {
     //---------------------------   LUNES--------------------

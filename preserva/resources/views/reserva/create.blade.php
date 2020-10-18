@@ -261,6 +261,15 @@
                             @enderror
 
                         </div>
+
+                        <div class="form-group">
+                            <label for="atomica">{{ __('Atomica') }}</label>
+                        
+                            <select name="atomica"class="form-control" >
+                                <option value="no">no</option>
+                                <option value="si">si</option>  
+                            </select>
+                        </div>
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Reservar') }}
                                 </button>
