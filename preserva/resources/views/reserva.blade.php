@@ -42,7 +42,8 @@
                                     <h4>Rut: {{ $reserva->username }}</h4>
                                     <h4>Reservado por: {{ $reserva->nombre_reservante }}</h4>
                                     <h4>Codigo Laboratorio: {{ $reserva->cod_lab }}</h4>
-                                    <h4>Fecha_inicial: {{ $reserva->Fecha_inicial }}</h4>
+                                    <h4>Desde: {{ $reserva->fecha_inicial }}</h4>
+                                    <h4>Hasta: {{ $reserva->fecha_final }}</h4>
                                     <h4>Dias: </h4>
                                     <h4>Bloques: </h4>
                                     <ul>
