@@ -17,7 +17,7 @@
           businessHours: true,
 
 
-          events: "{{ url('/home/show') }}"
+          events: "{{ route('show') }}"
           /*events: [
             {id : 10,
               cod_lab: 'dci_2',

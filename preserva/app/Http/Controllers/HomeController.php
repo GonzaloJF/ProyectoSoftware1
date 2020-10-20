@@ -46,12 +46,18 @@ class HomeController extends Controller
                 $reservas = reserva::orderBy('fecha')->where('fecha','>=',today())->Paginate(10);
                 return view('home',compact('reservas','laboratorios'));
             };*/
+            /*$events = [];
+            $eventos = evento::orderBy('id')->get();
+            $eventito =  $eventos->get();
+            dd($eventito);*/
+            
             return view('home');
     }
 
     public function show()
     {   
-        $data['eventos']=evento::all();
-            return response() ->json($data['eventos']);
+        //$data=evento::latest()->where('id','=',98)->get();
+        $data=evento::all();
+        return response() ->json($data);
     }
 }
