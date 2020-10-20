@@ -31,21 +31,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="nombre_completo">{{ __('Nombre') }}</label>
-                            <input id="nombre_completo" value ="{{ (auth::user()->name) }}{{ (' ') }}{{ (auth::user()->apellido) }}" type="text" class="form-control "  readonly=»readonly» name="nombre_completo"  required autocomplete="nombre_completo" autofocus>
+                            <label for="nombre_reservante">{{ __('Nombre') }}</label>
+                            <input id="nombre_reservante" value ="{{ (auth::user()->name) }}{{ (' ') }}{{ (auth::user()->apellido) }}" type="text" class="form-control "  readonly=»readonly» name="nombre_reservante"  required autocomplete="nombre_reservante" autofocus>
+                        </div>
 
-                            
-                        </div>
-                        <div class="form-group">
-                            <label for="nombre_reservante">{{ __('Nombre Reservante') }}</label>
-                            <input id="nombre_reservante" class="form-control @error('nombre_reservante') is-invalid @enderror" value ="{{ old('cod_lab') }}" type="text"  name="nombre_reservante"  required autocomplete="nombre_reservante" autofocus>
-                            @error('nombre_reservante')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                            
-                        </div>
                         
                         <div class="form-group">
                             <label for="cod_lab">{{ __('Codigo Laboratorio') }}</label>

@@ -16,7 +16,6 @@ class CreateReservasTable extends Migration
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
             $table->string('username');
-            $table->string('nombre_completo');
             $table->string('nombre_reservante');
             $table->string('cod_lab');
             $table->date('fecha_inicial');

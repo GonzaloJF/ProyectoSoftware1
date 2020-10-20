@@ -100,7 +100,6 @@ class ReservaController extends Controller
        
         $validatedData = $request->validate([
             'username' => ['required'],
-            'nombre_completo' => ['required'],
             'nombre_reservante' => ['required'],
             'cod_lab' => ['required'],
             'fecha_inicial' => ['required','after:yesterday'],
@@ -121,10 +120,8 @@ class ReservaController extends Controller
             $error="La capacidad ingresada es superior a la del laboratorio";
             return back()->with(compact('error'));
         };*/
-        
         $reserva = new reserva();
         $reserva->username = $validatedData['username'];
-        $reserva->nombre_completo =$validatedData['nombre_completo'];
         $reserva->nombre_reservante =$validatedData['nombre_reservante'];
         $reserva->cod_lab =$validatedData['cod_lab'];
         $reserva->fecha_inicial =$validatedData['fecha_inicial'];
@@ -1749,7 +1746,6 @@ class ReservaController extends Controller
         
         $validatedData = $request->validate([
             'username' => ['required'],
-            'nombre_completo' => ['required'],
             'cod_lab' => ['required'],
             'fecha_inicial' => ['required'],
             'bloque' => ['required'],

@@ -94,22 +94,9 @@
                                         <a class="btn btn-outline-info" href="{{ url('/laboratorio') }}">{{ __('Laboratorios') }}</a>
                                     </li>
                             @endif
-                            @if(((Auth::user()->tipo_usuario)==1)||((Auth::user()->tipo_usuario)==2)||((Auth::user()->tipo_usuario)==4))
-                                <li class="nav-item">
-                                    <a class="btn btn-outline-info" href="{{ url('/solicitud') }}">{{ __('Mis Solicitudes') }}</a>
-                                </li>
-                                <p>  &nbsp  </p> 
-                                <li class="nav-item">
-                                    <a class="btn btn-outline-info" href="{{ url('/solicitud/create') }}">{{ __('Nueva solicitud') }}</a>
-                                </li>
-                            @endif
-                            @if((Auth::user()->tipo_usuario)==3)
-                                <li class="nav-item">
-                                    <a class="btn btn-outline-info" href="{{ url('/evaluacion') }}">{{ __('Evaluar Solicitudes') }}</a>
-                                </li>
-                                <p>  &nbsp  </p> 
-                            @endif
-                            @if(((Auth::user()->tipo_usuario)==3)||((Auth::user()->tipo_usuario)==5))
+                            
+                            
+                            @if(((Auth::user()->tipo_usuario)==1)||((Auth::user()->tipo_usuario)==2)||((Auth::user()->tipo_usuario)==3)||((Auth::user()->tipo_usuario)==4)||((Auth::user()->tipo_usuario)==5))
                                 <li class="nav-item">
                                     <a class="btn btn-outline-info" href="{{ url('/reserva') }}">{{ __('Reservas Creadas') }}</a>
                                 </li>
