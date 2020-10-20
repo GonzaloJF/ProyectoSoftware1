@@ -29,6 +29,11 @@
       },
 
       ]*/
+        //eventClick: function(info) {
+        //alert(info.event.title);
+         // change the border color just for fun
+          //info.el.style.borderColor = 'red';
+       // }
     });
         calendar.render();
       });
