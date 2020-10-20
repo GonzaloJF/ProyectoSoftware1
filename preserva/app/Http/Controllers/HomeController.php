@@ -50,14 +50,57 @@ class HomeController extends Controller
             $eventos = evento::orderBy('id')->get();
             $eventito =  $eventos->get();
             dd($eventito);*/
+            $lab_buscar= $request->get('buscar_lab');
+            $laboratorios = laboratorio::orderBy('id')->get();
+            $eventos=[];
+            if($request->buscar_lab!='Todos'){
+                $data=evento::latest()->where('cod_lab','like',"%$lab_buscar%")->get();
+                $todos_eventos=$data->toArray();
+                foreach ($todos_eventos as $evento_solo ) {
+             
+                    $eventos[]=[   'title' =>[$evento_solo['title'].' '.$evento_solo['cod_lab']],
+                            'start' => $evento_solo['start'],
+                        ];
+                        
+                    }
+                return view('home',compact('laboratorios','eventos'));
+            }
+            if($request->buscar_lab=='Todos'){
+                $data=evento::all();
+                $todos_eventos=$data->toArray();
+                foreach ($todos_eventos as $evento_solo ) {
+             
+                    $eventos[]=[   'title' =>[$evento_solo['title'].' '.$evento_solo['cod_lab']],
+                            'start' => $evento_solo['start'],
+                        ];
+                        
+                    }
+                return view('home',compact('laboratorios','eventos'));
+            }
             
-            return view('home');
+            
+            
+            /*foreach ($todos_eventos as $evento_solo ) {
+             
+            $eventos[]=[   'title' =>$evento_solo['title'],
+                    'start' => $evento_solo['start'],
+                ];
+
+            }*/
+            //dd($eventos);
+            
+            
     }
 
-    public function show()
+    /*public function show(laboratorio $laboratorio)
     {   
         //$data=evento::latest()->where('id','=',98)->get();
+        
+        
         $data=evento::all();
+        $eventos=$data->toArray();
+        
+    
         return response() ->json($data);
-    }
+    }*/
 }

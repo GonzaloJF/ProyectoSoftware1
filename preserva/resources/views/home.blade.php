@@ -17,7 +17,7 @@
           businessHours: true,
 
 
-          events: "{{ route('show') }}"
+          events: {!! json_encode($eventos) !!}
           /*events: [
             {id : 10,
               cod_lab: 'dci_2',
@@ -52,8 +52,22 @@
 <div class="container">
     
         <div    >
+            <form class = "card" action=" {{ route('home') }} " method="GET">
+              <div class="justify-content-around form-inline"> 
+                <label class="form"> CODIGO DE LABORATORIO:</label>
+                  <select name ="buscar_lab">
+                    <option value= "Todos">-- Todos --</option>
+                    @foreach($laboratorios as $laboratorio)
+                        <option value="{{ $laboratorio->Codigo_de_laboratorio  }}">{{ $laboratorio->Codigo_de_laboratorio  }}</option>
+                    @endforeach
+                    
+                  </select>
+                  <button class="btn btn-outline-info " href="{{ url('home') }}" type="submit">Buscar</button>
+                
+              </div>
+            </form>
             <div class="card">
-
+              
                 <div id='calendar'></div>
                     
             </div>

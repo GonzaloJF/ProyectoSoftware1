@@ -30,7 +30,8 @@ Auth::routes();
 
 //Route::resource('home','HomeController');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home/show', 'HomeController@show')->name('show');
+Route::get('/home.show', 'HomeController@show')->name('show');
+//Route::post('/home.show', 'HomeController@show')->name('post_show');
 Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::get('/home/cambiopass','CambiopassController@cambiopass');
 Route::post('/home/cambiopass','CambiopassController@cambiopass_actualizar');
