@@ -45,43 +45,25 @@ class ReservaController extends Controller
         $laboratorios = laboratorio::orderBy('id')->Paginate();
         $lab_buscar= $request->get('buscar_lab');
         $fecha_buscar=$request->get('fecha_buscar');
+        //dd($request['fecha_buscar']);
         
-        if((Auth::user()->tipo_usuario)==5):
-            if(($request->buscar_lab!='Todos')&&($fecha_buscar==NULL)){
-                $reservas = reserva::where('username','=',Auth::user()->username)->where('cod_lab','like',"%$lab_buscar%")->orderByDesc('id')->Paginate(10);
-                return view('reserva',compact('reservas','laboratorios'));
-            }
-            if(($request->buscar_lab=='Todos')&&($fecha_buscar!=NULL)){
-                $reservas = reserva::where('username','=',Auth::user()->username)->where('fecha_inicial','like',"%$fecha_buscar%")->orderByDesc('id')->Paginate(10);
-                return view('reserva',compact('reservas','laboratorios'));
-            }
-            if(($request->buscar_lab!='Todos')&&($fecha_buscar!=NULL)){
-                $reservas = reserva::where('username','=',Auth::user()->username)->where('cod_lab','like',"%$lab_buscar%")->where('fecha','=',"%$fecha_buscar%")->orderByDesc('id')->Paginate(10);
-                return view('reserva',compact('reservas','laboratorios'));
-            }
-            if(($request->buscar_lab=='Todos')&&($fecha_buscar==NULL)){
-                $reservas = reserva::where('username','=',Auth::user()->username)->orderByDesc('id')->Paginate(10);
-                return view('reserva',compact('reservas','laboratorios'));
-            };
-        else:
-            if(($request->buscar_lab!='Todos')&&($fecha_buscar==NULL)){
-                $reservas = reserva::where('cod_lab','like',"%$lab_buscar%")->orderByDesc('id')->Paginate(10);
-                return view('reserva',compact('reservas','laboratorios'));
-            }
-            if(($request->buscar_lab=='Todos')&&($fecha_buscar!=NULL)){
-                $reservas = reserva::where('fecha_inicial','like',"%$fecha_buscar%")->orderByDesc('id')->Paginate(10);
-                return view('reserva',compact('reservas','laboratorios'));
-            }
-            if(($request->buscar_lab!='Todos')&&($fecha_buscar!=NULL)){
-                $reservas = reserva::where('cod_lab','like',"%$lab_buscar%")->where('fecha_inicial','=',"%$fecha_buscar%")->orderByDesc('id')->Paginate(10);
-                return view('reserva',compact('reservas','laboratorios'));
-            };
-            if(($request->buscar_lab=='Todos')&&($fecha_buscar==NULL)){
-                $reservas = reserva::orderByDesc('id')->Paginate(10);
-                return view('reserva',compact('reservas','laboratorios'));
-            };
-        endif;       
-        
+        if(($request->buscar_lab!='Todos')&&($fecha_buscar==NULL)){
+            $reservas = reserva::where('username','=',Auth::user()->username)->where('cod_lab','like',"%$lab_buscar%")->orderByDesc('id')->Paginate(10);
+            return view('reserva',compact('reservas','laboratorios'));
+        }
+        if(($request->buscar_lab=='Todos')&&($fecha_buscar!=NULL)){
+            $reservas = reserva::where('username','=',Auth::user()->username)->whereDate('fecha_inicial','<=',$request['fecha_buscar'])->whereDate('fecha_final','>=',$request['fecha_buscar'])->orderByDesc('id')->Paginate(10);
+            return view('reserva',compact('reservas','laboratorios'));
+        }
+        if(($request->buscar_lab!='Todos')&&($fecha_buscar!=NULL)){
+            $reservas = reserva::where('username','=',Auth::user()->username)->where('cod_lab','like',"%$lab_buscar%")->whereDate('fecha_inicial','<=',$request['fecha_buscar'])->whereDate('fecha_final','>=',$request['fecha_buscar'])->orderByDesc('id')->Paginate(10);
+            return view('reserva',compact('reservas','laboratorios'));
+        }
+        if(($request->buscar_lab=='Todos')&&($fecha_buscar==NULL)){
+            $reservas = reserva::where('username','=',Auth::user()->username)->orderByDesc('id')->Paginate(10);
+            return view('reserva',compact('reservas','laboratorios'));
+        }
+
     }
 
  
