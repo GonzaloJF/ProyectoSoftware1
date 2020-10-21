@@ -122,7 +122,7 @@ class ReservaController extends Controller
             //dd($validatedData['atomica']);
             while($dia1 <= $fechafin){
                 foreach ($total_bloque as &$bloque_ind) {
-                    //---------------------------   LUNES--------------------
+    //---------------------------   LUNES--------------------
                     if((carbon::parse($dia1)->dayOfWeek )=='1'){
                         //print_r($dia1);
                     
@@ -216,7 +216,7 @@ class ReservaController extends Controller
                         }
                         
                     }
-        //-------------------------- MARTES ------------------- 
+    //-------------------------- MARTES ------------------- 
                     if((carbon::parse($dia1)->dayOfWeek )=='2'){
                                         
                         if($bloque_ind == 'martes1'){
@@ -716,7 +716,7 @@ class ReservaController extends Controller
         while($dia < $diafinal ){
                         
             foreach ($total_bloque as &$bloque_ind) {
-    //---------------------------   LUNES--------------------
+//---------------------   LUNES--------------------
                 if((carbon::parse($dia)->dayOfWeek )=='1'){
                     //print_r($dia);
                 
@@ -877,7 +877,7 @@ class ReservaController extends Controller
                     }
                     
                 }
-    //-------------------------- MARTES ------------------- 
+//--------------------- MARTES ------------------- 
                 if((carbon::parse($dia)->dayOfWeek )=='2'){
                                     
                     if($bloque_ind == 'martes1'){
@@ -1746,6 +1746,19 @@ class ReservaController extends Controller
         return back()->with(compact('status','fecha'));
     }
 
+    public function inactividad(Reserva $reserva) 
+    {
+        return view('reserva.inactividad',compact('reserva'));
+    }
+
+    public function inactividad_periodo(Request $request,Reserva $reserva) 
+    {
+        dd($reserva->all());
+        return view('reserva.inactividad',compact('reserva'));
+    }
+
+
+    
     /**
      * Remove the specified resource from storage.
      *

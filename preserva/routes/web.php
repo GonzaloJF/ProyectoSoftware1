@@ -31,7 +31,6 @@ Auth::routes();
 //Route::resource('home','HomeController');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home.show', 'HomeController@show')->name('show');
-//Route::post('/home.show', 'HomeController@show')->name('post_show');
 Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::get('/home/cambiopass','CambiopassController@cambiopass');
 Route::post('/home/cambiopass','CambiopassController@cambiopass_actualizar');
@@ -45,7 +44,9 @@ Route::get('/reserva/create', 'ReservaController@create');
 Route::post('/reserva', 'ReservaController@store');
 Route::get('/reserva','ReservaController@reservas_anteriores');
 Route::get('/reserva/{reserva}/edit','ReservaController@edit');
+Route::get('/reserva/{reserva}/inactividad','ReservaController@inactividad');
 Route::patch('/reserva/{reserva}','ReservaController@update');
+Route::patch('/reserva/{reserva}','ReservaController@inactividad_periodo');
 Route::delete('/reserva/{reserva}','ReservaController@destroy');
  
 
