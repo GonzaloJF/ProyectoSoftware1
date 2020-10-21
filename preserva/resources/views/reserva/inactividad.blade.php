@@ -32,6 +32,17 @@
 
                             
                         </div>
+
+                        <div class="form-group">
+                            <label for="id">{{ __('Id reserva') }}</label>
+                            <input id="id" value ="{{ $reserva->id }}" type="integer" class="form-control @error('id') is-invalid @enderror" readonly=»readonly»  name="id"  required autocomplete="id" autofocus>
+                            
+                            @error('id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                         
                         <div class="form-group">
                             <label for="cod_lab">{{ __('Codigo Laboratorio') }}</label>

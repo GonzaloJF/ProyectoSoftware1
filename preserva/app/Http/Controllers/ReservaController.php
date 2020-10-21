@@ -46,6 +46,24 @@ class ReservaController extends Controller
         $lab_buscar= $request->get('buscar_lab');
         $fecha_buscar=$request->get('fecha_buscar');
         //dd($request['fecha_buscar']);
+        if((Auth::user()->tipo_usuario)==3){
+            if(($request->buscar_lab!='Todos')&&($fecha_buscar==NULL)){
+                $reservas = reserva::where('cod_lab','like',"%$lab_buscar%")->orderByDesc('id')->Paginate(10);
+                return view('reserva',compact('reservas','laboratorios'));
+            }
+            if(($request->buscar_lab=='Todos')&&($fecha_buscar!=NULL)){
+                $reservas = reserva::whereDate('fecha_inicial','<=',$request['fecha_buscar'])->whereDate('fecha_final','>=',$request['fecha_buscar'])->orderByDesc('id')->Paginate(10);
+                return view('reserva',compact('reservas','laboratorios'));
+            }
+            if(($request->buscar_lab!='Todos')&&($fecha_buscar!=NULL)){
+                $reservas = reserva::where('cod_lab','like',"%$lab_buscar%")->whereDate('fecha_inicial','<=',$request['fecha_buscar'])->whereDate('fecha_final','>=',$request['fecha_buscar'])->orderByDesc('id')->Paginate(10);
+                return view('reserva',compact('reservas','laboratorios'));
+            }
+            if(($request->buscar_lab=='Todos')&&($fecha_buscar==NULL)){
+                $reservas = reserva::orderByDesc('id')->Paginate(10);
+                return view('reserva',compact('reservas','laboratorios'));
+            }
+        }
         
         if(($request->buscar_lab!='Todos')&&($fecha_buscar==NULL)){
             $reservas = reserva::where('username','=',Auth::user()->username)->where('cod_lab','like',"%$lab_buscar%")->orderByDesc('id')->Paginate(10);
@@ -711,8 +729,7 @@ class ReservaController extends Controller
 
         $dia=$fechaini;
         $diafinal=Carbon::parse($fechafin)->addDays(1);
-
-
+        $reserva->save();
         while($dia < $diafinal ){
                         
             foreach ($total_bloque as &$bloque_ind) {
@@ -727,6 +744,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 1';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -739,6 +757,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 2';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -751,6 +770,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 3';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -763,6 +783,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 4';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -775,6 +796,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 5';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -787,6 +809,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 6';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -799,6 +822,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 7';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -811,6 +835,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 8';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -823,6 +848,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 9';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -835,6 +861,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 10';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -847,6 +874,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 11';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -859,6 +887,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 11';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -871,6 +900,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 12';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -887,6 +917,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 1';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -899,6 +930,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 2';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -911,6 +943,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 3';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -923,6 +956,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 4';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -935,6 +969,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 5';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -947,6 +982,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 6';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -959,6 +995,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 7';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -971,6 +1008,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 8';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -983,6 +1021,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 9';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -995,6 +1034,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 10';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1007,6 +1047,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 11';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1019,6 +1060,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 11';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1031,6 +1073,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 12';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1046,6 +1089,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 1';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1058,6 +1102,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 2';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1070,6 +1115,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 3';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1082,6 +1128,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 4';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1094,6 +1141,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 5';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1106,6 +1154,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 6';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1118,6 +1167,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 7';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1130,6 +1180,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 8';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1142,6 +1193,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 9';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1154,6 +1206,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 10';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1166,6 +1219,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 11';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1178,6 +1232,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 11';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1190,6 +1245,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 12';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1208,6 +1264,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 1';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1220,6 +1277,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 2';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1232,6 +1290,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 3';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1244,6 +1303,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 4';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1256,6 +1316,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 5';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1268,6 +1329,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 6';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1280,6 +1342,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 7';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1292,6 +1355,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 8';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1304,6 +1368,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 9';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1316,6 +1381,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 10';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1328,6 +1394,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 11';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1340,6 +1407,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 11';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1352,6 +1420,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 12';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1370,6 +1439,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 1';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1382,6 +1452,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 2';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1394,6 +1465,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 3';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1406,6 +1478,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 4';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1418,6 +1491,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 5';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1430,6 +1504,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 6';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1442,6 +1517,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 7';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1454,6 +1530,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 8';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1466,6 +1543,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 9';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1478,6 +1556,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 10';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1490,6 +1569,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 11';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1502,6 +1582,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 11';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1514,6 +1595,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 12';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1531,6 +1613,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 1';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1543,6 +1626,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 2';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1555,6 +1639,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 3';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1567,6 +1652,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 4';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1579,6 +1665,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 5';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1591,6 +1678,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 6';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1603,6 +1691,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 7';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1615,6 +1704,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 8';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1627,6 +1717,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 9';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1639,6 +1730,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 10';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1651,6 +1743,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 11';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1663,6 +1756,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 11';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1675,6 +1769,7 @@ class ReservaController extends Controller
                             $evento->title = 'Bloque 12';
                             $evento->start = $dia;
                             $evento->nombre_reservante = $validatedData['nombre_reservante'];
+                            $evento->id_reserva =$reserva['id'];
                             $evento->save();
                             
                         }
@@ -1686,7 +1781,7 @@ class ReservaController extends Controller
             $dia=Carbon::parse($dia)->addDays(1);
         }
         
-        $reserva->save();
+        
 
         $status = 'Has reservado correctamente';
     return back()->with(compact('status'));
@@ -1753,8 +1848,25 @@ class ReservaController extends Controller
 
     public function inactividad_periodo(Request $request,Reserva $reserva) 
     {
-        dd($reserva->all());
-        return view('reserva.inactividad',compact('reserva'));
+        $validatedData = $request->validate([
+            'id' => ['required'],
+            'fecha_inicial' => ['required'],
+            'fecha_final' => ['required'],
+            'inicio_periodo' => ['required','after:'.$request['fecha_inicial'],'before:'.$request['fecha_final'],'before:'.$request['fin_periodo']],
+            'fin_periodo' => ['required','after:'.$request['fecha_inicial'],'before:'.$request['fecha_final'],'after:'.$request['inicio_periodo']]
+        ]);
+        $eventos_reserva = evento::where('id_reserva','=',$validatedData['id'])
+        ->whereDate('start','>=',$validatedData['inicio_periodo'])
+        ->whereDate('start','<=',$validatedData['fin_periodo'])
+        ->get();
+        $eventos_array=$eventos_reserva->toArray();
+        foreach ($eventos_array as $evento_ind) {
+            $id_evento = $evento_ind['id'];
+            evento::destroy($id_evento);
+          }
+        
+        $status = 'Has dejado liberado el periodo correctamente';
+        return back()->with(compact('reserva','status'));
     }
 
 
