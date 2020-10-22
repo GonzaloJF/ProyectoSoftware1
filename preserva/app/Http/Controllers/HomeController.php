@@ -58,7 +58,7 @@ class HomeController extends Controller
                 $todos_eventos=$data->toArray();
                 foreach ($todos_eventos as $evento_solo ) {
              
-                    $eventos[]=[   'title' =>[$evento_solo['title'].' '.$evento_solo['cod_lab']],
+                    $eventos[]=[   'title' =>[$evento_solo['title'].' '.$evento_solo['cod_lab']."\n".$evento_solo['nombre_reservante']],
                             'start' => $evento_solo['start'],
                         ];
                         
@@ -70,7 +70,7 @@ class HomeController extends Controller
                 $todos_eventos=$data->toArray();
                 foreach ($todos_eventos as $evento_solo ) {
              
-                    $eventos[]=[   'title' =>[$evento_solo['title'].' '.$evento_solo['cod_lab']],
+                    $eventos[]=[   'title' =>[$evento_solo['title'].' '.$evento_solo['cod_lab'].'\n'.$evento_solo['nombre_reservante']],
                             'start' => $evento_solo['start'],
                         ];
                         

@@ -3,6 +3,7 @@
 @section('content')
 
 <link href='{{ asset('assets/lib/main.css') }}' rel='stylesheet' />
+    
     <script src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
     <script src='{{ asset('assets/lib/main.js') }}'></script>
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/rrule@5.2.0/main.global.min.js'></script>
@@ -14,10 +15,13 @@
     
         var calendar = new FullCalendar.Calendar(calendarEl, {
           locale: 'es',
+          dayMaxEvents: true,
           businessHours: true,
 
+          
 
-          events: {!! json_encode($eventos) !!}
+
+          events: {!! json_encode($eventos) !!},
           /*events: [
             {id : 10,
               cod_lab: 'dci_2',
@@ -29,11 +33,11 @@
       },
 
       ]*/
-        //eventClick: function(info) {
-        //alert(info.event.title);
+        eventClick: function(info) {
+        alert(info.event.title);
          // change the border color just for fun
           //info.el.style.borderColor = 'red';
-       // }
+       }
     });
         calendar.render();
       });
@@ -49,9 +53,10 @@
       }
     
       #calendar {
-        max-width: 1100px;
+        max-width: 0 auto;
         margin: 0 auto;
       }
+      
     
     </style>
 <div class="container">
