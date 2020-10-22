@@ -1895,16 +1895,16 @@ class ReservaController extends Controller
             $eventos_array=$eventos_reserva->toArray();
             foreach ($eventos_array as $evento_ind) {
                 $id_evento = $evento_ind['id'];
-                //evento::destroy($id_evento);
+                evento::destroy($id_evento);
             }
-            //Reserva::destroy($id);
+            Reserva::destroy($id);
             foreach ($datos as $dato_ind) {
                 $dato = $dato_ind;
             }
             foreach ($usuarios as $usuario_ind) {
                 $usuario = $usuario_ind;
             }
-            Mail::to($correo)->send(new NotificacionReservaEliminada($dato,$usuario));
+            Mail::to($correo)->queue(new NotificacionReservaEliminada($dato,$usuario));
             $status = 'Has eliminado la reserva completa correctamente';
             return back()->with(compact('status'));
         else:
