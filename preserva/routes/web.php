@@ -48,6 +48,8 @@ Route::get('/reserva/{reserva}/inactividad','ReservaController@inactividad');
 Route::patch('/reserva/{reserva}','ReservaController@update');
 Route::patch('/reserva/{reserva}','ReservaController@inactividad_periodo');
 Route::delete('/reserva/{reserva}','ReservaController@destroy');
+Route::get('/reserva/{reserva}/eliminar_periodo','ReservaController@eliminar_periodo');
+Route::patch('/reserva/{reserva}','ReservaController@eliminar_periodo_destroy');
  
 
 Route::get('/solicitud/create', 'SolicitudController@create');

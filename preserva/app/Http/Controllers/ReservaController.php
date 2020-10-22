@@ -1895,4 +1895,35 @@ class ReservaController extends Controller
             return redirect('reserva');
         endif;
     }
+    public function eliminar_periodo(Reserva $reserva) 
+    {
+        return view('reserva.inactividad',compact('reserva'));
+    }
+
+    public function eliminar_periodo_destroy(Request $request,Reserva $reserva) 
+    {
+        if((Auth::user()->tipo_usuario)==3):
+            $validatedData = $request->validate([
+                'id' => ['required'],
+                'fecha_inicial' => ['required'],
+                'fecha_final' => ['required'],
+                'inicio_periodo' => ['required','after:'.$request['fecha_inicial'],'before:'.$request['fecha_final'],'before:'.$request['fin_periodo']],
+                'fin_periodo' => ['required','after:'.$request['fecha_inicial'],'before:'.$request['fecha_final'],'after:'.$request['inicio_periodo']]
+            ]);
+            $eventos_reserva = evento::where('id_reserva','=',$validatedData['id'])
+            ->whereDate('start','>=',$validatedData['inicio_periodo'])
+            ->whereDate('start','<=',$validatedData['fin_periodo'])
+            ->get();
+            $eventos_array=$eventos_reserva->toArray();
+            foreach ($eventos_array as $evento_ind) {
+                $id_evento = $evento_ind['id'];
+                evento::destroy($id_evento);
+            }
+            
+            $status = 'Has eliminado el periodo correctamente';
+            return back()->with(compact('reserva','status'));
+        else:
+            return redirect('reserva');
+        endif;
+    }
 }
