@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Reserva;
+use App\User;
 use App\laboratorio;
 use App\evento;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NotificacionReservaEliminada;
 
 
 class ReservaController extends Controller
@@ -1881,14 +1884,27 @@ class ReservaController extends Controller
      //
     public function destroy($id) //Funcion que elimina los datos de la reserva
     {   
+        $reserva_ind = Reserva::where('id','=',$id);
+        $datos = (Reserva::where('id','=',$id)->get())->toArray();
+        $rut = ($reserva_ind->get('username'))->toArray();
+        
+        $correo = (User::where('username','=',$rut)->get('email'))->toArray();
+        $usuarios = (User::where('username','=',$rut)->get())->toArray();
         if((Auth::user()->tipo_usuario)==3):
             $eventos_reserva = evento::where('id_reserva','=',$id)->get();
             $eventos_array=$eventos_reserva->toArray();
             foreach ($eventos_array as $evento_ind) {
                 $id_evento = $evento_ind['id'];
-                evento::destroy($id_evento);
+                //evento::destroy($id_evento);
             }
-            Reserva::destroy($id);
+            //Reserva::destroy($id);
+            foreach ($datos as $dato_ind) {
+                $dato = $dato_ind;
+            }
+            foreach ($usuarios as $usuario_ind) {
+                $usuario = $usuario_ind;
+            }
+            Mail::to($correo)->send(new NotificacionReservaEliminada($dato,$usuario));
             $status = 'Has eliminado la reserva completa correctamente';
             return back()->with(compact('status'));
         else:
