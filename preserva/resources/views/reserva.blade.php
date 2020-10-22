@@ -8,7 +8,12 @@
         <div class="col-md-8">
         
             <div class="card">
-            
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
                 <div class="card-header">{{ __('Tus Reservas') }} <form class="justify-content-around form-inline">
                          <label class="form">{{ __('Codigo Laboratorio:') }}</label>
                          <p>  &nbsp  </p> 

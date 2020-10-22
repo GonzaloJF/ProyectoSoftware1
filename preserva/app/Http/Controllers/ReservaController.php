@@ -1881,10 +1881,17 @@ class ReservaController extends Controller
      //
     public function destroy($id) //Funcion que elimina los datos de la reserva
     {   
-        if((Auth::user()->tipo_usuario)==5):
-            return redirect('reserva');
-        else:
+        if((Auth::user()->tipo_usuario)==3):
+            $eventos_reserva = evento::where('id_reserva','=',$id)->get();
+            $eventos_array=$eventos_reserva->toArray();
+            foreach ($eventos_array as $evento_ind) {
+                $id_evento = $evento_ind['id'];
+                evento::destroy($id_evento);
+            }
             Reserva::destroy($id);
+            $status = 'Has eliminado la reserva completa correctamente';
+            return back()->with(compact('status'));
+        else:
             return redirect('reserva');
         endif;
     }
