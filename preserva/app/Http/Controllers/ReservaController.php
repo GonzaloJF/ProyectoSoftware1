@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NotificacionReservaEliminada;
-
+use App\Mail\NotificacionPeriodoEliminado;
 
 class ReservaController extends Controller
 {
@@ -1926,6 +1926,12 @@ class ReservaController extends Controller
                 'inicio_periodo' => ['required','after:'.$request['fecha_inicial'],'before:'.$request['fecha_final'],'before:'.$request['fin_periodo']],
                 'fin_periodo' => ['required','after:'.$request['fecha_inicial'],'before:'.$request['fecha_final'],'after:'.$request['inicio_periodo']]
             ]);
+            $datos = $reserva->toArray();
+            $rut =$datos['username'];
+            $usuarios = (User::where('username','=',$rut)->get())->toArray()    ;
+            $usuario = $usuarios[0];
+            $correo = $usuario['email'];
+
             $eventos_reserva = evento::where('id_reserva','=',$validatedData['id'])
             ->whereDate('start','>=',$validatedData['inicio_periodo'])
             ->whereDate('start','<=',$validatedData['fin_periodo'])
@@ -1933,9 +1939,10 @@ class ReservaController extends Controller
             $eventos_array=$eventos_reserva->toArray();
             foreach ($eventos_array as $evento_ind) {
                 $id_evento = $evento_ind['id'];
-                evento::destroy($id_evento);
+                //evento::destroy($id_evento);
             }
-            
+            //dd($validatedData,$datos,$usuario);
+            Mail::to($correo)->queue(new NotificacionPeriodoEliminado($validatedData,$datos,$usuario));
             $status = 'Has eliminado el periodo correctamente';
             return back()->with(compact('reserva','status'));
         else:

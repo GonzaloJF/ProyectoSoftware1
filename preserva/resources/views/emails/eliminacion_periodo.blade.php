@@ -9,7 +9,7 @@
     <link href='https://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel="stylesheet">
     <!-- <![endif]-->
 
-    <title>Eliminacion Reserva</title>
+    <title>Eliminacion periodo</title>
 
     <style type="text/css">
         body {
@@ -146,17 +146,18 @@
                             <table border="0" align="center" width="590" cellpadding="0" cellspacing="0" class="container590">
             
                                 <tr>
-                                    <td align="justify-content" style="color: #343434; font-size: 24px; font-family: arial, sans-serif!important; font-weight:700;letter-spacing: 3px; line-height: 35px;" class="main-header">
+                                    <td align="justify-content" style="color: #343434; font-size: 20px; font-family: arial, sans-serif!important; font-weight:700;letter-spacing: 3px; line-height: 35px;" class="main-header">
                                         <!-- ======= section text ====== -->
             
                                         <div style="line-height: 35px">
             
                                             <span style="color: #000f99;">{{ $usuario['name'] }} {{ $usuario['apellido'] }} </span> 
-                                            se le informa que su reserva con id {{ $dato['id'] }} 
-                                            en el laboratorio {{ $dato['cod_lab'] }} 
-                                            fijada desde {{ $dato['fecha_inicial'] }} 
-                                            hasta  {{ $dato['fecha_final'] }} 
-                                            fue eliminada del sistema.
+                                            se le informa que a su reserva con id {{ $datos['id'] }} 
+                                            en el laboratorio {{ $datos['cod_lab'] }} 
+                                            fijada desde {{ $datos['fecha_inicial'] }} 
+                                            hasta  {{ $datos['fecha_final'] }} 
+                                            se le ha eliminado un periodo que comprende desde {{ $validatedData['inicio_periodo'] }}
+                                            hasta {{ $validatedData['fin_periodo'] }} .
             
                                         </div>
                                     </td>
