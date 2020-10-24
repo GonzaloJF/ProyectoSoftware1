@@ -152,10 +152,10 @@
                                         <div style="line-height: 35px">
             
                                             <span style="color: #000f99;">{{ $usuario['name'] }} {{ $usuario['apellido'] }} </span> 
-                                            se le informa que su reserva con id {{ $dato['id'] }} 
-                                            en el laboratorio {{ $dato['cod_lab'] }} 
-                                            fijada desde {{ $dato['fecha_inicial'] }} 
-                                            hasta  {{ $dato['fecha_final'] }} 
+                                            se le informa que su reserva con id {{ $reserva_ind['id'] }} 
+                                            en el laboratorio {{ $reserva_ind['cod_lab'] }} 
+                                            fijada desde {{ $reserva_ind['fecha_inicial'] }} 
+                                            hasta  {{ $reserva_ind['fecha_final'] }} 
                                             fue eliminada del sistema.
             
                                         </div>

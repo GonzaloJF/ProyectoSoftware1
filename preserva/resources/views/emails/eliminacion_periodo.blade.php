@@ -152,10 +152,10 @@
                                         <div style="line-height: 35px">
             
                                             <span style="color: #000f99;">{{ $usuario['name'] }} {{ $usuario['apellido'] }} </span> 
-                                            se le informa que a su reserva con id {{ $datos['id'] }} 
-                                            en el laboratorio {{ $datos['cod_lab'] }} 
-                                            fijada desde {{ $datos['fecha_inicial'] }} 
-                                            hasta  {{ $datos['fecha_final'] }} 
+                                            se le informa que a su reserva con id {{ $reserva['id'] }} 
+                                            en el laboratorio {{ $reserva['cod_lab'] }} 
+                                            fijada desde {{ $reserva['fecha_inicial'] }} 
+                                            hasta  {{ $reserva['fecha_final'] }} 
                                             se le ha eliminado un periodo que comprende desde {{ $validatedData['inicio_periodo'] }}
                                             hasta {{ $validatedData['fin_periodo'] }} .
             

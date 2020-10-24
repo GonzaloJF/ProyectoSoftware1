@@ -12,7 +12,7 @@ class NotificacionReservaEliminada extends Mailable
     use Queueable, SerializesModels;
     public $subject = "Eliminacion Reserva";
 
-    public $dato;
+    public $reserva_ind;
     public $usuario;
 
     /**
@@ -20,9 +20,9 @@ class NotificacionReservaEliminada extends Mailable
      *
      * @return void
      */
-    public function __construct($dato,$usuario)
+    public function __construct($reserva_ind,$usuario)
     {
-        $this->dato = $dato;
+        $this->reserva_ind = $reserva_ind;
         $this->usuario = $usuario;
         //dd($this->datos);
     }

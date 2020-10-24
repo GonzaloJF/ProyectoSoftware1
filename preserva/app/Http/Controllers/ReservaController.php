@@ -870,18 +870,6 @@ class ReservaController extends Controller
                         }
                     }
                     
-                    if($bloque_ind == 'lunes11'){
-                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
-                            $evento= new evento();
-                            $evento->cod_lab =$validatedData['cod_lab'];
-                            $evento->title = 'Bloque 11';
-                            $evento->start = $dia;
-                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
-                            $evento->id_reserva =$reserva['id'];
-                            $evento->save();
-                            
-                        }
-                    }
 
                     if($bloque_ind == 'lunes11'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
@@ -1056,19 +1044,6 @@ class ReservaController extends Controller
                         }
                     }
 
-                    if($bloque_ind == 'martes11'){
-                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
-                            $evento= new evento();
-                            $evento->cod_lab =$validatedData['cod_lab'];
-                            $evento->title = 'Bloque 11';
-                            $evento->start = $dia;
-                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
-                            $evento->id_reserva =$reserva['id'];
-                            $evento->save();
-                            
-                        }
-                    }
-
                     if($bloque_ind == 'martes12'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia)->count())==0){
                             $evento= new evento();
@@ -1215,18 +1190,6 @@ class ReservaController extends Controller
                         }
                     }
                     
-                    if($bloque_ind == 'miercoles11'){
-                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
-                            $evento= new evento();
-                            $evento->cod_lab =$validatedData['cod_lab'];
-                            $evento->title = 'Bloque 11';
-                            $evento->start = $dia;
-                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
-                            $evento->id_reserva =$reserva['id'];
-                            $evento->save();
-                            
-                        }
-                    }
 
                     if($bloque_ind == 'miercoles11'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
@@ -1403,18 +1366,6 @@ class ReservaController extends Controller
                         }
                     }
 
-                    if($bloque_ind == 'jueves11'){
-                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
-                            $evento= new evento();
-                            $evento->cod_lab =$validatedData['cod_lab'];
-                            $evento->title = 'Bloque 11';
-                            $evento->start = $dia;
-                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
-                            $evento->id_reserva =$reserva['id'];
-                            $evento->save();
-                            
-                        }
-                    }
 
                     if($bloque_ind == 'jueves12'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia)->count())==0){
@@ -1565,18 +1516,7 @@ class ReservaController extends Controller
                         }
                     }
                     
-                    if($bloque_ind == 'viernes11'){
-                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
-                            $evento= new evento();
-                            $evento->cod_lab =$validatedData['cod_lab'];
-                            $evento->title = 'Bloque 11';
-                            $evento->start = $dia;
-                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
-                            $evento->id_reserva =$reserva['id'];
-                            $evento->save();
-                            
-                        }
-                    }
+                
 
                     if($bloque_ind == 'viernes11'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
@@ -1752,18 +1692,6 @@ class ReservaController extends Controller
                         }
                     }
 
-                    if($bloque_ind == 'sabado11'){
-                        if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia)->count())==0){
-                            $evento= new evento();
-                            $evento->cod_lab =$validatedData['cod_lab'];
-                            $evento->title = 'Bloque 11';
-                            $evento->start = $dia;
-                            $evento->nombre_reservante = $validatedData['nombre_reservante'];
-                            $evento->id_reserva =$reserva['id'];
-                            $evento->save();
-                            
-                        }
-                    }
 
                     if($bloque_ind == 'sabado12'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia)->count())==0){
@@ -1884,13 +1812,9 @@ class ReservaController extends Controller
      //
     public function destroy($id) //Funcion que elimina los datos de la reserva
     {   
-        $reserva_ind = Reserva::where('id','=',$id);
-        $datos = (Reserva::where('id','=',$id)->get())->toArray();
-        $rut = ($reserva_ind->get('username'))->toArray();
-        
-        $correo = (User::where('username','=',$rut)->get('email'))->toArray();
-        $usuarios = (User::where('username','=',$rut)->get())->toArray();
-        if((Auth::user()->tipo_usuario)==3):
+        $reserva_ind = (Reserva::where('id','=',$id))->first();
+        $usuario = (User::where('username','=',$reserva_ind->username)->first());
+        if(((Auth::user()->tipo_usuario)==3)||((Auth::user()->username)==$reserva_ind->username)):
             $eventos_reserva = evento::where('id_reserva','=',$id)->get();
             $eventos_array=$eventos_reserva->toArray();
             foreach ($eventos_array as $evento_ind) {
@@ -1898,13 +1822,9 @@ class ReservaController extends Controller
                 evento::destroy($id_evento);
             }
             Reserva::destroy($id);
-            foreach ($datos as $dato_ind) {
-                $dato = $dato_ind;
+            if((Auth::user()->tipo_usuario)==3){
+                Mail::to($usuario->email)->queue(new NotificacionReservaEliminada($reserva_ind,$usuario)); //envia el mail
             }
-            foreach ($usuarios as $usuario_ind) {
-                $usuario = $usuario_ind;
-            }
-            Mail::to($correo)->queue(new NotificacionReservaEliminada($dato,$usuario));
             $status = 'Has eliminado la reserva completa correctamente';
             return back()->with(compact('status'));
         else:
@@ -1918,7 +1838,7 @@ class ReservaController extends Controller
 
     public function eliminar_periodo_destroy(Request $request,Reserva $reserva) 
     {
-        if((Auth::user()->tipo_usuario)==3):
+       
             $validatedData = $request->validate([
                 'id' => ['required'],
                 'fecha_inicial' => ['required'],
@@ -1926,12 +1846,8 @@ class ReservaController extends Controller
                 'inicio_periodo' => ['required','after:'.$request['fecha_inicial'],'before:'.$request['fecha_final'],'before:'.$request['fin_periodo']],
                 'fin_periodo' => ['required','after:'.$request['fecha_inicial'],'before:'.$request['fecha_final'],'after:'.$request['inicio_periodo']]
             ]);
-            $datos = $reserva->toArray();
-            $rut =$datos['username'];
-            $usuarios = (User::where('username','=',$rut)->get())->toArray()    ;
-            $usuario = $usuarios[0];
-            $correo = $usuario['email'];
 
+            $usuario = (User::where('username','=',$reserva->username))->first();
             $eventos_reserva = evento::where('id_reserva','=',$validatedData['id'])
             ->whereDate('start','>=',$validatedData['inicio_periodo'])
             ->whereDate('start','<=',$validatedData['fin_periodo'])
@@ -1939,14 +1855,13 @@ class ReservaController extends Controller
             $eventos_array=$eventos_reserva->toArray();
             foreach ($eventos_array as $evento_ind) {
                 $id_evento = $evento_ind['id'];
-                //evento::destroy($id_evento);
+                evento::destroy($id_evento);
             }
-            //dd($validatedData,$datos,$usuario);
-            Mail::to($correo)->queue(new NotificacionPeriodoEliminado($validatedData,$datos,$usuario));
+            if((Auth::user()->tipo_usuario)==3){
+                Mail::to($usuarios->name)->queue(new NotificacionPeriodoEliminado($validatedData,$reserva,$usuario));
+            }
             $status = 'Has eliminado el periodo correctamente';
             return back()->with(compact('reserva','status'));
-        else:
-            return redirect('reserva');
-        endif;
+
     }
 }

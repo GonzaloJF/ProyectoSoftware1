@@ -13,7 +13,7 @@ class NotificacionPeriodoEliminado extends Mailable
 
     public $subject = "Eliminacion periodo de reserva";
 
-    public $datos;
+    public $reserva;
     public $usuario;
     public $validatedData;
     /**
@@ -21,10 +21,10 @@ class NotificacionPeriodoEliminado extends Mailable
      *
      * @return void
      */
-    public function __construct($validatedData,$datos,$usuario)
+    public function __construct($validatedData,$reserva,$usuario)
     {
         $this->validatedData = $validatedData;
-        $this->datos = $datos;
+        $this->reserva = $reserva;
         $this->usuario = $usuario;
     }
 
