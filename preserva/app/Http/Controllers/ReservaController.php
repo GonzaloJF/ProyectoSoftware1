@@ -95,8 +95,10 @@ class ReservaController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //Toma los datos de la nueva reserva y los agrega a la base de datos
-    public function store(Request $request)
+    
+
+     //Toma los datos de la nueva reserva y los agrega a la base de datos    
+     public function store(Request $request)
     {
         
         //dd($request->all());
