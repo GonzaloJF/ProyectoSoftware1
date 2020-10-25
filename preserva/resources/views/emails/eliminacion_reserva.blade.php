@@ -150,13 +150,13 @@
                                         <!-- ======= section text ====== -->
             
                                         <div style="line-height: 35px">
-            
-                                            <span style="color: #000f99;">{{ $usuario['name'] }} {{ $usuario['apellido'] }} </span> 
-                                            se le informa que su reserva con id {{ $reserva_ind['id'] }} 
+                                            Estimado
+                                            <span style="color: #5caad2;"> {{ $usuario['name'] }} {{ $usuario['apellido'] }} </span> 
+                                            se le informa que su reserva numero {{ $reserva_ind['id'] }} 
                                             en el laboratorio {{ $reserva_ind['cod_lab'] }} 
-                                            fijada desde {{ $reserva_ind['fecha_inicial'] }} 
-                                            hasta  {{ $reserva_ind['fecha_final'] }} 
-                                            fue eliminada del sistema.
+                                            fijada para el {{ $reserva_ind['fecha_inicial'] }} 
+                                            hasta el {{ $reserva_ind['fecha_final'] }} 
+                                            ha sido eliminada de nuestro sistema.
             
                                         </div>
                                     </td>
