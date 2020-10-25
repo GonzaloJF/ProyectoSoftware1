@@ -1662,10 +1662,8 @@ class ReservaController extends Controller
             'fecha_inicial' => ['required'],
             'fecha_final' => ['required'],
         ]);
-        
         $total_bloque = $reserva->bloques;
-
-        if($reserva->fecha_inicial > $validatedData['fecha_inicial']){
+        if($reserva->fecha_inicial > $validatedData['fecha_inicial']){//verificar
             $fechaini= $validatedData['fecha_inicial'];
             $fechafin = $reserva->fecha_inicial;
             $datos = $this->verificar($total_bloque,$fechaini,$fechafin,$reserva );
@@ -1673,7 +1671,7 @@ class ReservaController extends Controller
                 return back()->with(compact('datos')); 
             }; 
         }
-        if($reserva->fecha_final < $validatedData['fecha_final']){
+        if($reserva->fecha_final < $validatedData['fecha_final']){//verificar
             $fechaini= $reserva->fecha_final;
             $fechafin = $validatedData['fecha_final'];
             $datos = $this->verificar($total_bloque,$fechaini,$fechafin,$reserva );
@@ -1681,15 +1679,43 @@ class ReservaController extends Controller
                 return back()->with(compact('datos')); 
             }; 
         }
-        
-
+        if($reserva->fecha_inicial > $validatedData['fecha_inicial']){//atrasar fecha inicio
+            $fechaini= $validatedData['fecha_inicial'];
+            $fechafin = $reserva->fecha_inicial;
+            $this->guardar($fechaini,$fechafin,$total_bloque,$validatedData,$reserva );
+        }
+        if($reserva->fecha_final < $validatedData['fecha_final']){//avanzar fecha final
+            $fechaini= $reserva->fecha_final;
+            $fechafin = $validatedData['fecha_final'];
+            $this->guardar($fechaini,$fechafin,$total_bloque,$validatedData,$reserva );
+        }
+        if($reserva->fecha_inicial < $validatedData['fecha_inicial']){//avanzar fecha inicial - borrar
+            $eventos = evento::where('id_reserva',$reserva->id)
+            ->whereDate('start','>=',$reserva->fecha_inicial)
+            ->whereDate('start','<',$validatedData['fecha_inicial'])
+            ->get();
+            $eventos_array=$eventos->toArray();
+            foreach ($eventos_array as $evento) {
+                $id_evento = $evento['id'];
+                evento::destroy($id_evento);
+            }
+        }
+        if($reserva->fecha_final > $validatedData['fecha_final']){//atrasar fecha final - borrar
+            $eventos = evento::where('id_reserva',$reserva->id)
+            ->whereDate('start','>',$validatedData['fecha_final'])
+            ->whereDate('start','<=',$reserva->fecha_final)
+            ->get();
+            $eventos_array=$eventos->toArray();
+            foreach ($eventos_array as $evento) {
+                $id_evento = $evento['id'];
+                evento::destroy($id_evento);
+            }
+        }
         $reserva->fecha_inicial = $validatedData['fecha_inicial'];
         $reserva->fecha_final = $validatedData['fecha_final'];
-        //$reserva->save();
-        
-        $fecha = $validatedData['fecha_inicial'];
+        $reserva->save();
         $status = 'Has editado correctamente';
-        return back()->with(compact('status','fecha'));
+        return back()->with(compact('status'));
     }
 
     public function inactividad(Reserva $reserva) 
