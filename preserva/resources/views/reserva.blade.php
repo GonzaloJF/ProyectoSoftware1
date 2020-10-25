@@ -72,6 +72,7 @@
                                             </svg> Liberar periodo </button>
                                             
                                         </form>
+                                        LOS ELIMINAR TIRAN ERROR
                                         <form method ='POST' action = "{{ url('/reserva/'.$reserva->id) }}">
                                             @method('DELETE')
                                             @csrf
