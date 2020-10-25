@@ -100,81 +100,80 @@ class ReservaController extends Controller
         while($dia1 <= $fechafin){
             foreach ($total_bloque as $bloque_ind) {
                 //dd($total_bloque,$bloque_ind);
+                $dia_formato=$dia1;
                 //---------------------------LUNES--------------------
                     if((carbon::parse($dia1)->dayOfWeek )=='1'){
                         //print_r($dia1);
                         $nombre_dia='Lunes';
                         if($bloque_ind == 'lunes1'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 1'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 1', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'lunes2'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia1)->count())>0){
-                                $fecha_dia = $dia->format('Y-M-D');
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 2'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 2', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'lunes3'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia1)->count())>0){
-                                $fecha_dia = $dia->format('Y-M-D');
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 3'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 3', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'lunes4'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 4'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 4', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'lunes5'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 5'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 5', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'lunes6'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 6'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 6', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'lunes7'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 7'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 7', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'lunes8'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 8'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 8', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'lunes9'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 9'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 9', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'lunes10'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 10'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 10', 'fecha'=>$dia_formato];
                             }
                         }
                         
                         if($bloque_ind == 'lunes11'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 11'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 11', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'lunes12'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 12'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 12', 'fecha'=>$dia_formato];
                             }
                         }
                     
@@ -183,152 +182,150 @@ class ReservaController extends Controller
                     if((carbon::parse($dia1)->dayOfWeek )=='2'){
                     $nombre_dia='Martes';                
                     if($bloque_ind == 'martes1'){
-                        
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia1)->count())>0){
-                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 1'.' '.$dia1->format('Y-M-d')];
+                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 1', 'fecha'=>$dia_formato];
                         }
                     }
 
                     if($bloque_ind == 'martes2'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia1)->count())>0){
-                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 2'.' '.$dia1->format('Y-M-d')];
+                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 2', 'fecha'=>$dia_formato];
                         }
                     }
 
                     if($bloque_ind == 'martes3'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia1)->count())>0){
-                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 3'.' '.$dia1->format('Y-M-d')];
+                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 3', 'fecha'=>$dia_formato];
                         }
                     }
 
                     if($bloque_ind == 'martes4'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia1)->count())>0){
-                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 4'.' '.$dia1->format('Y-M-d')];
+                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 4', 'fecha'=>$dia_formato];
                         }
                     }
 
                     if($bloque_ind == 'martes5'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia1)->count())>0){
-                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 5'.' '.$dia1->format('Y-M-d')]; 
+                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 5', 'fecha'=>$dia_formato]; 
                         }
                     }
 
                     if($bloque_ind == 'martes6'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia1)->count())>0){
-                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 6'.' '.$dia1->format('Y-M-d')];
+                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 6', 'fecha'=>$dia_formato];
                         }
                     }
 
                     if($bloque_ind == 'martes7'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia1)->count())>0){
-                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 7'.' '.$dia1->format('Y-M-d')]; 
+                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 7', 'fecha'=>$dia_formato]; 
                         }
                     }
 
                     if($bloque_ind == 'martes8'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia1)->count())>0){
-                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 8'.' '.$dia1->format('Y-M-d')]; 
+                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 8', 'fecha'=>$dia_formato]; 
                         }
                     }
 
                     if($bloque_ind == 'martes9'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia1)->count())>0){
-                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 9'.' '.$dia1->format('Y-M-d')]; 
+                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 9', 'fecha'=>$dia_formato]; 
                         }
                     }
 
                     if($bloque_ind == 'martes10'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia1)->count())>0){
-                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 10'.' '.$dia1->format('Y-M-d')]; 
+                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 10', 'fecha'=>$dia_formato]; 
                         }
                     }
                     
                     if($bloque_ind == 'martes11'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
-                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 11'.' '.$dia1->format('Y-M-d')];
+                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 11', 'fecha'=>$dia_formato];
                         }
                     }
 
                     if($bloque_ind == 'martes12'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia1)->count())>0){
-                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 12'.' '.$dia1->format('Y-M-d')]; 
+                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 12', 'fecha'=>$dia_formato]; 
                         }
                     }
                     
                     }
                 //-------------------------- Miercoles ------------------- 
                     if((carbon::parse($dia1)->dayOfWeek )=='3'){
-                        $nombre_dia='Miercoles';
-                                        
+                        $nombre_dia='Miercoles';        
                         if($bloque_ind == 'miercoles1'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 1'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 1', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'miercoles2'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 2'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 2', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'miercoles3'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 3'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 3', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'miercoles4'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 4'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 4', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'miercoles5'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 5'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 5', 'fecha'=>$dia_formato]; 
                             }
                         }
 
                         if($bloque_ind == 'miercoles6'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 6'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 6', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'miercoles7'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 7'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 7', 'fecha'=>$dia_formato]; 
                             }
                         }
 
                         if($bloque_ind == 'miercoles8'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 8'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 8', 'fecha'=>$dia_formato]; 
                             }
                         }
 
                         if($bloque_ind == 'miercoles9'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 9'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 9', 'fecha'=>$dia_formato]; 
                             }
                         }
 
                         if($bloque_ind == 'miercoles10'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 10'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 10', 'fecha'=>$dia_formato]; 
                             }
                         }
                         
                         if($bloque_ind == 'miercoles11'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 11'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 11', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'miercoles12'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 12'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 12', 'fecha'=>$dia_formato]; 
                             }
                         }
                         
@@ -339,73 +336,73 @@ class ReservaController extends Controller
                                         
                         if($bloque_ind == 'jueves1'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 1'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 1', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'jueves2'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 2'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 2', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'jueves3'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 3'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 3', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'jueves4'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 4'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 4', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'jueves5'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 5'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 5', 'fecha'=>$dia_formato]; 
                             }
                         }
 
                         if($bloque_ind == 'jueves6'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 6'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 6', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'jueves7'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 7'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 7', 'fecha'=>$dia_formato]; 
                             }
                         }
 
                         if($bloque_ind == 'jueves8'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 8'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 8', 'fecha'=>$dia_formato]; 
                             }
                         }
 
                         if($bloque_ind == 'jueves9'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 9'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 9', 'fecha'=>$dia_formato]; 
                             }
                         }
 
                         if($bloque_ind == 'jueves10'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 10'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 10', 'fecha'=>$dia_formato]; 
                             }
                         }
                         
                         if($bloque_ind == 'jueves11'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 11'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 11', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'jueves12'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 12'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 12', 'fecha'=>$dia_formato]; 
                             }
                         }
                         
@@ -416,73 +413,73 @@ class ReservaController extends Controller
                                         
                         if($bloque_ind == 'viernes1'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 1'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 1', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'viernes2'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 2'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 2', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'viernes3'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 3'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 3', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'viernes4'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 4'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 4', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'viernes5'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 5'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 5', 'fecha'=>$dia_formato]; 
                             }
                         }
 
                         if($bloque_ind == 'viernes6'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 6'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 6', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'viernes7'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 7'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 7', 'fecha'=>$dia_formato]; 
                             }
                         }
 
                         if($bloque_ind == 'viernes8'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 8'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 8', 'fecha'=>$dia_formato]; 
                             }
                         }
 
                         if($bloque_ind == 'viernes9'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 9'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 9', 'fecha'=>$dia_formato]; 
                             }
                         }
 
                         if($bloque_ind == 'viernes10'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 10'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 10', 'fecha'=>$dia_formato]; 
                             }
                         }
                         
                         if($bloque_ind == 'viernes11'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 11'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 11', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'viernes12'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 12'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 12', 'fecha'=>$dia_formato]; 
                             }
                         }
                     
@@ -493,73 +490,73 @@ class ReservaController extends Controller
                                         
                         if($bloque_ind == 'sabado1'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 1'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 1', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'sabado2'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 2'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 2', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'sabado3'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 3'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 3', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'sabado4'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 4'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 4', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'sabado5'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 5')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 5'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 5', 'fecha'=>$dia_formato]; 
                             }
                         }
 
                         if($bloque_ind == 'sabado6'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 6')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 6'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 6', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'sabado7'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 7')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 7'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 7', 'fecha'=>$dia_formato]; 
                             }
                         }
 
                         if($bloque_ind == 'sabado8'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 8')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 8'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 8', 'fecha'=>$dia_formato]; 
                             }
                         }
 
                         if($bloque_ind == 'sabado9'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 9')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 9'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 9', 'fecha'=>$dia_formato]; 
                             }
                         }
 
                         if($bloque_ind == 'sabado10'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 10')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 10'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 10', 'fecha'=>$dia_formato]; 
                             }
                         }
                         
                         if($bloque_ind == 'sabado11'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 11')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 11'.' '.$dia1->format('Y-M-d')];
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 11', 'fecha'=>$dia_formato];
                             }
                         }
 
                         if($bloque_ind == 'sabado12'){
                             if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 12')->where('start','=',$dia1)->count())>0){
-                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 12'.' '.$dia1->format('Y-M-d')]; 
+                                $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 12', 'fecha'=>$dia_formato]; 
                             }
                         }
                     
@@ -1659,8 +1656,8 @@ class ReservaController extends Controller
             'nombre_reservante' => ['required'],
             'id' => ['required'],
             'cod_lab' => ['required'],
-            'fecha_inicial' => ['required'],
-            'fecha_final' => ['required'],
+            'fecha_inicial' => ['required','before:'.$request['fecha_final']],
+            'fecha_final' => ['required','after:'.$request['fecha_inicial']],
         ]);
         $total_bloque = $reserva->bloques;
         if($reserva->fecha_inicial > $validatedData['fecha_inicial']){//verificar
