@@ -98,7 +98,8 @@ class ReservaController extends Controller
         $cantidad=[];
         $dia1=$fechaini;
         while($dia1 <= $fechafin){
-            foreach ($total_bloque as &$bloque_ind) {
+            foreach ($total_bloque as $bloque_ind) {
+                //dd($total_bloque,$bloque_ind);
                 //---------------------------LUNES--------------------
                     if((carbon::parse($dia1)->dayOfWeek )=='1'){
                         //print_r($dia1);
@@ -178,29 +179,29 @@ class ReservaController extends Controller
                     }
                 //-------------------------- MARTES ------------------- 
                     if((carbon::parse($dia1)->dayOfWeek )=='2'){
-                    $nombre_dia='Martes';
-                                    
+                    $nombre_dia='Martes';                
                     if($bloque_ind == 'martes1'){
+                        
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 1')->where('start','=',$dia1)->count())>0){
-                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 1'];
+                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 1'.' '.$dia1];
                         }
                     }
 
                     if($bloque_ind == 'martes2'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 2')->where('start','=',$dia1)->count())>0){
-                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 2'];
+                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 2'.' '.$dia1];
                         }
                     }
 
                     if($bloque_ind == 'martes3'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 3')->where('start','=',$dia1)->count())>0){
-                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 3'];
+                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 3'.' '.$dia1];
                         }
                     }
 
                     if($bloque_ind == 'martes4'){
                         if((evento::where('cod_lab','=',$validatedData['cod_lab'])->where('title','=','Bloque 4')->where('start','=',$dia1)->count())>0){
-                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 4'];
+                            $cantidad[] = ['dia_bloque' => $nombre_dia.' '.'Bloque 4'.' '.$dia1];
                         }
                     }
 
@@ -566,6 +567,7 @@ class ReservaController extends Controller
             }
             $dia1=Carbon::parse($dia1)->addDays(1);
         }
+        //dd($cantidad);
         return ($cantidad);
          
 
@@ -616,15 +618,11 @@ class ReservaController extends Controller
         //VERIFICAR SI ESTA TODO DISPONIBLE CUANDO ES ATOMICA
         if($validatedData['atomica'] == 'si'){ 
             $datos = $this->verificar($total_bloque,$fechaini,$fechafin,$validatedData);
-            if($datos>0){
-                $error="Hay bloques reservados: ";
-                foreach ($datos as $dato) {
-                    $error= $error.$dato['dia_bloque']." / ";
-                }
-                return back()->with(compact('error')); 
+            if($datos){
+                return back()->with(compact('datos')); 
             };
         }
-  
+        
 
     //--------------------------------------------- INGRESO DE EVENTOS -------------------------------------------
 

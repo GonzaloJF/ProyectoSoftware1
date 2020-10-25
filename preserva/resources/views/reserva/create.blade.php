@@ -13,9 +13,15 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    @if (session('error'))
+                    @if (session('datos'))
                         <div class="alert alert-danger" role="alert">
-                            {{ session('error') }}
+                             Hay bloques reservados:
+                            <ul>
+                            @foreach (session('datos') as $dato)
+                                   <li> {{ $dato['dia_bloque' ]}}</li>
+                            @endforeach
+                            </ul>
+                            
                         </div>
                     @endif
 
