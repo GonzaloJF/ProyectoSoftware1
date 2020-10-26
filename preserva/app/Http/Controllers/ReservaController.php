@@ -1754,6 +1754,10 @@ class ReservaController extends Controller
         $status = 'Has editado correctamente';
         return back()->with(compact('status'));
     }
+    public function cambio_bloques(Reserva $reserva) 
+    {
+        return view('reserva.cambio_bloques',compact('reserva'));
+    }
 
     public function inactividad(Reserva $reserva) 
     {
