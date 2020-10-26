@@ -43,14 +43,18 @@ Route::delete('/usuarios/{usuario}','AdminController@destroy');
 Route::get('/reserva/create', 'ReservaController@create');
 Route::post('/reserva', 'ReservaController@store');
 Route::get('/reserva','ReservaController@reservas_anteriores');
-Route::get('/reserva/{reserva}/edit','ReservaController@edit');
+//
+Route::get('/reserva/{reserva}/cambio_fechas','ReservaController@cambio_fechas');
+Route::patch('/reserva/{reserva}/update_fechas','ReservaController@update_fechas');
+//
 Route::get('/reserva/{reserva}/inactividad','ReservaController@inactividad');
-Route::patch('/reserva/{reserva}','ReservaController@update');
 Route::patch('/reserva/{reserva}','ReservaController@inactividad_periodo');
+//
 Route::delete('/reserva/{reserva}','ReservaController@destroy');
+//
 Route::get('/reserva/{reserva}/eliminar_periodo','ReservaController@eliminar_periodo');
 Route::patch('/reserva/{reserva}','ReservaController@eliminar_periodo_destroy');
- 
+//-------------------------------------------------------------------------------
 
 Route::get('/solicitud/create', 'SolicitudController@create');
 Route::post('/solicitud', 'SolicitudController@store'); 
