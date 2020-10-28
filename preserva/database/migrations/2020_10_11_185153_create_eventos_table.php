@@ -19,6 +19,7 @@ class CreateEventosTable extends Migration
             $table->string('title');
             $table->date('start');
             $table->string('nombre_reservante');
+            $table->string('bloque');
             $table->integer('id_reserva');
             $table->timestamps();
         });
