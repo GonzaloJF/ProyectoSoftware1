@@ -18,7 +18,7 @@
                              Hay bloques reservados:
                             <ul>
                             @foreach (session('datos') as $dato)
-                                <li> {{ $dato['dia_bloque'] }} {{ ' ' }} {{ $dato['fecha']->format('Y-M-d') }}</li>
+                                <li> {{ $dato['dia_bloque'] }} {{ ' ' }} {{ $dato['fecha'] }}</li>
                             @endforeach
                             </ul>
                             

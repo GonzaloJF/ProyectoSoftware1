@@ -48,6 +48,7 @@ Route::get('/reserva/{reserva}/cambio_fechas','ReservaController@cambio_fechas')
 Route::patch('/reserva/{reserva}/update_fechas','ReservaController@update_fechas');
 //
 Route::get('/reserva/{reserva}/cambio_bloques','ReservaController@cambio_bloques');
+Route::patch('/reserva/{reserva}/update_bloques','ReservaController@update_bloques');
 //
 Route::get('/reserva/{reserva}/inactividad','ReservaController@inactividad');
 Route::patch('/reserva/{reserva}','ReservaController@inactividad_periodo');

@@ -5798,7 +5798,7 @@ a.badge-dark.focus {
 }
 .list-group-item.reserva {
   z-index: 2;
-  color: rgb(0, 72, 180);
+  color: rgb(0, 0, 0);
   background-color: #ffffff;
   border-color: #45ABC6;
 }
