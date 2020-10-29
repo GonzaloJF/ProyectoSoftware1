@@ -34,6 +34,7 @@ Route::get('/home.show', 'HomeController@show')->name('show');
 Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::get('/home/cambiopass','CambiopassController@cambiopass');
 Route::post('/home/cambiopass','CambiopassController@cambiopass_actualizar');
+Route::get('/home/{evento}/info','HomeController@info_evento');
 
 Route::get('/usuarios','AdminController@usuarios');
 Route::get('/usuarios/{usuario}/edit','AdminController@edit');
