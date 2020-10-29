@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Reserva;
 use App\laboratorio;
 use App\evento;
+use App\user;
 
 class HomeController extends Controller
 {
@@ -60,6 +61,7 @@ class HomeController extends Controller
              
                     $eventos[]=[   'title' =>[$evento_solo['title'].' '.$evento_solo['cod_lab']."\n".$evento_solo['nombre_reservante']],
                             'start' => $evento_solo['start'],
+                            'url' => '/home/'.$evento_solo['id'].'/info',
                         ];
                         
                     }
@@ -72,35 +74,24 @@ class HomeController extends Controller
              
                     $eventos[]=[   'title' =>[$evento_solo['title'].' '.$evento_solo['cod_lab'].'\n'.$evento_solo['nombre_reservante']],
                             'start' => $evento_solo['start'],
+                            'url' => '/home/'.$evento_solo['id'].'/info',
                         ];
                         
                     }
+                
                 return view('home',compact('laboratorios','eventos'));
             }
-            
-            
-            
-            /*foreach ($todos_eventos as $evento_solo ) {
-             
-            $eventos[]=[   'title' =>$evento_solo['title'],
-                    'start' => $evento_solo['start'],
-                ];
-
-            }*/
-            //dd($eventos);
-            
+                       
             
     }
 
-    /*public function show(laboratorio $laboratorio)
-    {   
-        //$data=evento::latest()->where('id','=',98)->get();
-        
-        
-        $data=evento::all();
-        $eventos=$data->toArray();
-        
-    
-        return response() ->json($data);
-    }*/
+    public function info_evento(Evento $evento) 
+    {
+        //dd($evento->id_reserva);
+        $reserva = Reserva::where('id',$evento->id_reserva)->first();
+        $usuario = User::where('username',$reserva->username)->first();
+        return view('home.info_evento',compact('evento','reserva','usuario'));
+    }
+
+
 }

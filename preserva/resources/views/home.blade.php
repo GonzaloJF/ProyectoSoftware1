@@ -34,7 +34,9 @@
 
       ]*/
         eventClick: function(info) {
-        alert(info.event.title);
+        //alert(info.event.title);
+        info.jsEvent.preventDefault();
+        window.open(info.event.url);
          // change the border color just for fun
           //info.el.style.borderColor = 'red';
        }
@@ -60,7 +62,7 @@
     
     </style>
 <div class="container">
-    
+      
         <div    >
             <form class = "card" action=" {{ route('home') }} " method="GET">
               <div class="justify-content-around form-inline"> 
