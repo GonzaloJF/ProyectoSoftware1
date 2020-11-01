@@ -11,6 +11,6 @@ class Reserva extends Model
     ];
 
     protected $fillable = [
-        'username', 'nombre_reservante', 'cod_lab','fecha_inicial', 'fecha_final', 'bloques', 'cap_res', 'ciudad',
+        'username', 'nombre_reservante', 'cod_lab','fecha_inicial', 'fecha_final', 'bloques', 'ciudad',
     ];
 }

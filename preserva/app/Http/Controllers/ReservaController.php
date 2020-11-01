@@ -99,7 +99,6 @@ class ReservaController extends Controller
         $dia1=$fechaini;
         while($dia1 <= $fechafin){
             foreach ($total_bloque as $bloque_ind) {
-                //dd($total_bloque,$bloque_ind);
                 $dia_formato=$dia1;
                 //---------------------------LUNES--------------------
                     if((carbon::parse($dia1)->dayOfWeek )=='1'){
@@ -566,7 +565,6 @@ class ReservaController extends Controller
             }
             $dia1=Carbon::parse($dia1)->addDays(1);
         }
-        //dd($cantidad);
         return ($cantidad);
          
 
@@ -1632,8 +1630,6 @@ class ReservaController extends Controller
 //Toma los datos de la nueva reserva y los agrega a la base de datos    
      public function store(Request $request)
     {
-        
-        //dd($request->all());
        
         $validatedData = $request->validate([
             'username' => ['required'],
@@ -1642,21 +1638,10 @@ class ReservaController extends Controller
             'fecha_inicial' => ['required','after:yesterday'],
             'fecha_final' => ['required'],
             'bloques' => ['required'],
-            'cap_res' => ['required'],
             'atomica' => ['required'],
         ]);
 
-        /*
-        if((reserva::where('cod_lab','=',$validatedData['cod_lab'])->where('fecha','=',$validatedData['fecha'])->where('bloque','=',$validatedData['bloque'])->count())>0){
-            $error="El laboratorio ya esta reservado ese dia y en ese bloque";
-            return back()->with(compact('error'));
-            
-        }
-        
-        if((laboratorio::where('Codigo_de_laboratorio','=',$validatedData['cod_lab'])->where('capacidad','<',$validatedData['cap_res'])->count())>0){
-            $error="La capacidad ingresada es superior a la del laboratorio";
-            return back()->with(compact('error'));
-        };*/
+
         $reserva = new reserva();
         $reserva->username = $validatedData['username'];
         $reserva->nombre_reservante =$validatedData['nombre_reservante'];
@@ -1664,7 +1649,6 @@ class ReservaController extends Controller
         $reserva->fecha_inicial =$validatedData['fecha_inicial'];
         $reserva->fecha_final =$validatedData['fecha_final'];
         $reserva->bloques = $validatedData['bloques'];
-        $reserva->cap_res =$validatedData['cap_res'];
         
         $fechaini =$validatedData['fecha_inicial'];
         $fechafin =$validatedData['fecha_final'];
@@ -1961,7 +1945,7 @@ class ReservaController extends Controller
             $eventos_array=$eventos_reserva->toArray();
             foreach ($eventos_array as $evento_ind) {
                 $id_evento = $evento_ind['id'];
-                //evento::destroy($id_evento);
+                evento::destroy($id_evento);
             }
             if((Auth::user()->tipo_usuario)==3){
                 Mail::to($usuario->email)->send(new NotificacionPeriodoEliminado($validatedData,$reserva,$usuario));

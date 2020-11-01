@@ -17,22 +17,8 @@
           locale: 'es',
           dayMaxEvents: true,
           businessHours: true,
-
+          events: {!! json_encode($eventos) !!}, //arreglo con datos de eventos en formato para fullcalendar
           
-
-
-          events: {!! json_encode($eventos) !!},
-          /*events: [
-            {id : 10,
-              cod_lab: 'dci_2',
-              title: 'rrule event',
-        //rrule: {byweekday: [ 'mo' ],dtstart: '2020-10-01T13:00:00',until: '2020-11-09T13:00:00',freq: 'weekly'}
-        rrule: 'DTSTART:2020-10-01\nRRULE:FREQ=WEEKLY;UNTIL=2020-11-09;BYWEEKDAY=FR'
-            // 'DTSTART:2020-10-15\nRRULE:FREQ=WEEKLY;UNTIL=2020-11-21;BYWEEKDAY=FR'
-                
-      },
-
-      ]*/
         eventClick: function(info) {
         //alert(info.event.title);
         info.jsEvent.preventDefault();
