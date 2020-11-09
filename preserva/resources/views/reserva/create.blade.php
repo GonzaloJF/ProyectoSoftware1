@@ -246,18 +246,6 @@
                         
 
                         <div class="form-group">
-                            <label for="cap_res">{{ __('Capacidad a reservar') }}</label>
-                            <input id="cap_res" type="integer" class="form-control @error('cap_res') is-invalid @enderror" name="cap_res" value="{{ old('cap_res') }}" required autocomplete="cap_res" autofocus>
-
-                            @error('cap_res')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-
-                        </div>
-
-                        <div class="form-group">
                             <label for="atomica">{{ __('Atomica') }}</label>
                         
                             <select name="atomica"class="form-control" >

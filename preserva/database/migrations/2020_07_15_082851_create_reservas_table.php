@@ -21,7 +21,6 @@ class CreateReservasTable extends Migration
             $table->date('fecha_inicial');
             $table->date('fecha_final');
             $table->json('bloques');
-            $table->integer('cap_res');
             $table->timestamps();
         });
     }
