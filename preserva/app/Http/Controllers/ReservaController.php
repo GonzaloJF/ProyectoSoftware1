@@ -1655,8 +1655,9 @@ class ReservaController extends Controller
         $total_bloque = $validatedData['bloques'];
         $dia1=$fechaini;
         //VERIFICAR SI ESTA TODO DISPONIBLE CUANDO ES ATOMICA
+        $datos = $this->verificar($total_bloque,$fechaini,$fechafin,$validatedData);
         if($validatedData['atomica'] == 'si'){ 
-            $datos = $this->verificar($total_bloque,$fechaini,$fechafin,$validatedData);
+            
             if($datos){
                 return back()->with(compact('datos')); 
             };
@@ -1664,13 +1665,17 @@ class ReservaController extends Controller
         
 
     //--------------------------------------------- INGRESO DE EVENTOS -------------------------------------------
-
+        $listado_fechas = $datos;
+        
         $dia=$fechaini;
         $diafinal=Carbon::parse($fechafin)->addDays(1);
         $reserva->save();
         $this->guardar($fechaini,$fechafin,$total_bloque,$validatedData,$reserva);
 
         $status = 'Has reservado correctamente';
+        if($listado_fechas){
+            return back()->with(compact('listado_fechas')); 
+        };
     return back()->with(compact('status'));
     }
 

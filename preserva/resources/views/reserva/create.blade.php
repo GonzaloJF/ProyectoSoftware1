@@ -13,12 +13,23 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if (session('listado_fechas'))
+                        <div class="alert alert-success" role="alert">
+                        Has reservado correctamente, pero hay bloques reservados:
+                            <ul>
+                            @foreach (session('listado_fechas') as $dato)
+                                <li> {{ $dato['dia_bloque'] }} {{ ' ' }} {{ $dato['fecha']}}</li>
+                            @endforeach
+                            </ul>
+                            
+                        </div>
+                    @endif
                     @if (session('datos'))
                         <div class="alert alert-danger" role="alert">
                              Hay bloques reservados:
                             <ul>
                             @foreach (session('datos') as $dato)
-                                <li> {{ $dato['dia_bloque'] }} {{ ' ' }} {{ $dato['fecha']->format('Y-M-d') }}</li>
+                                <li> {{ $dato['dia_bloque'] }} {{ ' ' }} {{ $dato['fecha']}}</li>
                             @endforeach
                             </ul>
                             
