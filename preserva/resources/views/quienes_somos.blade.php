@@ -11,25 +11,21 @@
     </head>
 
 
-    
+
 </div>
     <body>
     <nav id="navbar-example2" class="navbar navbar-light bg-light">
     <div class="container">
-    <div class="row">      
+    <div class="row">
       <a class="btn btn-outline-secondary" href="quienes_somos">¿Quienes somos?</a>
           <ul class="nav nav-pills">
-            <p>  &nbsp  </p> 
+            <p>  &nbsp  </p>
             <li class="nav-item">
               <a class="btn btn-outline-info" href="/">Inicio</a>
             </li>
-            <p>  &nbsp  </p> 
+            <p>  &nbsp  </p>
             <li class="nav-item">
               <a class="btn btn-outline-info" href="login">Login</a>
-            </li>
-            <p>  &nbsp  </p>            
-            <li class="nav-iten">
-              <a class="btn btn-outline-info" href="register">registrarse</a>
             </li>
           </ul>
         </div>
@@ -45,10 +41,10 @@
     </header>
     <main class="container-fluid">
       <div class="row" style="height: 500px ; background-color:#45ABC6; ">
-        <div class="col12 text-center text-justify text-white">        
+        <div class="col12 text-center text-justify text-white">
           <h2>Creamos un proyecto de ingenieria en Software 1</h2>
           <h4>El presente proyecto tiene como fin crear una forma más simple de poder reservar los distintos tipos de laboratorios que hay dentro de la universidad, para poder darle menos trabajo a los funcionarios, tener una forma más ordenada y controlado los horarios de uso de cada uno de estos laboratorios.</h4>
         </div>
-       </div>     
+       </div>
     </main>
 </html>
